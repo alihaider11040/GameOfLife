@@ -26,10 +26,10 @@ public class Main {
         emp1.workedOnProjects();
         emp1.takeInterview();
 
-        Internee emp2=new Internee();
-        emp2.takeInterview();
-        emp2.workedOnProjects();
-         emp2.benefits();//comment has been added
+        Internee emp3=new Internee();
+        emp3.takeInterview();
+        emp3.workedOnProjects();
+         emp3.benefits();//comment has been added
 
 
 
