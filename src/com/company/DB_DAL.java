@@ -1,9 +1,6 @@
 package com.company;
 
-import java.sql.CallableStatement;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 
 public class DB_DAL implements DB_interface {
     static final String DB_url = "jdbc:mysql://localhost:3306/GameOfLife";
@@ -27,7 +24,6 @@ public class DB_DAL implements DB_interface {
             throwables.printStackTrace();
         }
     }
-
     @Override
     public void LoadGrid() throws SQLException {
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
@@ -37,6 +33,14 @@ public class DB_DAL implements DB_interface {
         game_details.setInt(3,15);
         game_details.setBoolean(4,true);
         game_details.execute();
+        connection.close();
+    }
+    @Override
+    public void GetLexicon() throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
+        CallableStatement get_lexicon = connection.prepareCall(("{call GET_LEXICON(?)}"));
+        get_lexicon.setInt(1,1);
+        get_lexicon.execute();
         connection.close();
     }
 
