@@ -69,5 +69,4 @@ public class DB_DAL implements DB_interface {
         connection.close();
     }
 
-
 }
