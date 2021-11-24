@@ -14,4 +14,7 @@ public class Board {
         cols=c;
         stateRun=false;
     }
+    public cell[][] getGameBoard() {
+        return gameBoard;
+    }
 }

@@ -8,7 +8,12 @@ public class DB_DAL implements DB_interface {
     static final String Pass = "crown$4242";
 
     @Override
-    public void SaveGrid() {
+    public void ReadFile() {
+
+    }
+
+    @Override
+    public void SaveGrid(Board obj) {
         try {
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass );
             CallableStatement save_record_procedure = connection.prepareCall("{call SAVE_INTO_GAME_DETAILS(?,?,?,?,?)}");
