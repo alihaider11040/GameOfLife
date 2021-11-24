@@ -1,11 +1,30 @@
 package com.company;
-
+import java.io.File;  // Import the File
+import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Scanner;
 
-public class Filing_DAL implements DB_interface {
-
+public class Filing_DAL implements DB_interface
+{
+ @Override
+ public void ReadFile()
+ {
+          try {
+             File myObj = new File("filename.txt");
+             Scanner myReader = new Scanner(myObj);
+             while (myReader.hasNextLine()) {
+                //String data = myReader.nextLine();
+                System.out.print(myReader.nextLine());
+             }
+             myReader.close();
+          } catch (IOException e) {
+             System.out.println("An error occurred.");
+             e.printStackTrace();
+          }
+ }
     @Override
-    public void SaveGrid() {
+    public void SaveGrid()
+    {
 
     }
 
