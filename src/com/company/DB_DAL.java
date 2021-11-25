@@ -48,6 +48,7 @@ public class DB_DAL implements DB_interface {
         String del_query= "call DELETE_SAVED_STATE" + "("+ Grid_ID +" );";
         one.executeQuery(del_query);
         connection.close();
+        //..
     }
     @Override
     public void GetLexicon() throws SQLException
