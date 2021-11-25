@@ -34,9 +34,8 @@ public class Main {
 
 */
         System.out.println("hello world");
-        cell c1 = new cell(12,13);
-        c1.printCell();
-        c1.updateStatus(false);
-        c1.printCell();
+        Board obj= new Board(50,60);
+        DB_DAL ahmad = new DB_DAL();
+        ahmad.SaveGrid(obj);
     }
 }

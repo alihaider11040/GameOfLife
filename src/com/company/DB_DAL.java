@@ -9,23 +9,25 @@ public class DB_DAL implements DB_interface {
 
     @Override
     public void ReadFile() {
-
     }
 
     @Override
     public void SaveGrid(Board obj) {
         try {
+            Class<?> aClass = Class.forName("com.mysql.jdbc.Driver");
+
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass );
             CallableStatement save_record_procedure = connection.prepareCall("{call SAVE_INTO_GAME_DETAILS(?,?,?,?,?)}");
             save_record_procedure.setInt(1,1);
             save_record_procedure.setString(2,"Cinderellaman");
             save_record_procedure.setInt(3,200);
             save_record_procedure.setInt(4,10);
-            save_record_procedure.setInt(5,1000);
+            save_record_procedure.setInt(5 ,obj.rows);
+            save_record_procedure.setInt(5 ,obj.cols);
             save_record_procedure.execute();
             connection.close();
-
-        } catch (SQLException throwables) {
+        }
+        catch (SQLException throwables) {
             throwables.printStackTrace();
         }
     }
@@ -42,7 +44,8 @@ public class DB_DAL implements DB_interface {
     }
 
     @Override
-    public void delete_game_details() throws SQLException {
+    public void delete_game_details() throws SQLException
+    {
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
         CallableStatement delete_game_details= connection.prepareCall("{call DELETE_GAME_DETAILS(?)}");
         delete_game_details.setInt(1,1);
@@ -60,7 +63,8 @@ public class DB_DAL implements DB_interface {
     }
 
     @Override
-    public void GetLexicon() throws SQLException {
+    public void GetLexicon() throws SQLException
+    {
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
         //Statement haroon= connection.createStatement();
         //ResultSet shariq= haroon.executeQuery("select * from Lexicon");
@@ -73,5 +77,4 @@ public class DB_DAL implements DB_interface {
         get_lexicon.execute();
         connection.close();
     }
-
 }
