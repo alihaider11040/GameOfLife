@@ -8,24 +8,25 @@ public class DB_DAL implements DB_interface {
     static final String Pass = "crown$4242";
 
     @Override
-    public void ReadFile() {
-    }
-
-    @Override
     public void SaveGrid(Board obj) {
         try {
-
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass );
             Statement one=connection.createStatement();
-            String query="SELECT * FROM GAME_DETAILS;";
-            ResultSet rs= one.executeQuery(query);
-            while(rs.next())
+            String query= null;
+            for (int i=0; i<obj.getTotalRows();i++)
             {
-                    System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+                for(int j=0; j<obj.getTotalCols();j++)
+                {
+                    //CALL SAVED_STATE_VALUES (1,30,30,15,15,1);
+                    boolean is_alive = obj.gameBoard[i][j].isAliveStatus();
+                    query= "call SAVED_STATE_VALUES(" + 2+ "," + obj.getTotalRows() +"," + obj.getTotalCols() +"," + i +","+j +","+is_alive +");";
+                    one.executeQuery(query);
+                }
             }
             connection.close();
         }
-        catch (SQLException e ) {
+        catch (SQLException e)
+        {
             System.out.println(e);
         }
     }

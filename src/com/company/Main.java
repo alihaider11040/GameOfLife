@@ -34,7 +34,7 @@ public class Main {
 
 */
         System.out.println("hello world");
-        Board obj= new Board(50,60);
+        Board obj= new Board(10,10);
         DB_DAL ahmad = new DB_DAL();
         ahmad.SaveGrid(obj);
     }
