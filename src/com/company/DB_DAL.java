@@ -3,7 +3,7 @@ package com.company;
 import java.sql.*;
 
 public class DB_DAL implements DB_interface {
-    static final String DB_url = "jdbc:mysql://localhost:3306/GameOfLife";
+    static final String DB_url = "jdbc:mysql://localhost:3306/my_game_of_life";
     static final String USER_NAME = "root";
     static final String Pass = "crown$4242";
 
@@ -14,21 +14,19 @@ public class DB_DAL implements DB_interface {
     @Override
     public void SaveGrid(Board obj) {
         try {
-            Class<?> aClass = Class.forName("com.mysql.jdbc.Driver");
 
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass );
-            CallableStatement save_record_procedure = connection.prepareCall("{call SAVE_INTO_GAME_DETAILS(?,?,?,?,?)}");
-            save_record_procedure.setInt(1,1);
-            save_record_procedure.setString(2,"Cinderellaman");
-            save_record_procedure.setInt(3,200);
-            save_record_procedure.setInt(4,10);
-            save_record_procedure.setInt(5 ,obj.rows);
-            save_record_procedure.setInt(5 ,obj.cols);
-            save_record_procedure.execute();
+            Statement one=connection.createStatement();
+            String query="SELECT * FROM GAME_DETAILS;";
+            ResultSet rs= one.executeQuery(query);
+            while(rs.next())
+            {
+                    System.out.println(rs.getString(1)+"  "+rs.getString(2)+"  "+rs.getString(3)+"  "+rs.getString(4));
+            }
             connection.close();
         }
-        catch (SQLException throwables) {
-            throwables.printStackTrace();
+        catch (SQLException e ) {
+            System.out.println(e);
         }
     }
     @Override
