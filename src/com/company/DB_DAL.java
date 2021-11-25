@@ -7,73 +7,51 @@ public class DB_DAL implements DB_interface {
     static final String USER_NAME = "root";
     static final String Pass = "crown$4242";
 
+
     @Override
     public void SaveGrid(Board obj) {
         try {
-            Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass );
-            Statement one=connection.createStatement();
-            String query= null;
-            for (int i=0; i<obj.getTotalRows();i++)
-            {
-                for(int j=0; j<obj.getTotalCols();j++)
-                {
+            Connection connection = DriverManager.getConnection(DB_url, USER_NAME, Pass);
+            Statement one = connection.createStatement();
+            String query = null;
+            for (int i = 0; i < obj.getTotalRows(); i++) {
+                for (int j = 0; j < obj.getTotalCols(); j++) {
                     //CALL SAVED_STATE_VALUES (1,30,30,15,15,1);
                     boolean is_alive = obj.gameBoard[i][j].isAliveStatus();
-                    query= "call SAVED_STATE_VALUES(" + 2+ "," + obj.getTotalRows() +"," + obj.getTotalCols() +"," + i +","+j +","+is_alive +");";
+                    query = "call SAVED_STATE_VALUES(" + 2 + "," + obj.getTotalRows() + "," + obj.getTotalCols() + "," + i + "," + j + "," + is_alive + ");";
                     one.executeQuery(query);
                 }
             }
             connection.close();
-        }
-        catch (SQLException e)
-        {
+        } catch (SQLException e) {
             System.out.println(e);
         }
     }
     @Override
-    public void LoadGrid() throws SQLException {
-        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
-        CallableStatement game_details = connection.prepareCall("{call SAVE_INTO_GAME_RECORD_DETAILS(?,?,?,?)}");
-        game_details.setInt(1,1);
-        game_details.setInt(2, 10);
-        game_details.setInt(3,15);
-        game_details.setBoolean(4,true);
-        game_details.execute();
-        connection.close();
-    }
-
-    @Override
-    public void delete_game_details() throws SQLException
+    public void LoadGrid(int Grid_ID) throws SQLException
     {
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
-        CallableStatement delete_game_details= connection.prepareCall("{call DELETE_GAME_DETAILS(?)}");
-        delete_game_details.setInt(1,1);
-        delete_game_details.execute();
+        Statement one=connection.createStatement();
+        String query= "call LOAD_SAVED_STATE" + "("+ Grid_ID +" );";
+        ResultSet query_result = one.executeQuery(query);
+        while(query_result.next())
+        {
+            System.out.println(query_result.getString(1)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4)+ " "+query_result.getString(5)+ " "+query_result.getString(6));
+        }
         connection.close();
     }
-
     @Override
-    public void delete_game_record_details() throws SQLException {
+    public void delete_saved_state(int Grid_ID) throws SQLException
+    {
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
-        CallableStatement delete_game_record_details =connection.prepareCall("{call DELETE_GAME_RECORD_DETAILS}");
-        delete_game_record_details.setInt(1,1);
-        delete_game_record_details.execute();
+        Statement one= connection.createStatement();
+        String del_query= "call DELETE_SAVED_STATE" + "("+ Grid_ID +" );";
+        one.executeQuery(del_query);
         connection.close();
     }
-
     @Override
     public void GetLexicon() throws SQLException
     {
-        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
-        //Statement haroon= connection.createStatement();
-        //ResultSet shariq= haroon.executeQuery("select * from Lexicon");
-        //while(shariq.next())
-        //{
-        //    shariq.getInt("Lexicon_ID");
-        //}
-        CallableStatement get_lexicon = connection.prepareCall(("{call GET_LEXICON(?)}"));
-        get_lexicon.setInt(1,1);
-        get_lexicon.execute();
-        connection.close();
+
     }
 }

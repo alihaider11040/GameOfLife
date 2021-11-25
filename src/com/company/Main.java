@@ -1,5 +1,6 @@
 package com.company;
 
+import java.sql.SQLException;
 import java.sql.SQLOutput;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class Main {
         car.printDetails();
     }*/
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws SQLException {
       /*  PM emp=new PM();
         emp.workedOnProjects();
         emp.benefits();
@@ -36,6 +37,6 @@ public class Main {
         System.out.println("hello world");
         Board obj= new Board(10,10);
         DB_DAL ahmad = new DB_DAL();
-        ahmad.SaveGrid(obj);
+        ahmad.delete_saved_state(20);
     }
 }
