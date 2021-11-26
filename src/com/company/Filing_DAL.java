@@ -19,16 +19,17 @@ public class Filing_DAL implements DB_interface
                 for (int j = 0; j < obj.cols; j++)
                 {
                     write.write(String.valueOf(id));
-                    // space
+                    write.write(" ");
                     write.write(String.valueOf(i));
-                    // space
+                    write.write(" ");
                     write.write(String.valueOf(j));
-                    // space
+                    write.write(" ");
                     write.write(String.valueOf(board[i][j].aliveStatus));
+                    write.write("\n");
                     // end line
                 }
             }
-
+            write.close();
         } catch (IOException e)
         {
             System.out.println("An error occurred.");
