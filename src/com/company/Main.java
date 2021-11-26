@@ -1,5 +1,6 @@
 package com.company;
 
+import java.io.FileNotFoundException;
 import java.sql.SQLOutput;
 import java.util.Date;
 
@@ -16,7 +17,7 @@ public class Main {
         car.printDetails();
     }*/
 
-    public static void main(String[] args){
+    public static void main(String[] args) throws FileNotFoundException {
       /*  PM emp=new PM();
         emp.workedOnProjects();
         emp.benefits();
@@ -33,10 +34,17 @@ public class Main {
 
 
 */
-        System.out.println("hello world");
+       /* System.out.println("hello world");
         cell c1 = new cell(12,13);
         c1.printCell();
         c1.updateStatus(false);
-        c1.printCell();
+        c1.printCell();*/
+        shape sh1=new shape(5,"hello");
+        sh1.fillShape("src\\com\\company\\dice.txt",4);
+        //sh1.printShape();
+       /* lexicon l1 = new lexicon(5);
+        l1.AddShape(sh1);
+        l1.List();*/
+
     }
 }
