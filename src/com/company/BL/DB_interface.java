@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 public interface DB_interface
 {
-    public void SaveGrid(int Game_ID,Board obj) throws FileNotFoundException;
+    public void SaveGrid(int Game_ID,Board obj);
     public void LoadGrid(int Grid_ID) throws SQLException;
     public void delete_saved_state(int Grid_ID) throws SQLException;
     public void Save_game_details(Board obj);
