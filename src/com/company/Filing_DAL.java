@@ -2,6 +2,7 @@ package com.company;
 import com.company.BL.Board;
 import com.company.BL.DB_interface;
 import com.company.BL.cell;
+import com.company.BL.lexicon;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.sql.SQLException;
 
 public class Filing_DAL implements DB_interface
 {
-    @Override
+
     public void SaveGrid(Board obj) {
         try
         {
@@ -30,6 +31,11 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
+    public void SaveGrid(int Game_ID, Board obj) {
+
+    }
+
+    @Override
     public void LoadGrid(int Grid_ID) throws SQLException {
 
     }
@@ -42,6 +48,10 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
+    public void Save_game_details() {
+
+    }
+
     public void GetLexicon(lexicon obj) throws SQLException {
 
     }
