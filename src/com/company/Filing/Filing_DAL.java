@@ -16,18 +16,19 @@ public class Filing_DAL implements DB_interface
     @Override
     public void SaveGrid(int Game_ID, Board obj) throws FileNotFoundException {
 
-        Scanner scanner = new Scanner(new File("tall.txt"));
-        int [] tall = new int [100];
-        int i = 0;
-        while(scanner.hasNextInt())
-        {
-            tall[i++] = scanner.nextInt();
-        }
+
     }
 
     @Override
-    public void LoadGrid(int Grid_ID) throws SQLException {
-
+    public Board LoadGrid(int Grid_ID) throws SQLException, FileNotFoundException {
+        Scanner scanner = new Scanner(new File("tall.txt"));
+        int [] arr = new int [100];
+        int i = 0;
+        while(scanner.hasNextInt())
+        {
+            arr[i] = scanner.nextInt();
+            System.out.println(arr[i++]);
+        }
     }
 
     @Override

@@ -42,4 +42,13 @@ public class Board {
     public cell[][] getGameBoard() {
         return gameBoard;
     }
+    public void fillBoard(){
+
+        for (int i = 0; i < rows; i++) {
+            for (int j=0;j<cols;j++){
+                gameBoard[i][j]=new cell(i,j,true);
+
+            }
+        }
+    }
 }

@@ -32,15 +32,13 @@ public class DB_DAL implements DB_interface {
         }
     }
     @Override
-    public void LoadGrid(int Grid_ID) throws SQLException
-    {
-        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
-        Statement one=connection.createStatement();
-        String query= "call LOAD_SAVED_STATE" + "("+ Grid_ID +" );";
+    public void LoadGrid(int Grid_ID) throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_url, USER_NAME, Pass);
+        Statement one = connection.createStatement();
+        String query = "call LOAD_SAVED_STATE" + "(" + Grid_ID + " );";
         ResultSet query_result = one.executeQuery(query);
-        while(query_result.next())
-        {
-            System.out.println(query_result.getString(1)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4));
+        while (query_result.next()) {
+            System.out.println(query_result.getString(1) + " " + query_result.getString(2) + " " + query_result.getString(3) + " " + query_result.getString(4));
         }
         connection.close();
     }
