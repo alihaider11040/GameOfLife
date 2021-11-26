@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 public class cell {
     int rowNum;
@@ -18,8 +18,7 @@ public class cell {
         colNum=c;
         aliveStatus=status;
     }
-    public int getRowNum()
-    {
+    public int getRowNum() {
         return rowNum;
     }
 

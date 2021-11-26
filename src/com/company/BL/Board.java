@@ -1,10 +1,10 @@
-package com.company;
+package com.company.BL;
 
 public class Board {
     // here we will add cell class
     int rows;
     int cols;
-    public cell gameBoard[][];
+    public cell[][] gameBoard;
     boolean stateRun;
 
     Board()
@@ -25,7 +25,7 @@ public class Board {
             for(int j=0; j<cols;j++)
             {
 
-                gameBoard[i][j]=new cell(i,j);
+                gameBoard[i][j]=new cell(i,j,false);
             }
         }
     }

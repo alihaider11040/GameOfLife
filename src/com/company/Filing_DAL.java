@@ -1,9 +1,11 @@
 package com.company;
-import java.io.File;  // Import the File
+import com.company.BL.Board;
+import com.company.BL.DB_interface;
+import com.company.BL.cell;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Filing_DAL implements DB_interface
 {
@@ -15,7 +17,7 @@ public class Filing_DAL implements DB_interface
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++) {
                 for (int j = 0; j < obj.cols; j++) {
-                    // save alivestatus in file
+
                     write.write(String.valueOf(board[i][j].aliveStatus));
                 }
             }
@@ -40,7 +42,7 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void GetLexicon() throws SQLException {
+    public void GetLexicon(lexicon obj) throws SQLException {
 
     }
 }

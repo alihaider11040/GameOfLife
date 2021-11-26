@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -12,7 +12,6 @@ public class shape {
         size = x;
         shape = new cell[size][size];
         name =n;
-
     }
 
     void fillShape(String filename, int size) {
