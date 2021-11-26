@@ -39,7 +39,7 @@ public class Main extends Application {
       //  stage.setWidth(600);
        // stage.setHeight(600);
         // we are not able to change the stage size
-        stage.setResizable(false);
+        stage.setResizable(true);
         // below two line show the stage on 50,50 position on screen
         //  stage.setX(10);
         //  stage.setY(10);
