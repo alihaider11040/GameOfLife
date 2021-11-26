@@ -4,6 +4,7 @@ import  com.company.BL.Board;
 import com.company.BL.cell;
 
 
+import java.awt.*;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -73,7 +74,29 @@ public class Filing_DAL implements DB_interface
 
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException {
+        try
+        {
+            FileWriter write1 = new FileWriter("src/save_grid.txt");
+            Board obj = new Board();
+            cell[][] board = obj.getGameBoard();
 
+            for (int i = 0; i < obj.rows; i++)
+            {
+                for (int j = 0; j < obj.cols; j++) {
+                    if (Grid_ID == (i * j))
+                        write1.write("-");
+                    else if ((Grid_ID == i) || (Grid_ID == j))
+                        write1.write("-");
+                }
+                write1.write("\n");
+                // end line
+            }
+            write1.close();
+        } catch (IOException e)
+        {
+            System.out.println("An error occurred.");
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -111,7 +134,7 @@ public class Filing_DAL implements DB_interface
             Board obj1 = new Board();
             cell[][] board = obj1.getGameBoard();
 
-            /*if(Game_ID != 0)
+            if(Game_ID != 0)
             {
                 while (reader1.hasNextLine())
                 {
@@ -120,12 +143,14 @@ public class Filing_DAL implements DB_interface
                         for (int j = 0; j < obj1.cols; j++)
                         {
                             String data = reader1.nextLine();
-                            board[i][j].aliveStatus;
-                            System.out.println(data);
+                            if(board[i][j].isAliveStatus())
+                                System.out.println(data);
+                            else
+                                System.out.println("0");
                         }
                     }
                 }
-            }*/
+            }
 
             reader1.close();
         } catch (FileNotFoundException e)
