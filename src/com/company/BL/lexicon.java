@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 import com.company.BL.shape;
 

@@ -2,6 +2,7 @@ package com.company.BL;
 
 public class Board {
     // here we will add cell class
+   boolean dataBase_Flag=true;
     int rows;
     int cols;
     public cell[][] gameBoard;
