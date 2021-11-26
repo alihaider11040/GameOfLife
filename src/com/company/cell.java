@@ -18,8 +18,7 @@ public class cell {
         colNum=c;
         aliveStatus=status;
     }
-    public int getRowNum()
-    {
+    public int getRowNum() {
         return rowNum;
     }
 

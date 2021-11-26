@@ -15,7 +15,7 @@ public class Filing_DAL implements DB_interface
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++) {
                 for (int j = 0; j < obj.cols; j++) {
-                    // save alivestatus in file
+
                     write.write(String.valueOf(board[i][j].aliveStatus));
                 }
             }
