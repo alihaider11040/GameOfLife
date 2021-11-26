@@ -29,11 +29,11 @@ public class Board {
             }
         }
     }
-    int getTotalRows()
+    public int getTotalRows()
     {
         return rows;
     }
-    int getTotalCols()
+    public int getTotalCols()
     {
         return cols;
     }
