@@ -12,7 +12,7 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            FileWriter write = new FileWriter("src/filename1.txt");
+            FileWriter write = new FileWriter("src/save_grid.txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++)
             {
