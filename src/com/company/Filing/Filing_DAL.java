@@ -1,4 +1,4 @@
-package com.company;
+package com.company.Filing;
 import com.company.BL.Board;
 import com.company.BL.DB_interface;
 import com.company.BL.cell;
