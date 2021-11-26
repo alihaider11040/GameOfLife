@@ -1,9 +1,9 @@
 package com.company.BL;
 
 public class cell {
-    int rowNum;
-    int colNum;
-    boolean aliveStatus;
+    public int rowNum;
+    public int colNum;
+    public boolean aliveStatus;
 
     public cell()
     {

@@ -2,10 +2,12 @@ package com.company.BL;
 
 public class Board {
     // here we will add cell class
-    int rows;
-    int cols;
+
+    public boolean dataBase_Flag=true;
+    public int rows;
+    public int cols;
     public cell[][] gameBoard;
-    boolean stateRun;
+    public boolean stateRun;
 
     Board()
     {
