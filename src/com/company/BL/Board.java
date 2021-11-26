@@ -2,6 +2,7 @@ package com.company.BL;
 
 public class Board {
     // here we will add cell class
+   boolean dataBase_Flag=true;
     int rows;
     int cols;
     public cell[][] gameBoard;
@@ -29,11 +30,11 @@ public class Board {
             }
         }
     }
-    int getTotalRows()
+    public int getTotalRows()
     {
         return rows;
     }
-    int getTotalCols()
+    public int getTotalCols()
     {
         return cols;
     }
