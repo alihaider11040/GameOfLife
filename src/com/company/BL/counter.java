@@ -15,11 +15,11 @@ public class counter {
         return count;
     }
 
-    void updateCount() {
+    public void updateCount() {
         count++;
     }
 
-    void Waiter()
+    public void Waiter()
     {
         try {
             time.wait(speed);
@@ -28,7 +28,7 @@ public class counter {
             e.printStackTrace();
         }
     }
-    void speedChange(int x)
+    public void speedChange(int x)
     {
         speed = x;
     }

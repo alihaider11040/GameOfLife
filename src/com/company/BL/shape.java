@@ -14,7 +14,7 @@ public class shape {
         name =n;
     }
 
-    void fillShape(String filename, int size) {
+    public void fillShape(String filename, int size) {
         int[][] dice = new int[size][size];
         try {
             File newObj = new File(filename);
@@ -38,7 +38,7 @@ public class shape {
         }
     }
 
-    void printShape()
+    public void printShape()
     {
         for(int i = 0;i<size;i++)
         {
@@ -50,7 +50,7 @@ public class shape {
         }
 
     }
-    String getName()
+    public String getName()
     {
         return name;
     }
