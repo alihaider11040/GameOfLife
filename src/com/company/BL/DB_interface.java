@@ -1,8 +1,6 @@
 package com.company.BL;
 
 import com.company.BL.Board;
-import com.company.lexicon;
-
 import java.sql.SQLException;
 
 public interface DB_interface
