@@ -23,17 +23,17 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         //show stage
         // link sample.fxml file
-        Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("src/com/company/sample/sample.fxml"));
         //adding root node to scene
         Scene scene= new Scene(root,600,600, Color.DARKGREY);
         //link sample.css file
-        scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
+        scene.getStylesheets().add(getClass().getResource("src/com/company/sample/sample.css").toExternalForm());
         // adding scene to stage
         stage.setScene(scene);
         // add title to stage
         stage.setTitle("Game of Life");
         // add Image to icon
-        Image icon = new Image("i1.PNG");
+        Image icon = new Image("src/com/company/i1.PNG");
         stage.getIcons().add(icon);
         // set Width and height of stage
       //  stage.setWidth(600);
