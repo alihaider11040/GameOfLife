@@ -40,7 +40,7 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void GetLexicon() throws SQLException {
+    public void GetLexicon(lexicon obj) throws SQLException {
 
     }
 }
