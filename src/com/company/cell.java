@@ -23,7 +23,8 @@ public class cell {
         return rowNum;
     }
 
-    public int getColNum() {
+    public int getColNum()
+    {
         return colNum;
     }
 

@@ -1,0 +1,30 @@
+.root
+{
+    -fx-background-color:"dark grey";
+}
+.label
+{
+    -fx-font-size: 30;
+    -fx-font-family: Papyrus;
+    -fx-text-fill: "yellow";
+    -fx-text-alignment: center;
+}
+#Game_of_Life
+{
+    -fx-font-size: 30;
+    -fx-font-family: Papyrus;
+    -fx-text-fill: "yellow";
+    -fx-text-alignment: center;
+}
+.button
+{
+    -fx-background-color: red;
+}
+#slider1
+{
+
+}
+#slider2
+{
+
+}
