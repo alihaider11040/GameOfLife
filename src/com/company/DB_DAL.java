@@ -1,6 +1,7 @@
 package com.company;
 
 import com.company.BL.Board;
+import com.company.BL.DB_interface;
 
 import java.sql.*;
 

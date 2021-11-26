@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 import java.io.File;
 import java.io.FileNotFoundException;

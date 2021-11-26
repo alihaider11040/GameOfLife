@@ -1,6 +1,7 @@
-package com.company;
+package com.company.BL;
 
 import com.company.BL.Board;
+import com.company.lexicon;
 
 import java.sql.SQLException;
 

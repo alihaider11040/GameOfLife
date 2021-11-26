@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 public class cell {
     int rowNum;
