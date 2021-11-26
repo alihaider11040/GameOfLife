@@ -1,7 +1,6 @@
-package com.company.sample;
+/* package com.company.sample;
 
 import javafx.event.ActionEvent;
-
 public class Controller {
 
     public void explain(ActionEvent e)
@@ -39,3 +38,4 @@ public class Controller {
     }
 
 }
+ */
