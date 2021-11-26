@@ -9,13 +9,13 @@ public class Board {
     public cell[][] gameBoard;
     public boolean stateRun;
 
-    Board()
+    public Board()
     {
         rows=0;
         cols=0;
         stateRun=false;
     }
-    Board(int r, int c)
+    public Board(int r, int c)
     {
         rows=r;
         cols=c;
