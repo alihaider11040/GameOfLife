@@ -1,7 +1,9 @@
 package com.company;
 
+import com.company.BL.shape;
+
 public class lexicon {
-    shape [] Lexicon;
+    shape[] Lexicon;
     int size;
     int count;
 

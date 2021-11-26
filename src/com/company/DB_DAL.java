@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.BL.Board;
+
 import java.sql.*;
 
 public class DB_DAL implements DB_interface {

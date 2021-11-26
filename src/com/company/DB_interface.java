@@ -1,5 +1,7 @@
 package com.company;
 
+import com.company.BL.Board;
+
 import java.sql.SQLException;
 
 public interface DB_interface

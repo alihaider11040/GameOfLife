@@ -1,9 +1,10 @@
 package com.company;
-import java.io.File;  // Import the File
+import com.company.BL.Board;
+import com.company.BL.cell;
+
 import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Filing_DAL implements DB_interface
 {

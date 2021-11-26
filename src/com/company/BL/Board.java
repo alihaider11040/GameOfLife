@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 public class Board {
     // here we will add cell class
