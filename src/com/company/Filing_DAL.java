@@ -48,6 +48,16 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
+    public void Save_game_details(Board obj) {
+
+    }
+
+    @Override
+    public void load_game_details(int Game_ID) throws SQLException {
+
+    }
+
+    @Override
     public void Save_game_details() {
 
     }
