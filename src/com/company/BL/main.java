@@ -14,5 +14,11 @@ public class main {
         }
         System.out.println(c1.getCount());
 */
+        Board b1 = new Board(5,5);
+        b1.fillBoard();
+        Save s1 = new Save();
+        //s1.Save(b1,"newfile.txt");
+        //s1.loadBoard("C:\\Users\\shabd\\IdeaProjects\\GameOfLife\\src\\com\\company\\Filing\\dice.txt",5);
+       // s1.Save(b1,"gwp.txt");
     }
 }
