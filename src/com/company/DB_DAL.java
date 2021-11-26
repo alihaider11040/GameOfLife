@@ -26,7 +26,8 @@ public class DB_DAL implements DB_interface {
             }
             connection.close();
         }
-        catch (SQLException e) {
+        catch (SQLException e)
+        {
             System.out.println(e);
         }
     }
@@ -52,5 +53,38 @@ public class DB_DAL implements DB_interface {
         one.executeQuery(del_query);
         connection.close();
     }
-    
+
+    @Override
+    public void Save_game_details(Board obj)
+    {
+        try
+        {
+            Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
+            Statement one = connection.createStatement();
+            String query = null;
+            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + 1 + "," + 20 + "," + 30 + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
+            one.executeQuery(game_details_query);
+            connection.close();
+        }
+         catch (SQLException e)
+         {
+            e.printStackTrace();
+         }
+
+    }
+    @Override
+    public void load_game_details(int Game_ID) throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
+        Statement one = connection.createStatement();
+        String query= "call GET_GAME_DETAILS" + "("+ Game_ID +" );";
+        ResultSet query_result = one.executeQuery(query);
+        while(query_result.next())
+        {
+            System.out.println(query_result.getString(1)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4)+ " "+query_result.getString(5));
+        }
+        connection.close();
+
+    }
+
+
 }
