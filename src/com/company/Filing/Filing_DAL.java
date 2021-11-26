@@ -20,6 +20,7 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write = new FileWriter("src/save_grid.txt");
             cell[][] board = obj.getGameBoard();
+
             for (int i = 0; i < obj.rows; i++)
             {
                 for (int j = 0; j < obj.cols; j++)
@@ -30,7 +31,7 @@ public class Filing_DAL implements DB_interface
                     write.write(" ");
                     write.write(String.valueOf(j));
                     write.write(" ");
-                    write.write(String.valueOf(board[i][j].aliveStatus));
+                    write.write(String.valueOf(board[i][j].isAliveStatus()));
                     write.write("\n");
                     // end line
                 }
@@ -86,7 +87,7 @@ public class Filing_DAL implements DB_interface
             {
                 for (int j = 0; j < obj.cols; j++)
                 {
-                    write1.write(String.valueOf(board[i][j].aliveStatus));
+                    write1.write(String.valueOf(board[i][j].isAliveStatus()));
                     write1.write(" ");
                 }
                 write1.write("\n");
