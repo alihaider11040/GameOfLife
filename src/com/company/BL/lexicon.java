@@ -1,11 +1,11 @@
-package com.company;
+package com.company.BL;
 
 import com.company.BL.shape;
 
 public class lexicon {
-    shape[] Lexicon;
-    int size;
-    int count;
+    public shape[] Lexicon;
+    public int size;
+    public int count;
 
     public lexicon(int s)
     {

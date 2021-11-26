@@ -27,7 +27,7 @@ public class shape {
                     } else {
                         shape[i][j] = new cell(i, j, true);
                     }
-                    System.out.println(dice[i][j]);
+                    //System.out.println(dice[i][j]);
                 }
             }
 
@@ -42,13 +42,10 @@ public class shape {
     {
         for(int i = 0;i<size;i++)
         {
-            for(int j =0;j<size;j++)
-            {
-                if(shape[i][j].isAliveStatus()==true)
-                {
+            for(int j =0;j<size;j++) {
+                if (shape[i][j].isAliveStatus()) {
                     System.out.println(1);
-                }else System.out.println(0);
-
+                } else System.out.println(0);
             }
         }
 
