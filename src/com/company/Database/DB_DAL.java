@@ -17,7 +17,8 @@ public class DB_DAL implements DB_interface {
             Statement one = connection.createStatement();
             String query = null;
             for (int i = 0; i < obj.getTotalRows(); i++) {
-                for (int j = 0; j < obj.getTotalCols(); j++) {
+                for (int j = 0; j < obj.getTotalCols(); j++)
+                {
                     //CALL SAVED_STATE_VALUES (1,30,30,15,15,1);
                     boolean is_alive = obj.gameBoard[i][j].isAliveStatus();
                     query = "call SAVED_STATE_VALUES(" + Game_ID + ","  + i + "," + j + "," + is_alive + ");";
@@ -32,8 +33,9 @@ public class DB_DAL implements DB_interface {
         }
     }
     @Override
-    public void LoadGrid(int Grid_ID) throws SQLException
+    public Board LoadGrid(int Grid_ID) throws SQLException
     {
+        Board obj =new Board();
         Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
         Statement one=connection.createStatement();
         String query= "call LOAD_SAVED_STATE" + "("+ Grid_ID +" );";
@@ -43,6 +45,7 @@ public class DB_DAL implements DB_interface {
             System.out.println(query_result.getString(1)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4));
         }
         connection.close();
+        return obj;
     }
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException
@@ -62,7 +65,7 @@ public class DB_DAL implements DB_interface {
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
             Statement one = connection.createStatement();
             String query = null;
-            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + 1 + "," + 20 + "," + 30 + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
+            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + 2 + "," + 20 + "," + 30 + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
             one.executeQuery(game_details_query);
             connection.close();
         }
@@ -80,10 +83,23 @@ public class DB_DAL implements DB_interface {
         ResultSet query_result = one.executeQuery(query);
         while(query_result.next())
         {
-            System.out.println(query_result.getString(1)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4)+ " "+query_result.getString(5));
+            System.out.println(query_result.getString(Game_ID)+ " "+query_result.getString(2)+ " "+query_result.getString(3)+ " "+query_result.getString(4)+ " "+query_result.getString(5));
         }
         connection.close();
 
+    }
+    @Override
+    public void load_all_states() throws SQLException {
+        Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
+        Statement one = connection.createStatement();
+        String query = "LOAD_ALL_SAVED_STATES";
+        ResultSet load_all_query= one.executeQuery(query);
+        while(load_all_query.next())
+        {
+            System.out.println(load_all_query.getString(1)+ " "+load_all_query.getString(2)+ " "+load_all_query.getString(3)+ " "+load_all_query.getString(4));
+
+        }
+        connection.close();
     }
 
 
