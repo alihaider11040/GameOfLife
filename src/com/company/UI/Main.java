@@ -11,6 +11,7 @@ import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -55,7 +56,8 @@ public class Main extends Application {
         //  stage.setWidth(600);
         // stage.setHeight(600);
         // we are not able to change the stage size
-        stage.setResizable(true);
+        //stage.setResizable(true);
+        // stage.setMaximized(true);
         //  stage.setMinWidth(1024);
         // stage.setMaxWidth(1200);
         // below two line show the stage on 50,50 position on screen
@@ -67,15 +69,7 @@ public class Main extends Application {
         // stage.setFullScreenExitHint("Press f to exit full_screen mode");
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
-        Text text=new Text();
-        text.setText("Game of Life");
-        text.setX(150);
-        text.setY(50);
-        // text.setFont(Font.font("papyrus",50));
-        text.setFont(Font.font("papyrus",FontWeight.findByWeight(50),FontPosture.REGULAR, 50 ));
-        text.setFill(Color.YELLOW);
-        //add text on scene
-        //  root.getChildrenUnmodifiable().add(text);
+
         //////////////////////// Grid /////////////////////////
 
         ///// Grid///////
@@ -90,13 +84,21 @@ public class Main extends Application {
         b1.add(s2,7,0,1,1);
         // g1.add(bt1,40,50,1,1);
         finalGrid.addRow(0,g1);
-        finalGrid.addRow(2,b1);
+        finalGrid.addRow(1,b1);
+        Scene scene= new Scene(finalGrid, Color.DARKGREY);
+        // finalGrid.prefHeightProperty().bind(scene.heightProperty());
+        // finalGrid.prefWidthProperty().bind(scene.widthProperty());
 
-        Scene scene= new Scene(finalGrid,600,600, Color.DARKGREY);
+        g1.setHgrow(g1,Priority.ALWAYS);
+        g1.setVgrow(g1,Priority.ALWAYS);
+
+        //  stage.setResizable(false);
         //link sample.css file
         // scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
         // adding scene to stage
         stage.setScene(scene);
+        //  Image icon=new Image("i1.PNG");
+        // stage.getIcons().add(icon);
         stage.show();
 
     }
