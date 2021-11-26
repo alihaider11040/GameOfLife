@@ -1,4 +1,4 @@
-/* package com.company.sample;
+ package com.company.sample;
 
 import javafx.event.ActionEvent;
 public class Controller {
@@ -38,4 +38,4 @@ public class Controller {
     }
 
 }
- */
+

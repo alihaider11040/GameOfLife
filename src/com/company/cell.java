@@ -12,11 +12,11 @@ public class cell {
         aliveStatus=false;
 
     }
-    public cell(int r, int c)
+    public cell(int r, int c,boolean status)
     {
         rowNum=r;
         colNum=c;
-        aliveStatus=true;
+        aliveStatus=status;
     }
     public int getRowNum()
     {
