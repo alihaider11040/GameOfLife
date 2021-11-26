@@ -12,7 +12,6 @@ public class shape {
         size = x;
         shape = new cell[size][size];
         name =n;
-
     }
 
     void fillShape(String filename, int size) {

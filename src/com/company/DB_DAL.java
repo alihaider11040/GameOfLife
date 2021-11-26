@@ -53,8 +53,19 @@ public class DB_DAL implements DB_interface {
         //..
     }
     @Override
-    public void GetLexicon() throws SQLException
+    public void GetLexicon(lexicon obj) throws SQLException
     {
-
+        Connection connection= DriverManager.getConnection(DB_url,USER_NAME,Pass);
+        Statement one =connection.createStatement();
+        String query = null;
+        for (int i=0;i<obj.Lexicon[i].size;i++)
+        {
+            for(int j=0; j<obj.Lexicon[j].size;j++)
+            {
+                query = "call GET_LEXICON(" + 2 + "," + obj.size + "," + obj.size + "," + i + "," + j +  ");";
+                one.executeQuery(query);
+            }
+        }
+        connection.close();
     }
 }
