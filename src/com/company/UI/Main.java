@@ -1,4 +1,5 @@
 package com.company.UI;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -22,31 +23,29 @@ import javax.swing.*;
 // main is child of application
 public class Main extends Application {
 
-    int row=20;
-    int col=50;
-    Button bt1= new Button("Start");
-    Button bt2= new Button("Stop");
-    Button bt3= new Button("Next");
-    Button bt4= new Button("Lexicon");
-    Button bt5= new Button("Explaination");
-    Button bt6= new Button("Reset");
-    Slider s1= new Slider();
-    Slider s2= new Slider();
-
-    GridPane g1= new GridPane();
 
     @Override
     public void start(Stage stage) throws Exception {
+        int row=20;
+        int col=50;
+        Button bt1= new Button("Start");
+        Button bt2= new Button("Stop");
+        Button bt3= new Button("Next");
+        Button bt4= new Button("Lexicon");
+        Button bt5= new Button("Explaination");
+        Button bt6= new Button("Reset");
+        Slider s1= new Slider();
+        Slider s2= new Slider();
+
+        GridPane g1= new GridPane();
+        GridPane b1=new GridPane();
+        GridPane finalGrid=new GridPane();
         //show stage
         // link sample.fxml file
         // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
         //adding root node to scene
 
-        Scene scene= new Scene(g1,600,600, Color.DARKGREY);
-        //link sample.css file
-        // scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
-        // adding scene to stage
-        stage.setScene(scene);
+
         // add title to stage
         stage.setTitle("Game of Life");
         // add Image to icon
@@ -78,13 +77,32 @@ public class Main extends Application {
         //add text on scene
         //  root.getChildrenUnmodifiable().add(text);
         //////////////////////// Grid /////////////////////////
-        GridCells(row,col);
+
+        ///// Grid///////
+        GridCells(row,col, g1);
+        b1.add(bt1,0,0,1,1);
+        b1.add(bt2,1,0,1,1);
+        b1.add(bt3,2,0,1,1);
+        b1.add(bt4,3,0,1,1);
+        b1.add(bt5,4,0,1,1);
+        b1.add(bt6,5,0,1,1);
+        b1.add(s1,6,0,1,1);
+        b1.add(s2,7,0,1,1);
+        // g1.add(bt1,40,50,1,1);
+        finalGrid.addRow(0,g1);
+        finalGrid.addRow(2,b1);
+
+        Scene scene= new Scene(finalGrid,600,600, Color.DARKGREY);
+        //link sample.css file
+        // scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
+        // adding scene to stage
+        stage.setScene(scene);
         stage.show();
 
     }
 
 
-    public void GridCells(int row, int col)
+    public void GridCells(int row, int col, GridPane g1)
     {
         for (int i=0; i<row;i++)
         {
@@ -95,7 +113,8 @@ public class Main extends Application {
                 g1.add(button,j,i,1,1);
             }
         }
-        // g1.add(bt1,40,50,1,1);
+
+
     }
 
 
