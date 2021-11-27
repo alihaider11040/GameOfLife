@@ -1,12 +1,15 @@
 package com.company.UI;
 
 import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -29,7 +32,7 @@ public class UI_main extends Application {
 
     Stage window;
     @Override
-    public void start(Stage stage) throws Exception {
+    public  void start(Stage stage) throws Exception {
         window=stage;
         int row=23;
         int col=80;
@@ -48,6 +51,18 @@ public class UI_main extends Application {
         bt4.setId("save");
         bt5.setId("reset");
 
+        bt1.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("start");
+            }
+        });
+        bt2.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("stop");
+            }
+        });
         /////////////////////// Grid ///////////////
         GridPane g1= new GridPane();
         GridPane b1=new GridPane();
@@ -121,6 +136,12 @@ public class UI_main extends Application {
         window.show();
 
     }
+
+    //  @Override
+    // public  void handle(ActionEvent start)
+    // {
+    //    System.out.println("start");
+    //}
 
     ///////////////// Grid cell function //////////////
     public void GridCells(int row, int col, GridPane g1)
