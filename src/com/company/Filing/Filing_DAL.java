@@ -106,7 +106,7 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
+            FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + "_2.txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++)
             {
@@ -127,33 +127,36 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public Board  load_game_details(int Game_ID)
+    public Board load_game_details(int Game_ID)
     {
         Board obj1 = new Board();
         try
         {
-            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + ".txt"));
-            cell[][] board = obj1.getGameBoard();
+            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + "_2.txt"));
+            boolean stat = false;
+            int val = 0;
 
-            if(Game_ID != 0)
+            while (reader1.hasNextLine())
             {
-                while (reader1.hasNextLine())
+                for (int i = 0; i < obj1.rows; i++)
                 {
-                    for (int i = 0; i < obj1.rows; i++)
+                    for (int j = 0; j < obj1.cols; j++)
                     {
-                        for (int j = 0; j < obj1.cols; j++)
+                        val = reader1.nextInt();
+                        if (val == 0)
                         {
-                            String data = reader1.nextLine();
-                            if(board[i][j].isAliveStatus())
-                                System.out.println(data);
-                            else
-                                System.out.println("0");
+                            stat = false;
+                        } else if (val == 1)
+                        {
+                            stat = true;
                         }
+                        obj1.updateStatus(stat);
                     }
                 }
             }
-
             reader1.close();
+
+            return obj1;
         } catch (FileNotFoundException e)
         {
             System.out.print("File not FOUND");
