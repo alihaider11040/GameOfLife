@@ -11,11 +11,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
@@ -35,7 +37,7 @@ public class Main extends Application {
     @Override
     public  void start(Stage stage) throws Exception {
         window=stage;
-        int row=23;
+        int row=24;
         int col=80;
         Button bt1= new Button("Start");
         Button bt2= new Button("Stop");
@@ -53,7 +55,7 @@ public class Main extends Application {
         bt3.setId("next");
         bt4.setId("save");
         bt5.setId("reset");
-        bt6.setId("view state");
+        bt6.setId("view");
         bt7.setId("load");
         zoomIN.setId("zoomIN");
         zoomOUT.setId("zoomOUT");
@@ -63,7 +65,6 @@ public class Main extends Application {
         GridPane b1=new GridPane();
         GridPane finalGrid=new GridPane();
         g1.setId("grid");
-
 
         bt1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -209,14 +210,15 @@ public class Main extends Application {
             for (int j=0;j<col;j++)
             {
                 Button button=new Button();
-                ///////// set ID to Grid button//
-                button.setId("grid_button");
+                ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
+                //button.setStyle("-fx-background-color: grey");
                 g1.add(button,j,i,1,1);
                 g1.setPadding(new Insets(1,1,5,1));
                 g1.setVgap(3);
-                g1.setHgap(3);
+                g1.setHgap(5);
             }
+
         }
     }
     public static void main(String[] args) {
