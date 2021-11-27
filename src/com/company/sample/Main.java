@@ -13,6 +13,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Priority;
@@ -41,8 +42,12 @@ public class Main extends Application {
         Button bt3= new Button("Next");
         Button bt4= new Button("Save");
         Button bt5= new Button("Reset");
-        Button bt6= new Button("View Save State");
-        Button bt7= new Button("Load");
+
+        //Zainab
+        Button zoomIN = new Button("ZOOM-IN +");
+        Button zoomOUT = new Button("ZOOM-OUT -");
+        zoomIN.setId("zoomIN");
+        zoomOUT.setId("zoomOUT");
 
         Slider s1= new Slider();
         Slider s2= new Slider();
@@ -53,8 +58,7 @@ public class Main extends Application {
         bt3.setId("next");
         bt4.setId("save");
         bt5.setId("reset");
-        bt6.setId("view state");
-        bt7.setId("load");
+
         bt1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -65,41 +69,6 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("stop");
-            }
-        });
-
-        bt3.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("next");
-            }
-        });
-
-
-        bt4.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("save");
-            }
-        });
-
-        bt5.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("reset");
-            }
-        });
-
-        bt6.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("view save state");
-            }
-        });
-        bt7.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                System.out.println("load state");
             }
         });
         /////////////////////// Grid ///////////////
@@ -148,11 +117,27 @@ public class Main extends Application {
         b1.add(bt3,30,0,3,1);
         b1.add(bt4,40,0,3,1);
         b1.add(bt5,50,0,3,1);
-        b1.add(bt6,60,0,3,1);
-        b1.add(bt7,70,0,3,1);
-        b1.add(s1,80,0,3,1);
-        b1.add(s2,90,0,3,1);
+        b1.add(zoomIN,60,0,3,1);
+        b1.add(zoomOUT,70,0,3,1);
         b1.setHgap(3);
+
+        //Zainab zoom-in grid
+        zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                g1.setScaleX(g1.getScaleX()+1);
+                g1.setScaleY(g1.getScaleY()+1);
+            }
+        });
+        zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                g1.setScaleX(g1.getScaleX()-1);
+                g1.setScaleY(g1.getScaleY()-1);
+            }
+        });
+
+
 
         //////////////// Grid g1 add cells ////////////////
         GridCells(row,col, g1);
