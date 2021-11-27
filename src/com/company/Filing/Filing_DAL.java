@@ -50,9 +50,10 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            FileReader read = new FileReader("src/save_grid.txt");
-            Scanner reader = new Scanner(read);
+
+            Scanner reader = new Scanner(new FileReader("src/save_grid.txt"));
             Board object = new Board();
+            object.
 
             /*if(Grid_ID != 0)
             {
@@ -125,11 +126,11 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void load_game_details(int Game_ID)
+    public void  load_game_details(int Game_ID)//dstring
     {
         try
         {
-            FileReader read1 = new FileReader("src/save_details_grid.txt");
+            FileReader read1 = new FileReader("src/save_details_grid.txt");//Gsmrid.txt
             Scanner reader1 = new Scanner(read1);
             Board obj1 = new Board();
             cell[][] board = obj1.getGameBoard();

@@ -28,7 +28,7 @@ public class Board {
             }
         }
     }
-
+// setter + setBoardindex(i ,j,v), make alive
     public int getTotalRows() {
         return rows;
     }
