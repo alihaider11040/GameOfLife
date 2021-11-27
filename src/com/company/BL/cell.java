@@ -1,9 +1,9 @@
 package com.company.BL;
 
 public class cell {
-    public int rowNum;
-    public int colNum;
-    public boolean aliveStatus;
+    int rowNum;
+    int colNum;
+    boolean aliveStatus;
 
     public cell()
     {
@@ -36,7 +36,7 @@ public class cell {
     }
     public void printCell()
     {
-        if(aliveStatus == true)
+        if(aliveStatus)
             System.out.println("cell at " + rowNum +" "+ colNum + " is alive");
         else
             System.out.println("cell at " + rowNum +" "+ colNum + " is dead");

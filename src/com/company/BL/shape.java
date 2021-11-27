@@ -14,7 +14,7 @@ public class shape {
         name =n;
     }
 
-    void fillShape(String filename, int size) {
+    public void fillShape(String filename, int size) {
         int[][] dice = new int[size][size];
         try {
             File newObj = new File(filename);
@@ -27,7 +27,7 @@ public class shape {
                     } else {
                         shape[i][j] = new cell(i, j, true);
                     }
-                    System.out.println(dice[i][j]);
+                    //System.out.println(dice[i][j]);
                 }
             }
 
@@ -38,22 +38,19 @@ public class shape {
         }
     }
 
-    void printShape()
+    public void printShape()
     {
         for(int i = 0;i<size;i++)
         {
-            for(int j =0;j<size;j++)
-            {
-                if(shape[i][j].isAliveStatus()==true)
-                {
+            for(int j =0;j<size;j++) {
+                if (shape[i][j].isAliveStatus()) {
                     System.out.println(1);
-                }else System.out.println(0);
-
+                } else System.out.println(0);
             }
         }
 
     }
-    String getName()
+    public String getName()
     {
         return name;
     }
