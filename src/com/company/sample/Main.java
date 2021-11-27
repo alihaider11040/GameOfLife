@@ -41,6 +41,9 @@ public class Main extends Application {
         Button bt3= new Button("Next");
         Button bt4= new Button("Save");
         Button bt5= new Button("Reset");
+        Button bt6= new Button("View Save State");
+        Button bt7= new Button("Load");
+
         Slider s1= new Slider();
         Slider s2= new Slider();
 
@@ -50,7 +53,8 @@ public class Main extends Application {
         bt3.setId("next");
         bt4.setId("save");
         bt5.setId("reset");
-
+        bt6.setId("view state");
+        bt7.setId("load");
         bt1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
@@ -61,6 +65,41 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("stop");
+            }
+        });
+
+        bt3.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("next");
+            }
+        });
+
+
+        bt4.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("save");
+            }
+        });
+
+        bt5.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("reset");
+            }
+        });
+
+        bt6.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("view save state");
+            }
+        });
+        bt7.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("load state");
             }
         });
         /////////////////////// Grid ///////////////
@@ -109,8 +148,10 @@ public class Main extends Application {
         b1.add(bt3,30,0,3,1);
         b1.add(bt4,40,0,3,1);
         b1.add(bt5,50,0,3,1);
-        b1.add(s1,60,0,3,1);
-        b1.add(s2,70,0,3,1);
+        b1.add(bt6,60,0,3,1);
+        b1.add(bt7,70,0,3,1);
+        b1.add(s1,80,0,3,1);
+        b1.add(s2,90,0,3,1);
         b1.setHgap(3);
 
         //////////////// Grid g1 add cells ////////////////
