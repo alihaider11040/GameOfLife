@@ -17,8 +17,13 @@ public class main {
         Board b1 = new Board(5,5);
         b1.fillBoard();
         Save s1 = new Save();
+        Board s=new Board(5,5);
+        s.fillBoard();
+        s1.Save_(s,"hi.txt");
+        System.out.println("hi!");
         //s1.Save(b1,"newfile.txt");
         //s1.loadBoard("C:\\Users\\shabd\\IdeaProjects\\GameOfLife\\src\\com\\company\\Filing\\dice.txt",5);
        // s1.Save(b1,"gwp.txt");
+        System.out.println("hi!");
     }
 }

@@ -11,7 +11,7 @@ public class Save {
     {
         iCounter= new counter();
     }
-    public void Save(Board obj_Board, String f) {
+    public void Save_(Board obj_Board, String f) {
         filename = f;
         try {
             File myObj = new File(filename);

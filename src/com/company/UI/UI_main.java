@@ -26,7 +26,7 @@ import javafx.stage.Window;
 import javax.swing.*;
 
 // main is child of application
-public class Main extends Application {
+public class UI_main extends Application {
 
 
     Stage window;
@@ -97,6 +97,7 @@ public class Main extends Application {
         b1.add(bt5,40,0,1,5);
         b1.add(s1,50,0,1,5);
         b1.add(s2,60,0,1,5);
+        bt1.setLineSpacing(3);
         //b1.setStyle("-fx-background-color: pink");
         // g1.add(bt1,40,50,1,1);
         finalGrid.addRow(0,g1);
@@ -150,3 +151,4 @@ public class Main extends Application {
 
 
 }
+

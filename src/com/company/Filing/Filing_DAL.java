@@ -53,7 +53,6 @@ public class Filing_DAL implements DB_interface
 
             Scanner reader = new Scanner(new FileReader("src/save_grid.txt"));
             Board object = new Board();
-            object.
 
             /*if(Grid_ID != 0)
             {
