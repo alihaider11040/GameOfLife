@@ -19,18 +19,16 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            FileWriter write = new FileWriter("src/save_grid.txt");
+            FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
 
             for (int i = 0; i < obj.rows; i++)
             {
                 for (int j = 0; j < obj.cols; j++)
                 {
-                    write.write(String.valueOf(Game_ID));
+                    write.write(i);
                     write.write(" ");
-                    write.write(String.valueOf(i));
-                    write.write(" ");
-                    write.write(String.valueOf(j));
+                    write.write(j);
                     write.write(" ");
                     write.write(String.valueOf(board[i][j].isAliveStatus()));
                     write.write("\n");
@@ -46,31 +44,23 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void LoadGrid(int Grid_ID) throws SQLException
+    public Board LoadGrid(int Grid_ID) throws SQLException
     {
+        Board object = new Board();
         try
         {
-
-            Scanner reader = new Scanner(new FileReader("src/save_grid.txt"));
-            Board object = new Board();
-            object.
-
-            /*if(Grid_ID != 0)
-            {
-                while (reader.hasNextLine())
-                {
-                    String data = reader.nextLine();
-                    System.out.println(data);
-                }
-            }*/
+            boolean statuss = false;
+            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
 
             reader.close();
+
+            return object;
         } catch (FileNotFoundException e)
         {
             System.out.print("File not FOUND");
             e.printStackTrace();
         }
-
+        return object;
     }
 
     @Override
@@ -84,9 +74,6 @@ public class Filing_DAL implements DB_interface
             for (int i = 0; i < obj.rows; i++)
             {
                 for (int j = 0; j < obj.cols; j++) {
-                    if (Grid_ID == (i * j))
-                        write1.write("-");
-                    else if ((Grid_ID == i) || (Grid_ID == j))
                         write1.write("-");
                 }
                 write1.write("\n");
