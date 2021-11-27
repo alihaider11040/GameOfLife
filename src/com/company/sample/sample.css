@@ -1,17 +1,130 @@
 .root
 {
-    -fx-background-color: #878a7b;
+    -fx-background-color: grey;
 
 }
-#play_button
+#start
 {
-    -fx-background-color: #50d4c7;
-    -fx-background-color: linear-gradient(#b86167,#b3242d);
-    -fx-text-fill: blue;
-    -fx-alignment: center;
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
 }
+
+#stop
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#next
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#save
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#reset
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+}
+
+#view
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#load
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#zoomIN
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+#zoomOUT
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-text-alignment: center;
+    -fx-text-fill: black;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    -fx-border-color: black;
+
+}
+
+
+
+
+
+
+
+
 
 #grid_button
 {
 
+}
+#grid
+{
+    -fx-border-color: grey;
+    -fx-max-height: "500";
+    -fx-max-width: "500";
 }
