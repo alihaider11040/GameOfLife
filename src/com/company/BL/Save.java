@@ -44,7 +44,6 @@ public class Save {
         }
 
     }
-
     public void loadBoard(String filename, int size) {
         Board b1 = new Board(size, size);
         int[][] dice = new int[size][size];

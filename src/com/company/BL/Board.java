@@ -14,7 +14,6 @@ public class Board {
         cols = 0;
         stateRun = false;
     }
-
     public Board(int r, int c) {
         rows = r;
         cols = c;

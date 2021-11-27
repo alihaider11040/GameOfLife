@@ -1,8 +1,9 @@
-/*package com.company.Database;
+package com.company.Database;
 
 import com.company.BL.Board;
 import com.company.BL.DB_interface;
 
+import java.net.ConnectException;
 import java.sql.*;
 
 public class DB_DAL implements DB_interface {
@@ -32,15 +33,30 @@ public class DB_DAL implements DB_interface {
         }
     }
     @Override
-    public void LoadGrid(int Grid_ID) throws SQLException {
+    public Board LoadGrid(int Grid_ID) throws SQLException
+    {
+        Board obj= new Board();
         Connection connection = DriverManager.getConnection(DB_url, USER_NAME, Pass);
         Statement one = connection.createStatement();
         String query = "call LOAD_SAVED_STATE" + "(" + Grid_ID + " );";
         ResultSet query_result = one.executeQuery(query);
-        while (query_result.next()) {
-            System.out.println(query_result.getString(1) + " " + query_result.getString(2) + " " + query_result.getString(3) + " " + query_result.getString(4));
+        for(int i=0; i<obj.getTotalRows(); i++)
+        {
+            for(int j=0; j<obj.getTotalCols(); i++)
+            {
+                obj.gameBoard[i][j].updateStatus(false);
+            }
+        }
+        Connection con = DriverManager.getConnection(DB_url,USER_NAME,Pass);
+        Statement two = connection.createStatement();
+        String load_query= "Select X_COOR, Y_COOR from SAVED_STATE WHERE Grid_ID = ? " ;
+        ResultSet load_query_result = two.executeQuery(load_query);
+        while(load_query_result.next())
+        {
+            obj.gameBoard[load_query_result.getInt("X_COOR")][load_query_result.getInt("Y_COOR")].updateStatus(true);
         }
         connection.close();
+        return obj;
     }
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException
@@ -51,7 +67,6 @@ public class DB_DAL implements DB_interface {
         one.executeQuery(del_query);
         connection.close();
     }
-
     @Override
     public void Save_game_details(Board obj)
     {
@@ -86,4 +101,3 @@ public class DB_DAL implements DB_interface {
 
 
 }
-*/
