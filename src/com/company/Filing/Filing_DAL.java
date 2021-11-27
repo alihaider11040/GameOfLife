@@ -52,6 +52,19 @@ public class Filing_DAL implements DB_interface
             boolean statuss = false;
             Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
 
+            while (reader.hasNextLine())
+            {
+                object.getCell(object.rows = reader.nextInt(), object.cols = reader.nextInt());
+                if (reader.nextInt() == 1)
+                {
+                    statuss = true;
+                }
+                else if (reader.nextInt() == 0)
+                {
+                    statuss = false;
+                }
+                object.updateStatus(statuss);
+            }
             reader.close();
 
             return object;
@@ -64,19 +77,20 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void delete_saved_state(int Grid_ID) throws SQLException {
+    public void delete_saved_state(int Grid_ID) throws SQLException
+    {
         try
         {
-            FileWriter write1 = new FileWriter("src/save_grid.txt");
+            FileWriter write1 = new FileWriter(Integer.toString(Grid_ID) + ".txt");
             Board obj = new Board();
             cell[][] board = obj.getGameBoard();
 
             for (int i = 0; i < obj.rows; i++)
             {
-                for (int j = 0; j < obj.cols; j++) {
+                for (int j = 0; j < obj.cols; j++)
+                {
                         write1.write("-");
                 }
-                write1.write("\n");
                 // end line
             }
             write1.close();
@@ -88,11 +102,11 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void Save_game_details(Board obj)
+    public void Save_game_details(int Game_ID, Board obj)
     {
         try
         {
-            FileWriter write1 = new FileWriter("src/save_details_grid.txt");
+            FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++)
             {
@@ -113,13 +127,12 @@ public class Filing_DAL implements DB_interface
     }
 
     @Override
-    public void  load_game_details(int Game_ID)//dstring
+    public Board  load_game_details(int Game_ID)
     {
+        Board obj1 = new Board();
         try
         {
-            FileReader read1 = new FileReader("src/save_details_grid.txt");//Gsmrid.txt
-            Scanner reader1 = new Scanner(read1);
-            Board obj1 = new Board();
+            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + ".txt"));
             cell[][] board = obj1.getGameBoard();
 
             if(Game_ID != 0)
@@ -146,5 +159,6 @@ public class Filing_DAL implements DB_interface
             System.out.print("File not FOUND");
             e.printStackTrace();
         }
+        return obj1;
     }
 }
