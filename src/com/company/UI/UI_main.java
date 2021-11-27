@@ -38,7 +38,7 @@ public class UI_main extends Application {
         Button bt1= new Button("Start");
         Button bt2= new Button("Stop");
         Button bt3= new Button("Next");
-        Button bt4= new Button("Explaination");
+        Button bt4= new Button("Explanation");
         Button bt5= new Button("Reset");
         Slider s1= new Slider();
         Slider s2= new Slider();
