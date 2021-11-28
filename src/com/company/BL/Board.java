@@ -14,7 +14,6 @@ public class Board {
         cols = 0;
         stateRun = false;
     }
-
     public Board(int r, int c) {
         rows = r;
         cols = c;
@@ -50,13 +49,11 @@ public class Board {
             }
         }
     }
+    public void updateStatus(boolean stat){}
 
     public cell getCell(int r, int c)
     {
         return gameBoard[r][c];
     }
-    public void updateStatus(boolean s)
-    {
-        stateRun =s;
-    }
+
 }
