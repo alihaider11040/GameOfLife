@@ -224,6 +224,13 @@ public class Main extends Application {
                 g1.setPadding(new Insets(1,1,5,1));
                 g1.setVgap(3);
                 g1.setHgap(5);
+
+                /*//Zainab's on click yellow cells
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent event) {
+                        button.setStyle("-fx-background-color: #FFFF00; ");
+                    }
+                });*/
             }
 
         }
