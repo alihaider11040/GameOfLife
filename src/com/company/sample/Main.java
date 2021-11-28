@@ -173,7 +173,7 @@ public class Main extends Application {
     public void GridCells(int row, int col, GridPane g1)
     {
         for (int i=0; i<row;i++) {
-            for (int j = 0; j < col; j++) {
+           for (int j = 0; j < col; j++) {
                 Button button = new Button();
                 ///////// set ID to Grid button//
                 button.setId("grid_button");
@@ -183,11 +183,11 @@ public class Main extends Application {
                 g1.setVgap(3);
                 g1.setHgap(3);
 
-               /* button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                /*//Zainab's on click yellow code
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     @Override
                     public void handle(MouseEvent event) {
-                        String buttonStyle = String.format("-fx-text-fill: %s;-fx-fill: %s;-fx-background-color: %s;", 0, 0, Color.YELLOW);
-                        button.setStyle(buttonStyle);
+                        button.setStyle("-fx-background-color: #FFFF00; ");
                     }
                 });*/
 
