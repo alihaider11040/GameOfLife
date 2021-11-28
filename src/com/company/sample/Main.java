@@ -1,5 +1,8 @@
 package com.company.sample;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
 import com.company.BL.Board;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -131,6 +134,19 @@ public class Main extends Application {
                 g1.setScaleY(g1.getScaleY()-1);
             }
         });
+
+        /*//Zoom partially implemented through terminal (Zainab)
+        BufferedReader zoomPLUS = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter Z to zoomIN : ");
+        try {
+            String zoomPlus = zoomPLUS.readLine();
+            System.out.println(zoomPlus);
+            g1.setScaleX(g1.getScaleX()+1);
+            g1.setScaleY(g1.getScaleY()+1);
+
+        }catch(Exception e) {
+            System.out.println(e);
+        }*/
 
         /////////////////////// Window title ////////////////
         //show stage
