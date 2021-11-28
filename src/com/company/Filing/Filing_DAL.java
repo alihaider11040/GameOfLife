@@ -100,7 +100,6 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
-
     @Override
     public void Save_game_details(int Game_ID, Board obj)
     {
@@ -125,7 +124,6 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
-
     @Override
     public Board load_game_details(int Game_ID)
     {
