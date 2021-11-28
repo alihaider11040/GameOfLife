@@ -250,6 +250,8 @@ public class Main extends Application {
                     public void handle(ActionEvent actionEvent) {
                        // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
+                        System.out.println(button.get_Row());
+                        System.out.println(button.get_Col());
                       //  g1.getColumnCount();
                       //  System.out.println(g1.set);
                        // g1.getScaleX();
