@@ -21,7 +21,6 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
-
             for (int i = 0; i < obj.rows; i++)
             {
                 for (int j = 0; j < obj.cols; j++)

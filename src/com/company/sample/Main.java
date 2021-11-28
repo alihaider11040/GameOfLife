@@ -1,9 +1,12 @@
 package com.company.sample;
+/*
+package com.company.sample;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 import com.company.BL.Board;
+import com.company.Database.DB_DAL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,6 +36,7 @@ import javafx.stage.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 // main is child of application
 public class Main extends Application {
@@ -178,17 +182,17 @@ public class Main extends Application {
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
         ////////////// Button addition ////////////////////
-        b1.add(bt1,10,0,3,1);
-        b1.add(bt2,20,0,3,1);
-        b1.add(bt3,30,0,3,1);
-        b1.add(bt4,40,0,3,1);
-        b1.add(bt5,50,0,3,1);
-        b1.add(bt6,60,0,3,1);
-        b1.add(bt7,70,0,3,1);
-        b1.add(zoomIN,80,0,3,1);
-        b1.add(zoomOUT,90,0,3,1);
+        b1.add(bt1,0,0,3,1);
+        b1.add(bt2,10,0,3,1);
+        b1.add(bt3,20,0,3,1);
+        b1.add(bt4,30,0,3,1);
+        b1.add(bt5,40,0,3,1);
+        b1.add(bt6,50,0,3,1);
+        b1.add(bt7,60,0,3,1);
+        b1.add(zoomIN,70,0,3,1);
+        b1.add(zoomOUT,80,0,3,1);
 
-        b1.setHgap(3);
+        b1.setHgap(10);
 
         //////////////// Grid g1 add cells ////////////////
         GridCells(row,col, g1);
@@ -234,6 +238,8 @@ public class Main extends Application {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         button.setStyle("-fx-background-color: yellow");
+                        System.out.println(button.getScaleX());
+                        System.out.println(button.getScaleY());
                         obj.updateStatus(true);
                     }
                 });
@@ -243,7 +249,7 @@ public class Main extends Application {
                 g1.setVgap(3);
                 g1.setHgap(5);
 
-                /*//Zainab's on click yellow cellsS
+                /*Zainab's on click yellow cellsS
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent event) {
                         button.setStyle("-fx-background-color: #FFFF00; ");
@@ -256,18 +262,27 @@ public class Main extends Application {
                     public void handle(MouseEvent event) {
                         g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
                     }
-                });*/
+                });
             }
 
         }
-    }
-    public static void main(String[] args) {
+    }*/
+
+
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
         // belong to application class
         // static method that we inherit from parent application class
-        launch(args);
-
-
+        Board obj = new Board(3, 3);
+        DB_DAL dal = new DB_DAL();
+        //dal.Save_game_details(1,obj);
+        //dal.load_game_details(1);
+        //dal.SaveGrid(6,obj);
+        dal.delete_saved_state(6);
     }
-
-
 }

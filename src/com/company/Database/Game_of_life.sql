@@ -3,8 +3,6 @@ drop database my_Game_of_life;
 use my_Game_of_life ;
 DROP DATABASE Game_of_life;
 
-
-
 CREATE TABLE SAVED_STATE
 (
 	GAME_ID INT,
