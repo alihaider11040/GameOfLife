@@ -3,36 +3,18 @@ package com.company.sample;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import javax.swing.*;
-import java.awt.*;
 
 // main is child of application
 public class Main extends Application {
 
+    private int i=0,j=0;
 
     Stage window;
     @Override
@@ -161,17 +143,17 @@ public class Main extends Application {
 
 
         ////////////// Button addition ////////////////////
-        b1.add(bt1,10,0,3,1);
-        b1.add(bt2,20,0,3,1);
-        b1.add(bt3,30,0,3,1);
-        b1.add(bt4,40,0,3,1);
-        b1.add(bt5,50,0,3,1);
-        b1.add(bt6,60,0,3,1);
-        b1.add(bt7,70,0,3,1);
-        b1.add(zoomIN,80,0,3,1);
-        b1.add(zoomOUT,90,0,3,1);
+        b1.add(bt1,0,0,3,1);
+        b1.add(bt2,10,0,3,1);
+        b1.add(bt3,20,0,3,1);
+        b1.add(bt4,30,0,3,1);
+        b1.add(bt5,40,0,3,1);
+        b1.add(bt6,50,0,3,1);
+        b1.add(bt7,60,0,3,1);
+        b1.add(zoomIN,70,0,3,1);
+        b1.add(zoomOUT,80,0,3,1);
 
-        b1.setHgap(3);
+        b1.setHgap(10);
 
         //////////////// Grid g1 add cells ////////////////
         GridCells(row,col, g1);
@@ -206,19 +188,27 @@ public class Main extends Application {
     ///////////////// Grid cell function //////////////
     public void GridCells(int row, int col, GridPane g1)
     {
-        for (int i=0; i<row;i++)
+        for (i=0; i<row;i++)
         {
-            for (int j=0;j<col;j++)
+            for (j=0;j<col;j++)
             {
                 Button button=new Button();
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
                 button.setOnAction(new EventHandler<ActionEvent>() {
+
+
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         button.setStyle("-fx-background-color: yellow");
+                        System.out.println(button.getScaleX());
+                        System.out.println(button.getScaleY());
+
+
                     }
                 });
+
+
                 //button.setStyle("-fx-background-color: grey");
                 g1.add(button,j,i,1,1);
                 g1.setPadding(new Insets(1,1,5,1));
@@ -228,6 +218,8 @@ public class Main extends Application {
 
         }
     }
+
+
     public static void main(String[] args) {
         // belong to application class
         // static method that we inherit from parent application class
