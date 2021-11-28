@@ -1,6 +1,9 @@
 package com.company.sample;
+/*
+package com.company.sample;
 
 import com.company.BL.Board;
+import com.company.Database.DB_DAL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -30,6 +33,7 @@ import javafx.stage.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 // main is child of application
 public class Main extends Application {
@@ -229,7 +233,7 @@ public class Main extends Application {
                 g1.setVgap(3);
                 g1.setHgap(5);
 
-                /*//Zainab's on click yellow cellsS
+                /*Zainab's on click yellow cellsS
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent event) {
                         button.setStyle("-fx-background-color: #FFFF00; ");
@@ -242,18 +246,27 @@ public class Main extends Application {
                     public void handle(MouseEvent event) {
                         g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
                     }
-                });*/
+                });
             }
 
         }
-    }
-    public static void main(String[] args) {
+    }*/
+
+
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
         // belong to application class
         // static method that we inherit from parent application class
-        launch(args);
-
-
+        Board obj = new Board(3, 3);
+        DB_DAL dal = new DB_DAL();
+        //dal.Save_game_details(1,obj);
+        //dal.load_game_details(1);
+        //dal.SaveGrid(6,obj);
+        dal.delete_saved_state(6);
     }
-
-
 }
