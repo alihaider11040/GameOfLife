@@ -40,6 +40,7 @@ import java.sql.SQLException;
 // main is child of application
 public class Main extends Application {
 
+    int i=0,j=0;
     Board obj = new Board();
 
     Stage window;
@@ -152,6 +153,19 @@ public class Main extends Application {
             System.out.println(e);
         }*/
 
+        /*//Zoom partially implemented through terminal (Zainab)
+        BufferedReader zoomMINUS = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter X to zoomOUT : ");
+        try {
+            String zoomMinus = zoomMINUS.readLine();
+            System.out.println(zoomMinus);
+            g1.setScaleX(g1.getScaleX()-1);
+            g1.setScaleY(g1.getScaleY()-1);
+
+        }catch(Exception e) {
+            System.out.println(e);
+        }*/
+
         /////////////////////// Window title ////////////////
         //show stage
         // link sample.fxml file
@@ -226,17 +240,19 @@ public class Main extends Application {
 
     ///////////////// Grid cell function //////////////
     public void GridCells(int row, int col, GridPane g1) {
-        for (int i = 0; i < row; i++) {
-            for (int j = 0; j < col; j++) {
+        for ( i = 0; i < row; i++) {
+            for ( j = 0; j < col; j++) {
                 Button button = new Button();
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        button.setStyle("-fx-background-color: yellow");
-                        System.out.println(button.getScaleX());
-                        System.out.println(button.getScaleY());
+                       // button.setStyle("-fx-background-color: yellow");
+                        button.getStyleClass().add("selected_button");
+                      //  g1.getColumnCount();
+                      //  System.out.println(g1.set);
+                       // g1.getScaleX();
                         obj.updateStatus(true);
                     }
                 });
