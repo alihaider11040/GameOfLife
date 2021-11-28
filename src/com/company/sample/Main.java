@@ -184,6 +184,8 @@ public class Main extends Application {
                 g1.setPadding(new Insets(1,1,5,1));
                 g1.setVgap(3);
                 g1.setHgap(3);
+
+
             }
         }
     }
