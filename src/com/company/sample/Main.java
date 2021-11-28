@@ -1,6 +1,5 @@
 package com.company.sample;
 package com.company.BL;
-
 import com.company.BL.Board;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -161,7 +160,6 @@ public class Main extends Application {
         // key other than escape
         // stage.setFullScreenExitHint("Press f to exit full_screen mode");
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
-
 
         ////////////// Button addition ////////////////////
         b1.add(bt1,10,0,3,1);
