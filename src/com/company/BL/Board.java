@@ -54,8 +54,5 @@ public class Board {
     {
         return gameBoard[r][c];
     }
-    public void updateStatus(boolean s)
-    {
-        stateRun =s;
-    }
+
 }
