@@ -213,6 +213,12 @@ public class Main extends Application {
                 Button button=new Button();
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        button.setStyle("-fx-background-color: yellow");
+                    }
+                });
                 //button.setStyle("-fx-background-color: grey");
                 g1.add(button,j,i,1,1);
                 g1.setPadding(new Insets(1,1,5,1));
