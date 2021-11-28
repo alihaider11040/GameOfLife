@@ -1,5 +1,11 @@
+//package com.company.sample;
 package com.company.sample;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -29,24 +35,27 @@ import javafx.stage.Window;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 // main is child of application
 public class Main extends Application {
 
+    Board obj = new Board();
 
     Stage window;
+
     @Override
-    public  void start(Stage stage) throws Exception {
-        window=stage;
-        int row=24;
-        int col=80;
-        Button bt1= new Button("Start");
-        Button bt2= new Button("Stop");
-        Button bt3= new Button("Next");
-        Button bt4= new Button("Save");
-        Button bt5= new Button("Reset");
-        Button bt6= new Button("View Save State");
-        Button bt7= new Button("Load");
+    public void start(Stage stage) throws Exception {
+        window = stage;
+        int row = 24;
+        int col = 80;
+        Button bt1 = new Button("Start");
+        Button bt2 = new Button("Stop");
+        Button bt3 = new Button("Next");
+        Button bt4 = new Button("Save");
+        Button bt5 = new Button("Reset");
+        Button bt6 = new Button("View Save State");
+        Button bt7 = new Button("Load");
         Button zoomIN = new Button("ZOOM-IN +");
         Button zoomOUT = new Button("ZOOM-OUT -");
 
@@ -62,9 +71,9 @@ public class Main extends Application {
         zoomOUT.setId("zoomOUT");
 
         /////////////////////// Grid ///////////////
-        GridPane g1= new GridPane();
-        GridPane b1=new GridPane();
-        GridPane finalGrid=new GridPane();
+        GridPane g1 = new GridPane();
+        GridPane b1 = new GridPane();
+        GridPane finalGrid = new GridPane();
         g1.setId("grid");
 
         bt1.setOnAction(new EventHandler<ActionEvent>() {
@@ -118,17 +127,30 @@ public class Main extends Application {
         zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                g1.setScaleX(g1.getScaleX()+1);
-                g1.setScaleY(g1.getScaleY()+1);
+                g1.setScaleX(g1.getScaleX() + 1);
+                g1.setScaleY(g1.getScaleY() + 1);
             }
         });
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                g1.setScaleX(g1.getScaleX()-1);
-                g1.setScaleY(g1.getScaleY()-1);
+                g1.setScaleX(g1.getScaleX() - 1);
+                g1.setScaleY(g1.getScaleY() - 1);
             }
         });
+
+        /*//Zoom partially implemented through terminal (Zainab)
+        BufferedReader zoomPLUS = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter Z to zoomIN : ");
+        try {
+            String zoomPlus = zoomPLUS.readLine();
+            System.out.println(zoomPlus);
+            g1.setScaleX(g1.getScaleX()+1);
+            g1.setScaleY(g1.getScaleY()+1);
+
+        }catch(Exception e) {
+            System.out.println(e);
+        }*/
 
         /////////////////////// Window title ////////////////
         //show stage
@@ -159,27 +181,26 @@ public class Main extends Application {
         // stage.setFullScreenExitHint("Press f to exit full_screen mode");
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
-
         ////////////// Button addition ////////////////////
-        b1.add(bt1,10,0,3,1);
-        b1.add(bt2,20,0,3,1);
-        b1.add(bt3,30,0,3,1);
-        b1.add(bt4,40,0,3,1);
-        b1.add(bt5,50,0,3,1);
-        b1.add(bt6,60,0,3,1);
-        b1.add(bt7,70,0,3,1);
-        b1.add(zoomIN,80,0,3,1);
-        b1.add(zoomOUT,90,0,3,1);
+        b1.add(bt1, 0, 0, 3, 1);
+        b1.add(bt2, 10, 0, 3, 1);
+        b1.add(bt3, 20, 0, 3, 1);
+        b1.add(bt4, 30, 0, 3, 1);
+        b1.add(bt5, 40, 0, 3, 1);
+        b1.add(bt6, 50, 0, 3, 1);
+        b1.add(bt7, 60, 0, 3, 1);
+        b1.add(zoomIN, 70, 0, 3, 1);
+        b1.add(zoomOUT, 80, 0, 3, 1);
 
-        b1.setHgap(3);
+        b1.setHgap(10);
 
         //////////////// Grid g1 add cells ////////////////
-        GridCells(row,col, g1);
+        GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
-        finalGrid.addRow(0,g1);
-        finalGrid.addRow(1,b1);
+        finalGrid.addRow(0, g1);
+        finalGrid.addRow(1, b1);
         /////////////////////// Scene //////////////////////
-        Scene scene= new Scene(finalGrid,500,500, Color.DARKGREY);
+        Scene scene = new Scene(finalGrid, 500, 500, Color.DARKGREY);
         finalGrid.prefHeightProperty().bind(scene.heightProperty());
         finalGrid.prefWidthProperty().bind(scene.widthProperty());
 
@@ -204,31 +225,62 @@ public class Main extends Application {
     //}
 
     ///////////////// Grid cell function //////////////
-    public void GridCells(int row, int col, GridPane g1)
-    {
-        for (int i=0; i<row;i++)
-        {
-            for (int j=0;j<col;j++)
-            {
-                Button button=new Button();
+    public void GridCells(int row, int col, GridPane g1) {
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                Button button = new Button();
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        button.setStyle("-fx-background-color: yellow");
+                        System.out.println(button.getScaleX());
+                        System.out.println(button.getScaleY());
+                        obj.updateStatus(true);
+                    }
+                });
                 //button.setStyle("-fx-background-color: grey");
-                g1.add(button,j,i,1,1);
-                g1.setPadding(new Insets(1,1,5,1));
+                g1.add(button, j, i, 1, 1);
+                g1.setPadding(new Insets(1, 1, 5, 1));
                 g1.setVgap(3);
                 g1.setHgap(5);
+
+                /*Zainab's on click yellow cellsS
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent event) {
+                        button.setStyle("-fx-background-color: #FFFF00; ");
+                    }
+                });*/
+
+                //Zainab's drag on mouse click
+                /*g1.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
+                    }
+                });*/
             }
 
         }
     }
-    public static void main(String[] args) {
+}
+
+/*
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
         // belong to application class
         // static method that we inherit from parent application class
-        launch(args);
-
-
+        Board obj = new Board(3, 3);
+        DB_DAL dal = new DB_DAL();
+        //dal.Save_game_details(1,obj);
+        //dal.load_game_details(1);
+        //dal.SaveGrid(6,obj);
+        dal.delete_saved_state(6);
     }
-
-
-}
+*/
