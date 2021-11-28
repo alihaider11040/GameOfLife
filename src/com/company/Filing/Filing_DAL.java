@@ -30,7 +30,14 @@ public class Filing_DAL implements DB_interface
                     write.write(" ");
                     write.write(j);
                     write.write(" ");
-                    write.write(String.valueOf(board[i][j].isAliveStatus()));
+                    if(board[i][j].isAliveStatus() == true)
+                    {
+                        write.write(1);
+                    }
+                    else if(board[i][j].isAliveStatus() == false)
+                    {
+                        write.write(0);
+                    }
                     write.write("\n");
                     // end line
                 }
@@ -111,7 +118,14 @@ public class Filing_DAL implements DB_interface
             {
                 for (int j = 0; j < obj.cols; j++)
                 {
-                    write1.write(String.valueOf(board[i][j].isAliveStatus()));
+                    if(board[i][j].isAliveStatus() == true)
+                    {
+                        write1.write(1);
+                    }
+                    else if(board[i][j].isAliveStatus() == false)
+                    {
+                        write1.write(0);
+                    }
                     write1.write(" ");
                 }
                 write1.write("\n");

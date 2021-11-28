@@ -1,5 +1,7 @@
 package com.company.sample;
+package com.company.BL;
 
+import com.company.BL.Board;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -33,6 +35,7 @@ import java.awt.*;
 // main is child of application
 public class Main extends Application {
 
+    Board obj = new Board();
 
     Stage window;
     @Override
@@ -217,6 +220,7 @@ public class Main extends Application {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         button.setStyle("-fx-background-color: yellow");
+                        obj.updateStatus(true);
                     }
                 });
                 //button.setStyle("-fx-background-color: grey");
@@ -225,7 +229,7 @@ public class Main extends Application {
                 g1.setVgap(3);
                 g1.setHgap(5);
 
-                /*//Zainab's on click yellow cells
+                /*//Zainab's on click yellow cellsS
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent event) {
                         button.setStyle("-fx-background-color: #FFFF00; ");
