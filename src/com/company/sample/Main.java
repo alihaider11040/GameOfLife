@@ -1,5 +1,5 @@
 package com.company.sample;
-package com.company.BL;
+package com.company;
 import com.company.BL.Board;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
