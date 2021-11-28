@@ -162,17 +162,17 @@ public class Main extends Application {
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
         ////////////// Button addition ////////////////////
-        b1.add(bt1,10,0,3,1);
-        b1.add(bt2,20,0,3,1);
-        b1.add(bt3,30,0,3,1);
-        b1.add(bt4,40,0,3,1);
-        b1.add(bt5,50,0,3,1);
-        b1.add(bt6,60,0,3,1);
-        b1.add(bt7,70,0,3,1);
-        b1.add(zoomIN,80,0,3,1);
-        b1.add(zoomOUT,90,0,3,1);
+        b1.add(bt1,0,0,3,1);
+        b1.add(bt2,10,0,3,1);
+        b1.add(bt3,20,0,3,1);
+        b1.add(bt4,30,0,3,1);
+        b1.add(bt5,40,0,3,1);
+        b1.add(bt6,50,0,3,1);
+        b1.add(bt7,60,0,3,1);
+        b1.add(zoomIN,70,0,3,1);
+        b1.add(zoomOUT,80,0,3,1);
 
-        b1.setHgap(3);
+        b1.setHgap(10);
 
         //////////////// Grid g1 add cells ////////////////
         GridCells(row,col, g1);
@@ -218,6 +218,8 @@ public class Main extends Application {
                     @Override
                     public void handle(ActionEvent actionEvent) {
                         button.setStyle("-fx-background-color: yellow");
+                        System.out.println(button.getScaleX());
+                        System.out.println(button.getScaleY());
                         obj.updateStatus(true);
                     }
                 });
