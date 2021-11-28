@@ -114,8 +114,16 @@
 
 
 
+.empty_button
+{
+   /* -fx-position-shape: x ;
+    -fx-background-color: black;*/
+}
 
-
+.selected_button
+{
+    -fx-background-color: yellow;
+}
 
 
 #grid_button
