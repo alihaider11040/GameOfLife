@@ -1,6 +1,7 @@
 package com.company.UI;
 
 import java.awt.*;
+import java.util.Collection;
 
 public class Button_extended extends Button {
     int row ;
@@ -15,4 +16,5 @@ public class Button_extended extends Button {
     }
     public int get_Row(){return row;}
     public  int get_Col(){return col;}
+
 }

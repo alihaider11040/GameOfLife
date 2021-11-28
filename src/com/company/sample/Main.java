@@ -3,7 +3,7 @@ package com.company.sample;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import com.company.UI.Button_extended;
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
 import javafx.application.Application;
@@ -242,7 +242,7 @@ public class Main extends Application {
     public void GridCells(int row, int col, GridPane g1) {
         for ( i = 0; i < row; i++) {
             for ( j = 0; j < col; j++) {
-                Button button = new Button();
+                Button_extended button = new Button_extended(i,j);
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
                 button.setOnAction(new EventHandler<ActionEvent>() {
