@@ -1,14 +1,6 @@
 package com.company.sample;
-
+package com.company.BL;
 import com.company.BL.Board;
-import com.company.Database.DB_DAL;
-
-import java.sql.SQLException;
-
-/*
-
-package com.company.sample;
-
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -37,10 +29,12 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import javax.swing.*;
+import java.awt.*;
 
 // main is child of application
 public class Main extends Application {
 
+    Board obj = new Board();
 
     Stage window;
     @Override
@@ -167,7 +161,6 @@ public class Main extends Application {
         // stage.setFullScreenExitHint("Press f to exit full_screen mode");
         // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
-
         ////////////// Button addition ////////////////////
         b1.add(bt1,10,0,3,1);
         b1.add(bt2,20,0,3,1);
@@ -221,26 +214,36 @@ public class Main extends Application {
                 Button button=new Button();
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                        button.setStyle("-fx-background-color: yellow");
+                        obj.updateStatus(true);
+                    }
+                });
                 //button.setStyle("-fx-background-color: grey");
                 g1.add(button,j,i,1,1);
                 g1.setPadding(new Insets(1,1,5,1));
                 g1.setVgap(3);
                 g1.setHgap(5);
+
+                /*//Zainab's on click yellow cellsS
+                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    public void handle(MouseEvent event) {
+                        button.setStyle("-fx-background-color: #FFFF00; ");
+                    }
+                });*/
             }
 
         }
     }
-*/
-public  class Main
-{
-    public static void main(String[] args) throws SQLException
-    {
+    public static void main(String[] args) {
+        // belong to application class
+        // static method that we inherit from parent application class
+        launch(args);
 
-        Board obj = new Board(3,3);
-        DB_DAL ahmad = new DB_DAL();
-        ahmad.Save_game_details(7,obj);
-        ahmad.SaveGrid(1,obj);
-        ahmad.LoadGrid(1);
+
     }
-}
 
+
+}
