@@ -1,4 +1,4 @@
-package com.company.Database;
+/*package com.company.Database;
 
 import com.company.BL.Board;
 import com.company.BL.DB_interface;
@@ -101,3 +101,4 @@ public class DB_DAL implements DB_interface {
 
 
 }
+*/
