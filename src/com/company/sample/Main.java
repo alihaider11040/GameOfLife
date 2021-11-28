@@ -28,6 +28,7 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import javax.swing.*;
+import java.awt.*;
 
 // main is child of application
 public class Main extends Application {

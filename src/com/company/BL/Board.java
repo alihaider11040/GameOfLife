@@ -49,6 +49,7 @@ public class Board {
             }
         }
     }
+    public void updateStatus(boolean stat){}
 
     public cell getCell(int r, int c)
     {
