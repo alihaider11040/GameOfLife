@@ -1,5 +1,14 @@
 package com.company.sample;
 
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+
+import java.sql.SQLException;
+
+/*
+
+package com.company.sample;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -28,7 +37,6 @@ import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import javax.swing.*;
-import java.awt.*;
 
 // main is child of application
 public class Main extends Application {
@@ -222,13 +230,17 @@ public class Main extends Application {
 
         }
     }
-    public static void main(String[] args) {
-        // belong to application class
-        // static method that we inherit from parent application class
-        launch(args);
+*/
+public  class Main
+{
+    public static void main(String[] args) throws SQLException
+    {
 
-
+        Board obj = new Board(3,3);
+        DB_DAL ahmad = new DB_DAL();
+        ahmad.Save_game_details(7,obj);
+        ahmad.SaveGrid(1,obj);
+        ahmad.LoadGrid(1);
     }
-
-
 }
+
