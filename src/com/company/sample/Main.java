@@ -152,6 +152,19 @@ public class Main extends Application {
             System.out.println(e);
         }*/
 
+        /*//Zoom partially implemented through terminal (Zainab)
+        BufferedReader zoomMINUS = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Enter X to zoomOUT : ");
+        try {
+            String zoomMinus = zoomMINUS.readLine();
+            System.out.println(zoomMinus);
+            g1.setScaleX(g1.getScaleX()-1);
+            g1.setScaleY(g1.getScaleY()-1);
+
+        }catch(Exception e) {
+            System.out.println(e);
+        }*/
+
         /////////////////////// Window title ////////////////
         //show stage
         // link sample.fxml file
