@@ -1,5 +1,5 @@
 package com.company.sample;
-package com.company.BL;
+
 import com.company.BL.Board;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -231,6 +231,14 @@ public class Main extends Application {
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
                     public void handle(MouseEvent event) {
                         button.setStyle("-fx-background-color: #FFFF00; ");
+                    }
+                });*/
+
+                //Zainab's drag on mouse click
+                /*g1.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
                     }
                 });*/
             }
