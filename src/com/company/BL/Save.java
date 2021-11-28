@@ -55,8 +55,40 @@ public class Save {
                     dice[i][j] = myReader.nextInt();
                     if (dice[i][j] == 0) {
                         b1.getGameBoard()[i][j].updateStatus(false);
+                        int aliveNeigbourCount=0;
+                        for(int m =-1;m<2;m++)
+                        {
+                            for(int n =0;n<2;n++)
+                            {
+                                if(dice[i+m][j+n]==1)
+                                {
+                                    aliveNeigbourCount++;
+                                }
+                            }
+                        }
+                        if(aliveNeigbourCount==3)
+                        {
+                            b1.getGameBoard()[i][j].updateStatus(true);
+                        }
+
+
                     } else {
                         b1.getGameBoard()[i][j].updateStatus(true);
+                        int aliveNeigbourCount=0;
+                        for(int m =-1;m<2;m++)
+                        {
+                            for(int n =0;n<2;n++)
+                            {
+                                if(dice[i+m][j+n]==1)
+                                {
+                                    aliveNeigbourCount++;
+                                }
+                            }
+                        }
+                        if(aliveNeigbourCount<2 || aliveNeigbourCount>3)
+                        {
+                            b1.getGameBoard()[i][j].updateStatus(false);
+                        }
                     }
                     myReader.close();
                 }
@@ -66,6 +98,8 @@ public class Save {
             e.printStackTrace();
         }
     }
+
+
 }
 
 
