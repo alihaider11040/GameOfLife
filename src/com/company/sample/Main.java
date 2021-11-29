@@ -132,11 +132,21 @@ public class Main extends Application {
                 g1.setScaleY(g1.getScaleY() + 1);
             }
         });
-        zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
             @Override
-            public void handle(MouseEvent event) {
-                g1.setScaleX(g1.getScaleX() - 1);
-                g1.setScaleY(g1.getScaleY() - 1);
+            public void handle(MouseEvent event)
+            {
+                double X = g1.getScaleX() - 1;
+                if (X >= 1)
+                {
+                    g1.setScaleX(X);
+                }
+                double Y = g1.getScaleY() - 1;
+                if (Y >= 1)
+                {
+                    g1.setScaleY(Y);
+                }
             }
         });
 
@@ -272,6 +282,8 @@ public class Main extends Application {
                         g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
                     }
                 });*/
+
+
 
                 /*Zainab's on click yellow cellsS
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
