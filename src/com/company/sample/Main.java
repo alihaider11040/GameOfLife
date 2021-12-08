@@ -3,7 +3,7 @@ package com.company.sample;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-
+import com.company.UI.Button_extended;
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
 import javafx.application.Application;
@@ -132,11 +132,21 @@ public class Main extends Application {
                 g1.setScaleY(g1.getScaleY() + 1);
             }
         });
-        zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>() {
+        zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
             @Override
-            public void handle(MouseEvent event) {
-                g1.setScaleX(g1.getScaleX() - 1);
-                g1.setScaleY(g1.getScaleY() - 1);
+            public void handle(MouseEvent event)
+            {
+                double X = g1.getScaleX() - 1;
+                if (X >= 1)
+                {
+                    g1.setScaleX(X);
+                }
+                double Y = g1.getScaleY() - 1;
+                if (Y >= 1)
+                {
+                    g1.setScaleY(Y);
+                }
             }
         });
 
@@ -242,7 +252,7 @@ public class Main extends Application {
     public void GridCells(int row, int col, GridPane g1) {
         for ( i = 0; i < row; i++) {
             for ( j = 0; j < col; j++) {
-                Button button = new Button();
+                Button_extended button = new Button_extended(i,j);
                 ///////// set ID to Grid button/
                 button.getStyleClass().add("empty_button");
                 button.setOnAction(new EventHandler<ActionEvent>() {
@@ -250,6 +260,8 @@ public class Main extends Application {
                     public void handle(ActionEvent actionEvent) {
                        // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
+                        System.out.println(button.get_Row());
+                        System.out.println(button.get_Col());
                       //  g1.getColumnCount();
                       //  System.out.println(g1.set);
                        // g1.getScaleX();
@@ -270,6 +282,8 @@ public class Main extends Application {
                         g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
                     }
                 });*/
+
+
 
                 /*Zainab's on click yellow cellsS
                 button.setOnMouseClicked(new EventHandler<MouseEvent>() {
