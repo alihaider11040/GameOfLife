@@ -7,7 +7,7 @@ public class counter {
 
     public counter() {
         count = 0;
-        time = new Timer();
+        //time = new Timer();
         speed = 5000;
     }
 
