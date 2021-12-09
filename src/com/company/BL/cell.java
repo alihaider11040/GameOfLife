@@ -1,4 +1,4 @@
-package com.company;
+package com.company.BL;
 
 public class cell {
     int rowNum;
@@ -12,18 +12,18 @@ public class cell {
         aliveStatus=false;
 
     }
-    public cell(int r, int c)
+    public cell(int r, int c,boolean status)
     {
         rowNum=r;
         colNum=c;
-        aliveStatus=true;
+        aliveStatus=status;
     }
-    public int getRowNum()
-    {
+    public int getRowNum() {
         return rowNum;
     }
 
-    public int getColNum() {
+    public int getColNum()
+    {
         return colNum;
     }
 
@@ -36,9 +36,11 @@ public class cell {
     }
     public void printCell()
     {
-        if(aliveStatus == true)
+        if(aliveStatus)
             System.out.println("cell at " + rowNum +" "+ colNum + " is alive");
         else
             System.out.println("cell at " + rowNum +" "+ colNum + " is dead");
     }
+
+
 }
