@@ -3,6 +3,8 @@ package com.company.sample;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+
+import com.company.BL.factory;
 import com.company.UI.Button_extended;
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
@@ -36,11 +38,15 @@ import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
 
+//import static jdk.vm.ci.sparc.SPARC.g1;
+
+
 // main is child of application
 public class Main extends Application {
-
+    factory fact=new factory();
+    com.company.BL.Board gameBoard=  fact.getBoard();
+    //com.company.BL.Board gameBoard.fillBoard();
     int i=0,j=0;
-    Board obj = new Board();
 
     Stage window;
 
@@ -92,6 +98,8 @@ public class Main extends Application {
         bt1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+
+
                 System.out.println("start");
             }
         });
@@ -166,61 +174,9 @@ public class Main extends Application {
             }
         });
 
-        /*//Zoom partially implemented through terminal (Zainab)
-        BufferedReader zoomPLUS = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter Z to zoomIN : ");
-        try {
-            String zoomPlus = zoomPLUS.readLine();
-            System.out.println(zoomPlus);
-            g1.setScaleX(g1.getScaleX()+1);
-            g1.setScaleY(g1.getScaleY()+1);
-
-        }catch(Exception e) {
-            System.out.println(e);
-        }*/
-
-        /*//Zoom partially implemented through terminal (Zainab)
-        BufferedReader zoomMINUS = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Enter X to zoomOUT : ");
-        try {
-            String zoomMinus = zoomMINUS.readLine();
-            System.out.println(zoomMinus);
-            g1.setScaleX(g1.getScaleX()-1);
-            g1.setScaleY(g1.getScaleY()-1);
-
-        }catch(Exception e) {
-            System.out.println(e);
-        }*/
-
-
-        /////////////////////// Window title ////////////////
-        //show stage
-        // link sample.fxml file
-        // Parent root = FXMLLoader.load(getClass().getResource("sample.fxml"));
-        //adding root node to scene
-
-
-        // add title to stage
+                // add title to stage
         window.setTitle("Game of Life");
         // add Image to icon
-        //Image icon = new Image("i1.PNG");
-        // stage.getIcons().add(icon);
-        // set Width and height of stage
-        //  stage.setWidth(600);
-        // stage.setHeight(600);
-        // we are not able to change the stage size
-        //stage.setResizable(true);
-        // stage.setMaximized(true);
-        //  stage.setMinWidth(1024);
-        // stage.setMaxWidth(1200);
-        // below two line show the stage on 50,50 position on screen
-        //  stage.setX(10);
-        //  stage.setY(10);
-        //stage.setFullScreen(true);
-        // to remove full screen by default key is escape otherwise we select
-        // key other than escape
-        // stage.setFullScreenExitHint("Press f to exit full_screen mode");
-        // stage.setFullScreenExitKeyCombination(KeyCombination.valueOf("f"));
 
         ////////////// Button addition ////////////////////
         b1.add(bt1, 0, 0, 3, 1);
@@ -273,6 +229,7 @@ public class Main extends Application {
 
     ///////////////// Grid cell function //////////////
     public void GridCells(int row, int col, GridPane g1) {
+
         for ( i = 0; i < row; i++) {
             for ( j = 0; j < col; j++) {
                 Button_extended button = new Button_extended(i,j);
@@ -284,11 +241,12 @@ public class Main extends Application {
                        // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
                         System.out.println(button.get_Row());
+                       // gameBoard.
                         System.out.println(button.get_Col());
                       //  g1.getColumnCount();
                       //  System.out.println(g1.set);
                        // g1.getScaleX();
-                        obj.updateStatus(true);
+                        //obj.updateStatus(true);
                     }
                 });
 
