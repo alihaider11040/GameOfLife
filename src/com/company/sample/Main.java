@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import com.company.UI.Button_extended;
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
+import com.mysql.cj.ServerVersion;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -42,10 +43,12 @@ import java.sql.SQLException;
 public class Main extends Application {
 
     int i=0,j=0;
+    int zizo;
     Board obj = new Board();
 
     Stage window;
 
+    public static void main(String[] args) { launch(args);}
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
@@ -135,6 +138,8 @@ public class Main extends Application {
             {
                 g1.setScaleX(g1.getScaleX() + 1);
                 g1.setScaleY(g1.getScaleY() + 1);
+                zizo++;
+
             }
         });
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -152,7 +157,9 @@ public class Main extends Application {
                 {
                     g1.setScaleY(Y);
                 }
+
             }
+
         });
 
         //Scrolling
@@ -272,8 +279,8 @@ public class Main extends Application {
                         button.getStyleClass().add("selected_button");
                         System.out.println(button.get_Row());
                         System.out.println(button.get_Col());
-                      //  g1.getColumnCount();
-                      //  System.out.println(g1.set);
+                        //  g1.getColumnCount();
+                        //  System.out.println(g1.set);
                        // g1.getScaleX();
                         obj.updateStatus(true);
                     }
@@ -283,6 +290,7 @@ public class Main extends Application {
                 g1.setPadding(new Insets(1, 1, 5, 1));
                 g1.setVgap(3);
                 g1.setHgap(5);
+
 
 
                 //Zainab's drag on mouse click
