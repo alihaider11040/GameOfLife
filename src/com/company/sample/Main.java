@@ -1,6 +1,13 @@
-/*package com.company.sample;
+//package com.company.sample;
+package com.company.sample;
+
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import com.company.BL.Board;
+import com.company.UI.terminalPrinting;
+import java.util.Scanner;
+import java.lang.Thread;
+
 import com.company.BL.factory;
 import com.company.UI.Button_extended;
 import com.company.BL.Board;
@@ -30,10 +37,12 @@ import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.stage.Window;
+
 import javax.swing.*;
 import java.awt.*;
 import java.sql.SQLException;
-import static jdk.vm.ci.sparc.SPARC.g1;
+
+//import static jdk.vm.ci.sparc.SPARC.g1;
 
 
 // main is child of application
@@ -48,6 +57,7 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
+        Board obj=new Board();
         int row = 20;
         int col = 73;
         Button bt1 = new Button("Start");
@@ -84,64 +94,163 @@ public class Main extends Application {
 
         RowConstraints buttonss = new RowConstraints();
         buttonss.setPercentHeight(15);
-
         finalGrid.getRowConstraints().addAll(labell,boardd,buttonss);
-
-
         g1.setId("grid");
+        ///////////////////////// Event handler //////////////////
+        start_event(bt1, obj);
+        stop_event(bt2,obj);
+        next_event(bt3,obj);
+        save_event(bt4,obj);
+        reset_event(bt5,obj);
+        view_event(bt6,obj);
+        load_event(bt7,obj);
+        zoom_in_event(zoomIN,obj,g1);
+        zoom_out_event(zoomOUT,obj,g1);
 
+        ////////////  Button to grid b1 /////////////
+        add_control_on_b1_grid(b1,bt1,bt2,bt3,bt4,bt5,bt6,bt7,zoomIN,zoomOUT);
+
+        //////////////// Grid g1 add cells ////////////////
+        GridCells(row, col, g1);
+        //////////////////// Final Grid /////////////////////////
+        GridPane labelGrid = new GridPane();
+        Label label = new Label("Game of Life");
+        label.setPadding(new Insets(5,600,10,650));
+        label.setFont(Font.font(20));
+        label.setAlignment(Pos.CENTER);
+        label.setId("Lable");
+        labelGrid.add(label, 1, 0, 11, 1);
+
+        finalGrid.add(labelGrid,0,0);
+        finalGrid.add(g1, 0, 1);
+        finalGrid.add(b1, 0, 2);
+        //finalGrid.setAlignment(Pos.CENTER);
+        /////////////////////// Scene //////////////////////
+        Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(),finalGrid.getMaxWidth(), Color.DARKGREY);
+        //link sample.css file
+        //////////////////   CSS stylesheet //////////////////
+        scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
+        // adding scene to window
+        window.setScene(scene);
+        window.setTitle("Game of Life");
+        ////////////// Show window/////////////
+        window.show();
+
+    }
+
+    ///////////////// Grid cell function //////////////
+    public void GridCells(int row, int col, GridPane g1) {
+
+        for ( i = 0; i < row; i++) {
+            for ( j = 0; j < col; j++)
+            {
+                Button_extended button = new Button_extended(i,j);
+                ///////// set ID to Grid button/
+                button.getStyleClass().add("empty_button");
+                button.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent actionEvent) {
+                       // button.setStyle("-fx-background-color: yellow");
+                        button.getStyleClass().add("selected_button");
+                        System.out.println(button.get_Row());
+                       // gameBoard.
+                        System.out.println(button.get_Col());
+                       // obj.updateStatus(true);
+                    }
+                });
+
+                //grid dragging
+                button.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        g1.setPadding(new Insets(mouseEvent.getSceneY(), 0, 0, mouseEvent.getSceneX()));
+                    }
+                });
+
+                //button.setStyle("-fx-background-color: grey");
+                g1.add(button, j, i, 1, 1);
+                g1.setPadding(new Insets(1, 1, 5, 1));
+                g1.setVgap(3);
+                g1.setHgap(5);
+            }
+
+        }
+    }
+
+    /////////////// Event functions /////////////////
+    public void start_event(Button bt1, Board obj)
+    {
         bt1.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-
                 System.out.println("start");
             }
         });
+    }
+
+    public void stop_event(Button bt2, Board obj)
+    {
         bt2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("stop");
             }
         });
+    }
 
+    public void next_event(Button bt3, Board obj)
+    {
         bt3.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("next");
             }
         });
+    }
 
-
+    public void save_event(Button bt4, Board obj)
+    {
         bt4.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("save");
             }
         });
+    }
 
+    public void reset_event(Button bt5, Board obj)
+    {
         bt5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("reset");
             }
         });
+    }
 
+    public void view_event(Button bt6, Board obj)
+    {
         bt6.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                System.out.println("view save state");
+                System.out.println("view state");
             }
         });
+    }
+
+    public void load_event(Button bt7, Board obj)
+    {
         bt7.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
                 System.out.println("load state");
             }
         });
+    }
 
-
-        //zoom functionalities
+    public void zoom_in_event(Button zoomIN, Board obj, GridPane g1)
+    {
         zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
@@ -150,8 +259,13 @@ public class Main extends Application {
                 g1.setScaleX(g1.getScaleX() + 1);
                 g1.setScaleY(g1.getScaleY() + 1);
                 zizo++;
+
             }
         });
+    }
+
+    public  void zoom_out_event(Button zoomOUT, Board obj, GridPane g1)
+    {
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
         {
             @Override
@@ -170,10 +284,10 @@ public class Main extends Application {
             }
         });
 
-                // add title to window
-        window.setTitle("Game of Life");
-        // add Image to icon
+    }
 
+    public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
+    {
         ////////////// Button addition ////////////////////
         b1.add(bt1, 0, 0, 3, 1);
         b1.add(bt2, 10, 0, 3, 1);
@@ -184,192 +298,78 @@ public class Main extends Application {
         b1.add(bt7, 60, 0, 3, 1);
         b1.add(zoomIN, 70, 0, 3, 1);
         b1.add(zoomOUT, 80, 0, 3, 1);
-
         b1.setHgap(10);
-
-        //////////////// Grid g1 add cells ////////////////
-        GridCells(row, col, g1);
-        //////////////////// Final Grid /////////////////////////
-
-
-        GridPane labelGrid = new GridPane();
-        Label label = new Label("Game of Life");
-        label.setPadding(new Insets(0,0,0,700));
-        label.setFont(Font.font(20));
-        label.setAlignment(Pos.CENTER);
-        labelGrid.add(label, 1, 0, 11, 1);
-
-        finalGrid.add(labelGrid,0,0);
-
-
-        finalGrid.add(g1, 0, 1);
-        finalGrid.add(b1, 0, 2);
-        //finalGrid.setAlignment(Pos.CENTER);
-        /////////////////////// Scene //////////////////////
-        Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(),finalGrid.getMaxWidth(), Color.DARKGREY);
-        //finalGrid.prefHeightProperty().bind(scene.heightProperty());
-        //finalGrid.prefWidthProperty().bind(scene.widthProperty());
-
-        //    stage.setResizable(false);
-        //link sample.css file
-        //////////////////   CSS stylesheet //////////////////
-        scene.getStylesheets().add(getClass().getResource("sample.css").toExternalForm());
-        // adding scene to window
-        window.setScene(scene);
-        // Image icon=new Image("i1.PNG");
-        //window.getIcons().add(icon);
-
-        ////////////// Show window/////////////
-        window.show();
-
-    }
-
-    //  @Override
-    // public  void handle(ActionEvent start)
-    // {
-    //    System.out.println("start");
-    //}
-
-    ///////////////// Grid cell function //////////////
-    public void GridCells(int row, int col, GridPane g1) {
-
-        for (i = 0; i < row; i++) {
-            for (j = 0; j < col; j++) {
-                Button_extended button = new Button_extended(i, j);
-                ///////// set ID to Grid button/
-                button.getStyleClass().add("empty_button");
-                button.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent actionEvent) {
-                        // button.setStyle("-fx-background-color: yellow");
-                        button.getStyleClass().add("selected_button");
-                        System.out.println(button.get_Row());
-                        // gameBoard.
-                        System.out.println(button.get_Col());
-                        //  g1.getColumnCount();
-                        //  System.out.println(g1.set);
-                        // g1.getScaleX();
-                        //obj.updateStatus(true);
-                    }
-                });
-
-                //grid dragging
-                button.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        g1.setPadding(new Insets(mouseEvent.getSceneY(), 0, 0, mouseEvent.getSceneX()));
-                    }
-                });
-
-                //button.setStyle("-fx-background-color: grey");
-                g1.add(button, j, i, 1, 1);
-                g1.setPadding(new Insets(1, 1, 5, 1));
-                g1.setVgap(3);
-                g1.setHgap(5);
-
-
-                //Zainab's drag on mouse click
-                /*g1.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent event) {
-                        g1.setOnDragDetected(new EventHandler<MouseEvent>(one));
-                    }
-                });*/
-
-
-
-                /*Zainab's on click yellow cellsS
-                button.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                    public void handle(MouseEvent event) {
-                        button.setStyle("-fx-background-color: #FFFF00; ");
-                    }
-                });
-            }
-
-        }
-
+        b1.setId("Controls");
     }
 }
+
+//////////////////////////
+/*
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+
+import java.sql.SQLException;
+
+public class Main {
+    public static void main(String[] args) throws SQLException {
+        // belong to application class
+        // static method that we inherit from parent application class
+        Board obj = new Board(3, 3);
+        DB_DAL dal = new DB_DAL();
+        //dal.Save_game_details(1,obj);
+        //dal.load_game_details(1);
+        //dal.SaveGrid(6,obj);
+        dal.delete_saved_state(6);
+    }
 */
 
 
-//import com.company.BL.Board;
-//import com.company.Database.DB_DAL;
-//import java.sql.SQLException;
+
+
 //public class Main {
-//    public static void main(String[] args) throws SQLException {
-//        // belong to application class
-//        static method that we inherit from parent application class
-//        Board obj = new Board(3, 3);
-//        DB_DAL dal = new DB_DAL();
-//        //dal.Save_game_details(1,obj);
-//        //dal.load_game_details(1);
-//        //dal.SaveGrid(6,obj);
-//        dal.delete_saved_state(6);
-//    }
-
-package com.company.sample;
-import com.company.BL.Board;
-import com.company.BL.Save;
-import com.company.UI.terminalPrinting;
-import java.util.Scanner;
-import java.lang.Thread;
-
-
-public class Main {
-    public static void main(String args[]) {
-    /*    terminalPrinting t1 = new terminalPrinting();
-        Board b1 = new Board(5,5);
-        b1.fillBoard();
-        while(true) {
-            t1.printTerminal(5, b1);
-            int x;
-            int y = 2500;
-            System.out.println("Press 1 to save game");
-            System.out.println("Press 2 to load saved game");
-            System.out.println("press 3 to speed up game");
-            System.out.println("press 4 to slow down game");
-            System.out.println("press 5 to go next");
-            System.out.println("press 0 to end game");
-            Scanner s1 = new Scanner(System.in);
-            x = s1.nextInt();
-            if (x == 1) {
-                System.out.println("saving...");
-            } else if (x == 2) {
-                System.out.println("loading....");
+  //  public static void main(String args[])
+//    {
+  //      terminalPrinting t1 = new terminalPrinting();
+  //      Board b1 = new Board(5,5);
+    //    b1.fillBoard();
+ //       while(true) {
+   //         t1.printTerminal(5, b1);
+     //       int x;
+    //        int y = 2500;
+      //      System.out.println("Press 1 to save game");
+   //         System.out.println("Press 2 to load saved game");
+    //        System.out.println("press 3 to speed up game");
+    //        System.out.println("press 4 to slow down game");
+    //        System.out.println("press 5 to go next");
+    //        System.out.println("press 0 to end game");
+    //        Scanner s1 = new Scanner(System.in);
+    //        x = s1.nextInt();
+    //        if (x == 1) {
+    //            System.out.println("saving...");
+    //        } else if (x == 2) {
+    //            System.out.println("loading....");
 
 
-            } else if (x == 3) {
-                System.out.println("speeding up");
-                if(y>=500)
-                    y = y-500;
-            } else if (x == 4) {
-                System.out.println("slowing down");
-                if(y<=5000)
-                    y=y+500;
-            } else if (x == 5) {
-                System.out.println("Next");
-            } else if (x == 0) {
-                System.out.println("Bye");
-                System.exit(0);
-            }
+     //       } else if (x == 3) {
+      ///          System.out.println("speeding up");
+       //         if(y>=500)
+        //            y = y-500;
+       //     } else if (x == 4) {
+        //        System.out.println("slowing down");
+        //        if(y<=5000)
+        //            y=y+500;
+       //     } else if (x == 5) {
+       //         System.out.println("Next");
+      //      } else if (x == 0) {
+      //          System.out.println("Bye");
+       ///         System.exit(0);
+        //    }
 
-            try {
-                Thread.sleep(y);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-        */
-        Board b = new Board(5, 5);
-        b.fillBoard();
-        Save s1 = new Save();
-        // s1.saveToFile(50,b);
-        // s1.SaveStateToFile(55,b);
-        Board b9 = new Board(5, 5);
-        b9 = s1.LoadStateFromFile(55, 5, 5);
-        terminalPrinting t2 = new terminalPrinting();
-        t2.printTerminal(5, b9);
-    }
-
-}
+       //     try {
+       //         Thread.sleep(y);
+      //      } catch (InterruptedException e) {
+      //          e.printStackTrace();
+      //      }
+     //   }
+    //}
+//}
