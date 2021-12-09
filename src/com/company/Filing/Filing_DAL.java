@@ -17,6 +17,7 @@ public class Filing_DAL implements DB_interface
     @Override
     public void SaveGrid(int Game_ID, Board obj)
     {
+        System.out.println("1");
         try
         {
             FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
@@ -25,17 +26,18 @@ public class Filing_DAL implements DB_interface
             {
                 for (int j = 0; j < obj.cols; j++)
                 {
-                    write.write(i);
+
+                    write.write(Integer.toString(i));
                     write.write(" ");
-                    write.write(j);
+                    write.write(Integer.toString(j));
                     write.write(" ");
                     if(board[i][j].isAliveStatus())
                     {
-                        write.write(1);
+                        write.write('1');
                     }
                     else if(!board[i][j].isAliveStatus())
                     {
-                        write.write(0);
+                        write.write('0');
                     }
                     write.write("\n");
                     // end line
@@ -119,11 +121,11 @@ public class Filing_DAL implements DB_interface
                 {
                     if(board[i][j].isAliveStatus())
                     {
-                        write1.write(1);
+                        write1.write('1');
                     }
                     else if(!board[i][j].isAliveStatus())
                     {
-                        write1.write(0);
+                        write1.write('0');
                     }
                     write1.write(" ");
                 }
@@ -140,7 +142,8 @@ public class Filing_DAL implements DB_interface
     @Override
     public Board load_game_details(int Game_ID)
     {
-        Board obj1 = new Board();
+        System.out.println(1);
+        Board obj1 = new Board(5,5);
         try
         {
             Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + "_2.txt"));
@@ -149,10 +152,11 @@ public class Filing_DAL implements DB_interface
 
             while (reader1.hasNextLine())
             {
-                for (int i = 0; i < obj1.rows; i++)
+                for (int i = 0; i < obj1.getTotalRows(); i++)
                 {
-                    for (int j = 0; j < obj1.cols; j++)
+                    for (int j = 0; j < obj1.getTotalCols(); j++)
                     {
+
                         val = reader1.nextInt();
                         if (val == 0)
                         {
@@ -173,6 +177,7 @@ public class Filing_DAL implements DB_interface
             System.out.print("File not FOUND");
             e.printStackTrace();
         }
+        System.out.println(1);
         return obj1;
     }
 }
