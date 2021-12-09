@@ -101,7 +101,7 @@ public class Save {
         DB_DAL db_obj = new DB_DAL();
         db_obj.SaveGrid(Game_ID, obj);
     }
-    public void loadFromDb(int Grid_ID) throws SQLException
+    public Board loadFromDb(int Grid_ID) throws SQLException
     {
         DB_DAL obj = new DB_DAL();
         Board b1 = new Board(5, 5);
@@ -152,6 +152,7 @@ public class Save {
                 }
             }
         }
-        b2.printBoard();
+        //b2.printBoard();
+        return b1;
     }
 }
