@@ -17,6 +17,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Slider;
+import javafx.scene.control.ScrollBar;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
@@ -125,9 +126,13 @@ public class Main extends Application {
             }
         });
 
-        zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+        //zoom functionalities
+        zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>()
+        {
             @Override
-            public void handle(MouseEvent event) {
+            public void handle(MouseEvent event)
+            {
                 g1.setScaleX(g1.getScaleX() + 1);
                 g1.setScaleY(g1.getScaleY() + 1);
             }
@@ -149,6 +154,10 @@ public class Main extends Application {
                 }
             }
         });
+
+        //Scrolling
+        ScrollBar scroll = new ScrollBar();
+        g1.add(scroll,50,20);
 
         /*//Zoom partially implemented through terminal (Zainab)
         BufferedReader zoomPLUS = new BufferedReader(new InputStreamReader(System.in));
@@ -175,6 +184,7 @@ public class Main extends Application {
         }catch(Exception e) {
             System.out.println(e);
         }*/
+
 
         /////////////////////// Window title ////////////////
         //show stage
