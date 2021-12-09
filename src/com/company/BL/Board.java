@@ -48,8 +48,9 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                gameBoard[i][j] = new cell(i, j, true);
-
+               if((i+j+23)%2==0)
+               {gameBoard[i][j].updateStatus(true);}
+               else {gameBoard[i][j].updateStatus(false);}
             }
         }
     }
