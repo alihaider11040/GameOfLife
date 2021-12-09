@@ -12,6 +12,7 @@ public class Board {
     public int zoom;
     public int Board_ID;
 
+
     public Board() {
         rows = 0;
         cols = 0;
@@ -52,8 +53,12 @@ public class Board {
             }
         }
     }
-    public void updateStatus(boolean stat){}
+    public void updateStatus(boolean stat){
 
+    }
+    public boolean getStatus(int i,int j){
+        return gameBoard[i][j].isAliveStatus();
+    }
     public cell getCell(int r, int c)
     {
         return gameBoard[r][c];
@@ -83,10 +88,12 @@ public class Board {
         zoom=z;
     }
 
-    public int getBoard_ID()
-    {
-        return Board_ID;
-    }
+    //public int getBoard_ID(int i ,int j){
+        
+    //}
+  //  {
+//        return Board_ID();
+    //}
 
     public void setBoard_ID(int board_ID)
     {
