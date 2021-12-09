@@ -54,7 +54,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         window = stage;
         int row = 20;
-        int col = 70;
+        int col = 73;
         Button bt1 = new Button("Start");
         Button bt2 = new Button("Stop");
         Button bt3 = new Button("Next");
@@ -194,11 +194,14 @@ public class Main extends Application {
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
+        GridPane labelGrid = new GridPane();
         Label label = new Label("Game of Life");
+        label.setPadding(new Insets(0,0,0,700));
         label.setFont(Font.font(20));
         label.setAlignment(Pos.CENTER);
-        finalGrid.add(label, 0, 0, 1, 1);
+        labelGrid.add(label, 1, 0, 11, 1);
 
+        finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
         finalGrid.add(b1, 0, 2);
         //finalGrid.setAlignment(Pos.CENTER);
