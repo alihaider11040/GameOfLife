@@ -14,6 +14,7 @@ public class Board {
     public boolean alive;
 
 
+
     public Board() {
         rows = 0;
         cols = 0;
@@ -47,13 +48,18 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                gameBoard[i][j] = new cell(i, j, true);
-
+               if((i+j+23)%2==0)
+               {gameBoard[i][j].updateStatus(true);}
+               else {gameBoard[i][j].updateStatus(false);}
             }
         }
     }
-    public void updateStatus(boolean stat){}
+    public void updateStatus(boolean stat){
 
+    }
+    public boolean getStatus(int i,int j){
+        return gameBoard[i][j].isAliveStatus();
+    }
     public cell getCell(int r, int c)
     {
         return gameBoard[r][c];
@@ -83,10 +89,12 @@ public class Board {
         zoom=z;
     }
 
-    public int getBoard_ID()
-    {
-        return Board_ID;
-    }
+    //public int getBoard_ID(int i ,int j){
+        
+    //}
+  //  {
+//        return Board_ID();
+    //}
 
     public void setBoard_ID(int board_ID)
     {
