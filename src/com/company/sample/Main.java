@@ -49,7 +49,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         window = stage;
         int row = 24;
-        int col = 80;
+        int col = 200;
         Button bt1 = new Button("Start");
         Button bt2 = new Button("Stop");
         Button bt3 = new Button("Next");
@@ -211,8 +211,12 @@ public class Main extends Application {
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
-        finalGrid.addRow(0, g1);
-        finalGrid.addRow(1, b1);
+        finalGrid.addRow(0,g1);
+        finalGrid.addRow(1,b1);
+        int r=24;
+        int c=90;
+        //   final_(r,c,g1,b1,finalGrid);
+
         /////////////////////// Scene //////////////////////
         Scene scene = new Scene(finalGrid, 500, 500, Color.DARKGREY);
         finalGrid.prefHeightProperty().bind(scene.heightProperty());
@@ -239,7 +243,8 @@ public class Main extends Application {
     //}
 
     ///////////////// Grid cell function //////////////
-    public void GridCells(int row, int col, GridPane g1) {
+    public void GridCells(int row, int col, GridPane g1)
+    {
         for ( i = 0; i < row; i++) {
             for ( j = 0; j < col; j++) {
                 Button_extended button = new Button_extended(i,j);
@@ -248,13 +253,13 @@ public class Main extends Application {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                       // button.setStyle("-fx-background-color: yellow");
+                        // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
                         System.out.println(button.get_Row());
                         System.out.println(button.get_Col());
-                      //  g1.getColumnCount();
-                      //  System.out.println(g1.set);
-                       // g1.getScaleX();
+                        //  g1.getColumnCount();
+                        //  System.out.println(g1.set);
+                        // g1.getScaleX();
                         obj.updateStatus(true);
                     }
                 });
@@ -284,6 +289,7 @@ public class Main extends Application {
 
         }
     }
+
 }
 
 /*
