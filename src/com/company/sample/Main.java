@@ -53,8 +53,8 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
-        int row = 24;
-        int col = 80;
+        int row = 20;
+        int col = 70;
         Button bt1 = new Button("Start");
         Button bt2 = new Button("Stop");
         Button bt3 = new Button("Next");
