@@ -11,6 +11,8 @@ public class Board {
     public int speed;
     public int zoom;
     public int Board_ID;
+    public boolean alive;
+
 
 
     public Board() {
@@ -35,21 +37,20 @@ public class Board {
     public int getTotalRows() {
         return rows;
     }
-
     public int getTotalCols() {
         return cols;
     }
-
-    public cell[][] getGameBoard() {
+    public cell[][] getGameBoard()
+    {
         return gameBoard;
     }
-
     public void fillBoard() {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                gameBoard[i][j] = new cell(i, j, true);
-
+               if((i+j+23)%2==0)
+               {gameBoard[i][j].updateStatus(true);}
+               else {gameBoard[i][j].updateStatus(false);}
             }
         }
     }
@@ -99,5 +100,26 @@ public class Board {
     {
         Board_ID = board_ID;
     }
+    public boolean isAlive()
+    {
+        return alive;
+    }
 
+    public void setAlive(boolean alive)
+    {
+        this.alive = alive;
+    }
+    public void printBoard()
+    {
+        for(int i =0;i<rows;i++)
+        {
+            for(int j=0;j<cols;j++)
+            {
+                if(gameBoard[i][j].isAliveStatus()==true)
+                {
+                    System.out.println(1);
+                }else System.out.println(0);
+            }
+        }
+    }
 }
