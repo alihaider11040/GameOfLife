@@ -1,4 +1,4 @@
-//package com.company.sample;
+/*//package com.company.sample;
 package com.company.sample;
 
 import java.io.BufferedReader;
@@ -47,14 +47,14 @@ public class Main extends Application {
     com.company.BL.Board gameBoard=  fact.getBoard();
     //com.company.BL.Board gameBoard.fillBoard();
     int i=0,j=0;
-
+    int zizo;
     Stage window;
 
     @Override
     public void start(Stage stage) throws Exception {
         window = stage;
-        int row = 24;
-        int col = 80;
+        int row = 20;
+        int col = 73;
         Button bt1 = new Button("Start");
         Button bt2 = new Button("Stop");
         Button bt3 = new Button("Next");
@@ -154,6 +154,8 @@ public class Main extends Application {
             {
                 g1.setScaleX(g1.getScaleX() + 1);
                 g1.setScaleY(g1.getScaleY() + 1);
+                zizo++;
+ */
             }
         });
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -194,11 +196,14 @@ public class Main extends Application {
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
+        GridPane labelGrid = new GridPane();
         Label label = new Label("Game of Life");
+        label.setPadding(new Insets(0,0,0,700));
         label.setFont(Font.font(20));
         label.setAlignment(Pos.CENTER);
-        finalGrid.add(label, 0, 0, 1, 1);
+        labelGrid.add(label, 1, 0, 11, 1);
 
+        finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
         finalGrid.add(b1, 0, 2);
         //finalGrid.setAlignment(Pos.CENTER);
@@ -280,7 +285,7 @@ public class Main extends Application {
                     public void handle(MouseEvent event) {
                         button.setStyle("-fx-background-color: #FFFF00; ");
                     }
-                });*/
+                });
 
             }
 
@@ -306,3 +311,57 @@ public class Main {
         dal.delete_saved_state(6);
     }
 */
+package com.company.sample;
+import com.company.BL.Board;
+import com.company.UI.terminalPrinting;
+import java.util.Scanner;
+import java.lang.Thread;
+
+
+public class Main {
+    public static void main(String args[])
+    {
+        terminalPrinting t1 = new terminalPrinting();
+        Board b1 = new Board(5,5);
+        b1.fillBoard();
+        while(true) {
+            t1.printTerminal(5, b1);
+            int x;
+            int y = 2500;
+            System.out.println("Press 1 to save game");
+            System.out.println("Press 2 to load saved game");
+            System.out.println("press 3 to speed up game");
+            System.out.println("press 4 to slow down game");
+            System.out.println("press 5 to go next");
+            System.out.println("press 0 to end game");
+            Scanner s1 = new Scanner(System.in);
+            x = s1.nextInt();
+            if (x == 1) {
+                System.out.println("saving...");
+            } else if (x == 2) {
+                System.out.println("loading....");
+
+
+            } else if (x == 3) {
+                System.out.println("speeding up");
+                if(y>=500)
+                    y = y-500;
+            } else if (x == 4) {
+                System.out.println("slowing down");
+                if(y<=5000)
+                    y=y+500;
+            } else if (x == 5) {
+                System.out.println("Next");
+            } else if (x == 0) {
+                System.out.println("Bye");
+                System.exit(0);
+            }
+
+            try {
+                Thread.sleep(y);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
