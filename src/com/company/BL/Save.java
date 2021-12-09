@@ -1,5 +1,6 @@
 package com.company.BL;
 import com.company.Database.DB_DAL;
+import com.company.Filing.Filing_DAL;
 
 import java.io.File;
 import java.io.IOException;
@@ -9,7 +10,7 @@ import java.io.FileWriter;
 import java.io.FileNotFoundException;
 public class Save {
     String filename;
-    counter iCounter;
+
 
     public Save() {
         //iCounter= new counter();
@@ -155,4 +156,21 @@ public class Save {
         //b2.printBoard();
         return b1;
     }
+   public void saveToFile(int id, Board b1)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       obj1.Save_game_details(id,b1);
+   }
+   public void SaveStateToFile(int id,Board b1)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       obj1.Save_game_details(id,b1);
+   }
+   public Board LoadStateFromFile(int id,int r,int c)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       Board b1 = new Board(r,c);
+       b1 = obj1.load_game_details(id);
+        return b1;
+   }
 }
