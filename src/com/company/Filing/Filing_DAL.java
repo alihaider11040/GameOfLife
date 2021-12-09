@@ -67,7 +67,7 @@ public class Filing_DAL implements DB_interface
                 {
                     statuss = true;
                 }
-                else if (reader.nextInt() == 0)
+                else
                 {
                     statuss = false;
                 }
@@ -113,7 +113,7 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + "_2.txt");
+            FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.rows; i++)
             {
@@ -146,7 +146,7 @@ public class Filing_DAL implements DB_interface
         Board obj1 = new Board(5,5);
         try
         {
-            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + "_2.txt"));
+            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + ".txt"));
             boolean stat = false;
             int val = 0;
 
@@ -156,12 +156,12 @@ public class Filing_DAL implements DB_interface
                 {
                     for (int j = 0; j < obj1.getTotalCols(); j++)
                     {
-
                         val = reader1.nextInt();
                         if (val == 0)
                         {
                             stat = false;
-                        } else if (val == 1)
+                        }
+                        else
                         {
                             stat = true;
                         }
