@@ -15,7 +15,8 @@ public class DB_DAL implements DB_interface
     @Override
     public void SaveGrid(int Game_ID,Board obj)
     {
-        try {
+        try
+        {
             Connection connection = DriverManager.getConnection(DB_url, USER_NAME, Pass);
             Statement one = connection.createStatement();
             String query = null;

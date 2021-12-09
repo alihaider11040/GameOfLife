@@ -96,13 +96,17 @@ public class Save {
             e.printStackTrace();
         }
     }
-
-    public void loadFromDb() throws SQLException
+    public void SaveGrid(int Game_ID,Board obj)
+    {
+        DB_DAL db_obj = new DB_DAL();
+        db_obj.SaveGrid(Game_ID, obj);
+    }
+    public void loadFromDb(int Grid_ID) throws SQLException
     {
         DB_DAL obj = new DB_DAL();
         Board b1 = new Board(5, 5);
         b1.fillBoard();
-        obj.delete_saved_state(90);
+        obj.delete_saved_state(Grid_ID);
         Board b2 = new Board(b1.getTotalRows(), b1.getTotalCols());
         for(int i =0;i<b1.getTotalRows();i++)
         {
@@ -134,8 +138,10 @@ public class Save {
                     {
                         for(int n = j-1;n<=j+1;n++)
                         {
-                            if ((m >= 0 && m < b2.getTotalRows()) && (n >= 0 && n < b2.getTotalCols())) {
-                                if (b1.getGameBoard()[m][n].isAliveStatus() == true) {
+                            if ((m >= 0 && m < b2.getTotalRows()) && (n >= 0 && n < b2.getTotalCols()))
+                            {
+                                if (b1.getGameBoard()[m][n].isAliveStatus() == true)
+                                {
                                     aliveNeighbourCount++;
                                 }
                             }
