@@ -40,6 +40,8 @@ public class Board {
     public int getTotalCols() {
         return cols;
     }
+    public void set_StateRun(boolean s){stateRun=s; }
+    public boolean get_StateRun(){return stateRun;}
 
     public cell[][] getGameBoard()
     {
@@ -50,7 +52,7 @@ public class Board {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                if((i+j+23)%2==0)
-               {gameBoard[i][j].updateStatus(true);}
+               {gameBoard[i][j].updateStatus(false);}
                else {gameBoard[i][j].updateStatus(false);}
             }
         }

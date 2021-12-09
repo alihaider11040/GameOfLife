@@ -1,46 +1,23 @@
 //package com.company.sample;
 package com.company.sample;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
 import com.company.BL.Board;
-import com.company.UI.terminalPrinting;
-import java.util.Scanner;
-import java.lang.Thread;
-
 import com.company.BL.factory;
 import com.company.UI.Button_extended;
-import com.company.BL.Board;
-import com.company.Database.DB_DAL;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Group;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
-import javafx.scene.control.Slider;
-import javafx.scene.control.ScrollBar;
-import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontPosture;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import javafx.stage.Window;
-
-import javax.swing.*;
-import java.awt.*;
-import java.sql.SQLException;
 
 //import static jdk.vm.ci.sparc.SPARC.g1;
 
@@ -184,6 +161,7 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
+                obj.set_StateRun(true);
                 System.out.println("start");
             }
         });
@@ -194,6 +172,7 @@ public class Main extends Application {
         bt2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                obj.set_StateRun(false);
                 System.out.println("stop");
             }
         });
@@ -224,6 +203,7 @@ public class Main extends Application {
         bt5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
+                obj.fillBoard();
                 System.out.println("reset");
             }
         });
