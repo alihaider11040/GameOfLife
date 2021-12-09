@@ -1,16 +1,22 @@
 package com.company.BL;
+import com.company.Database.DB_DAL;
+import com.company.Filing.Filing_DAL;
+
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.FileNotFoundException;
 public class Save {
     String filename;
-    counter iCounter;
-    public Save()
-    {
-        iCounter= new counter();
+
+
+    public Save() {
+        //iCounter= new counter();
+        System.out.println("Hello");
     }
+
     public void Save_(Board obj_Board, String f) {
         filename = f;
         try {
@@ -44,6 +50,7 @@ public class Save {
         }
 
     }
+
     public void loadBoard(String filename, int size) {
         Board b1 = new Board(size, size);
         int[][] dice = new int[size][size];
@@ -55,38 +62,30 @@ public class Save {
                     dice[i][j] = myReader.nextInt();
                     if (dice[i][j] == 0) {
                         b1.getGameBoard()[i][j].updateStatus(false);
-                        int aliveNeigbourCount=0;
-                        for(int m =-1;m<2;m++)
-                        {
-                            for(int n =0;n<2;n++)
-                            {
-                                if(dice[i+m][j+n]==1)
-                                {
+                        int aliveNeigbourCount = 0;
+                        for (int m = -1; m < 2; m++) {
+                            for (int n = 0; n < 2; n++) {
+                                if (dice[i + m][j + n] == 1) {
                                     aliveNeigbourCount++;
                                 }
                             }
                         }
-                        if(aliveNeigbourCount==3)
-                        {
+                        if (aliveNeigbourCount == 3) {
                             b1.getGameBoard()[i][j].updateStatus(true);
                         }
 
 
                     } else {
                         b1.getGameBoard()[i][j].updateStatus(true);
-                        int aliveNeigbourCount=0;
-                        for(int m =-1;m<2;m++)
-                        {
-                            for(int n =0;n<2;n++)
-                            {
-                                if(dice[i+m][j+n]==1)
-                                {
+                        int aliveNeigbourCount = 0;
+                        for (int m = -1; m < 2; m++) {
+                            for (int n = 0; n < 2; n++) {
+                                if (dice[i + m][j + n] == 1) {
                                     aliveNeigbourCount++;
                                 }
                             }
                         }
-                        if(aliveNeigbourCount<2 || aliveNeigbourCount>3)
-                        {
+                        if (aliveNeigbourCount < 2 || aliveNeigbourCount > 3) {
                             b1.getGameBoard()[i][j].updateStatus(false);
                         }
                     }
@@ -98,8 +97,80 @@ public class Save {
             e.printStackTrace();
         }
     }
-
-
+    public void SaveGrid(int Game_ID,Board obj)
+    {
+        DB_DAL db_obj = new DB_DAL();
+        db_obj.SaveGrid(Game_ID, obj);
+    }
+    public Board loadFromDb(int Grid_ID) throws SQLException
+    {
+        DB_DAL obj = new DB_DAL();
+        Board b1 = new Board(5, 5);
+        b1.fillBoard();
+        obj.delete_saved_state(Grid_ID);
+        Board b2 = new Board(b1.getTotalRows(), b1.getTotalCols());
+        for(int i =0;i<b1.getTotalRows();i++)
+        {
+            for(int j =0;j<b1.getTotalCols();j++)
+            {
+                int aliveNeighbourCount=0;
+                if(b1.getGameBoard()[i][j].isAliveStatus()==true)
+                {
+                    for(int m= i-1;m<=i+1;m++)
+                    {
+                        for(int n = j-1;n<=j+1;n++)
+                        {
+                                if ((m >= 0 && m < b2.getTotalRows()) && (n >= 0 && n < b2.getTotalCols()))
+                                {
+                                    if (b1.getGameBoard()[m][n].isAliveStatus() == true)
+                                    {
+                                        aliveNeighbourCount++;
+                                    }
+                                }
+                        }
+                    }
+                    if(aliveNeighbourCount < 2 || aliveNeighbourCount > 3)
+                        b1.getGameBoard()[i][j].updateStatus(false);
+                }
+                else if(b1.getGameBoard()[i][j].isAliveStatus()== false)
+                {
+                    aliveNeighbourCount = 0;
+                    for(int m= i-1;m<=i+1;m++)
+                    {
+                        for(int n = j-1;n<=j+1;n++)
+                        {
+                            if ((m >= 0 && m < b2.getTotalRows()) && (n >= 0 && n < b2.getTotalCols()))
+                            {
+                                if (b1.getGameBoard()[m][n].isAliveStatus() == true)
+                                {
+                                    aliveNeighbourCount++;
+                                }
+                            }
+                        }
+                    }
+                    if( aliveNeighbourCount == 3)
+                        b1.getGameBoard()[i][j].updateStatus(true);
+                }
+            }
+        }
+        //b2.printBoard();
+        return b1;
+    }
+   public void saveToFile(int id, Board b1)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       obj1.Save_game_details(id,b1);
+   }
+   public void SaveStateToFile(int id,Board b1)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       obj1.Save_game_details(id,b1);
+   }
+   public Board LoadStateFromFile(int id,int r,int c)
+   {
+       Filing_DAL obj1 = new Filing_DAL();
+       Board b1 = new Board(r,c);
+       b1 = obj1.load_game_details(id);
+        return b1;
+   }
 }
-
-
