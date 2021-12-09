@@ -11,6 +11,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -22,10 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.Priority;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontPosture;
@@ -50,7 +48,7 @@ public class Main extends Application {
     public void start(Stage stage) throws Exception {
         window = stage;
         int row = 24;
-        int col = 200;
+        int col = 80;
         Button bt1 = new Button("Start");
         Button bt2 = new Button("Stop");
         Button bt3 = new Button("Next");
@@ -76,6 +74,19 @@ public class Main extends Application {
         GridPane g1 = new GridPane();
         GridPane b1 = new GridPane();
         GridPane finalGrid = new GridPane();
+
+        RowConstraints labell = new RowConstraints();
+        labell.setPercentHeight(5);
+
+        RowConstraints  boardd = new RowConstraints();
+        boardd.setPercentHeight(80);
+
+        RowConstraints buttonss = new RowConstraints();
+        buttonss.setPercentHeight(15);
+
+        finalGrid.getRowConstraints().addAll(labell,boardd,buttonss);
+
+
         g1.setId("grid");
 
         bt1.setOnAction(new EventHandler<ActionEvent>() {
@@ -155,10 +166,6 @@ public class Main extends Application {
             }
         });
 
-        //Scrolling
-        ScrollBar scroll = new ScrollBar();
-        g1.add(scroll,50,20);
-
         /*//Zoom partially implemented through terminal (Zainab)
         BufferedReader zoomPLUS = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter Z to zoomIN : ");
@@ -231,16 +238,18 @@ public class Main extends Application {
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
-        finalGrid.addRow(0,g1);
-        finalGrid.addRow(1,b1);
-        int r=24;
-        int c=90;
-        //   final_(r,c,g1,b1,finalGrid);
+        Label label = new Label("Game of Life");
+        label.setFont(Font.font(20));
+        label.setAlignment(Pos.CENTER);
+        finalGrid.add(label, 0, 0, 1, 1);
 
+        finalGrid.add(g1, 0, 1);
+        finalGrid.add(b1, 0, 2);
+        //finalGrid.setAlignment(Pos.CENTER);
         /////////////////////// Scene //////////////////////
-        Scene scene = new Scene(finalGrid, 500, 500, Color.DARKGREY);
-        finalGrid.prefHeightProperty().bind(scene.heightProperty());
-        finalGrid.prefWidthProperty().bind(scene.widthProperty());
+        Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(),finalGrid.getMaxWidth(), Color.DARKGREY);
+        //finalGrid.prefHeightProperty().bind(scene.heightProperty());
+        //finalGrid.prefWidthProperty().bind(scene.widthProperty());
 
         //    stage.setResizable(false);
         //link sample.css file
@@ -263,8 +272,7 @@ public class Main extends Application {
     //}
 
     ///////////////// Grid cell function //////////////
-    public void GridCells(int row, int col, GridPane g1)
-    {
+    public void GridCells(int row, int col, GridPane g1) {
         for ( i = 0; i < row; i++) {
             for ( j = 0; j < col; j++) {
                 Button_extended button = new Button_extended(i,j);
@@ -273,16 +281,25 @@ public class Main extends Application {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                        // button.setStyle("-fx-background-color: yellow");
+                       // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
                         System.out.println(button.get_Row());
                         System.out.println(button.get_Col());
-                        //  g1.getColumnCount();
-                        //  System.out.println(g1.set);
-                        // g1.getScaleX();
+                      //  g1.getColumnCount();
+                      //  System.out.println(g1.set);
+                       // g1.getScaleX();
                         obj.updateStatus(true);
                     }
                 });
+
+                //grid dragging
+                button.setOnMouseDragged(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        g1.setPadding(new Insets(mouseEvent.getSceneY(), 0, 0, mouseEvent.getSceneX()));
+                    }
+                });
+
                 //button.setStyle("-fx-background-color: grey");
                 g1.add(button, j, i, 1, 1);
                 g1.setPadding(new Insets(1, 1, 5, 1));
@@ -311,7 +328,6 @@ public class Main extends Application {
 
         }
     }
-
 }
 
 /*
