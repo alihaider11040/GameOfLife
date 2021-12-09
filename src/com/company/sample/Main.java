@@ -47,7 +47,7 @@ public class Main extends Application {
     com.company.BL.Board gameBoard=  fact.getBoard();
     //com.company.BL.Board gameBoard.fillBoard();
     int i=0,j=0;
-
+    int zizo;
     Stage window;
 
     @Override
@@ -154,6 +154,8 @@ public class Main extends Application {
             {
                 g1.setScaleX(g1.getScaleX() + 1);
                 g1.setScaleY(g1.getScaleY() + 1);
+                zizo++;
+ */
             }
         });
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
