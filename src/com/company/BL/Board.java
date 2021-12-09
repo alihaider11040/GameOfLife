@@ -40,6 +40,7 @@ public class Board {
     public int getTotalCols() {
         return cols;
     }
+
     public cell[][] getGameBoard()
     {
         return gameBoard;
