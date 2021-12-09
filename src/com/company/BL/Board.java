@@ -88,12 +88,12 @@ public class Board {
         zoom=z;
     }
 
-    public int getBoard_ID(int i ,int j){
+    //public int getBoard_ID(int i ,int j){
         
-    }
-    {
-        return Board_ID;
-    }
+    //}
+  //  {
+//        return Board_ID();
+    //}
 
     public void setBoard_ID(int board_ID)
     {
