@@ -12,6 +12,7 @@ import com.company.BL.factory;
 import com.company.UI.Button_extended;
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -60,15 +61,25 @@ public class Main extends Application {
         Board obj=new Board();
         int row = 20;
         int col = 73;
-        Button bt1 = new Button("Start");
-        Button bt2 = new Button("Stop");
-        Button bt3 = new Button("Next");
-        Button bt4 = new Button("Save");
-        Button bt5 = new Button("Reset");
-        Button bt6 = new Button("View Save State");
-        Button bt7 = new Button("Load");
-        Button zoomIN = new Button("ZOOM-IN +");
-        Button zoomOUT = new Button("ZOOM-OUT -");
+        Button bt1 = new Button("  Start  ");
+        Button bt2 = new Button("  Stop  ");
+        Button bt3 = new Button("  Next  ");
+        Button bt4 = new Button(" Save ");
+        Button bt5 = new Button(" Reset ");
+        Button bt6 = new Button("View State");
+        Button bt7 = new Button("  Load  ");
+        Button zoomIN = new Button("ZOOM +");
+        Button zoomOUT = new Button("ZOOM -");
+        bt1.setMinWidth(30);
+        bt2.setMinWidth(30);
+        bt3.setMinWidth(30);
+        bt4.setMinWidth(30);
+        bt5.setMinWidth(30);
+        bt6.setMinWidth(30);
+        bt7.setMinWidth(50);
+        zoomIN.setMinWidth(30);
+        zoomOUT.setMinWidth(30);
+
 
         ///// set ID to control buttons///
         bt1.setId("start");
@@ -124,6 +135,8 @@ public class Main extends Application {
         finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
         finalGrid.add(b1, 0, 2);
+        finalGrid.setHgap(5);
+        finalGrid.setVgap(8);
         //finalGrid.setAlignment(Pos.CENTER);
         /////////////////////// Scene //////////////////////
         Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(),finalGrid.getMaxWidth(), Color.DARKGREY);
@@ -289,16 +302,17 @@ public class Main extends Application {
     public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
     {
         ////////////// Button addition ////////////////////
-        b1.add(bt1, 0, 0, 3, 1);
-        b1.add(bt2, 10, 0, 3, 1);
-        b1.add(bt3, 20, 0, 3, 1);
-        b1.add(bt4, 30, 0, 3, 1);
-        b1.add(bt5, 40, 0, 3, 1);
-        b1.add(bt6, 50, 0, 3, 1);
-        b1.add(bt7, 60, 0, 3, 1);
-        b1.add(zoomIN, 70, 0, 3, 1);
-        b1.add(zoomOUT, 80, 0, 3, 1);
-        b1.setHgap(10);
+        b1.add(bt1, 5, 1, 3, 5);
+        b1.add(bt2, 10, 1, 3, 5);
+        b1.add(bt3, 15, 1, 3, 5);
+        b1.add(bt4, 20, 1, 3, 5);
+        b1.add(bt5, 25, 1, 3, 5);
+        b1.add(bt6, 30, 1, 3, 5);
+        b1.add(bt7, 35, 1, 3, 5);
+        b1.add(zoomIN, 40, 1, 3, 5);
+        b1.add(zoomOUT, 45, 1, 3, 5);
+        b1.setHgap(8);
+        b1.setVgap(3);
         b1.setId("Controls");
     }
 }
