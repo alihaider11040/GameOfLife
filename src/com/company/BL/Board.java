@@ -54,6 +54,23 @@ public class Board {
             }
         }
     }
+    public void makeAlive(){
+        for (int i = 0; i < rows;i++){
+            for(int j = 0; j < cols;j++){
+                gameBoard[i][j].aliveStatus = true;
+               //gameBoard[i][j].updateStatus(true);
+            }
+        }
+    }
+
+    public void makeDead(){
+        for(int i = 0;i<rows;i++){
+            for (int j=0;j<cols;j++){
+                gameBoard[i][j].aliveStatus = false;
+                //gameBoard[i][j].updateStatus(false);
+            }
+        }
+    }
     public void updateStatus(boolean stat){
 
     }
