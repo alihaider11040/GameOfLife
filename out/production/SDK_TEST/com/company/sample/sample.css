@@ -1,112 +1,141 @@
 .root
 {
-    -fx-background-color: grey;
-
+    -fx-background-color: white;
 }
-#start
+
+#Lable
+{
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+    -fx-background-color: grey;
+    -fx-text-fill: white;
+    -fx-font-family: "OCR A Extended";
+}
+#Controls
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+   /* -fx-background-color: #7a5a99;*/
+    -fx-background-color: grey;
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
+   /* -fx-padding: 5;
+   /* -fx-border-color: black; */
+}
 
+
+#start
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+    /* -fx-background-color: #7a5a99;*/
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+    /* -fx-padding: 5;
+    /* -fx-border-color: black; */
 }
 
 #stop
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
-
+   /* -fx-border-color: black;*/
 }
 
 #next
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
-
 }
 
 #save
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
-
 }
 
 #reset
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
 }
 
 #view
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
 
 }
 
 #load
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
-
 }
 
 #zoomIN
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
-
 }
 
 #zoomOUT
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
     -fx-text-alignment: center;
-    -fx-text-fill: black;
+    -fx-text-fill: white;
     -fx-font-weight:bold;
     -fx-font-size: 15;
     -fx-font-family: "OCR A Extended";
-    -fx-border-color: black;
 
 }
 
@@ -123,6 +152,8 @@
 .selected_button
 {
     -fx-background-color: yellow;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
 }
 
 

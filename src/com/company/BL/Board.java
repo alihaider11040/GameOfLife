@@ -40,6 +40,9 @@ public class Board {
     public int getTotalCols() {
         return cols;
     }
+    public void set_StateRun(boolean s){stateRun=s; }
+    public boolean get_StateRun(){return stateRun;}
+
     public cell[][] getGameBoard()
     {
         return gameBoard;
@@ -49,8 +52,25 @@ public class Board {
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
                if((i+j+23)%2==0)
-               {gameBoard[i][j].updateStatus(true);}
+               {gameBoard[i][j].updateStatus(false);}
                else {gameBoard[i][j].updateStatus(false);}
+            }
+        }
+    }
+    public void makeAlive(){
+        for (int i = 0; i < rows;i++){
+            for(int j = 0; j < cols;j++){
+                gameBoard[i][j].aliveStatus = true;
+               //gameBoard[i][j].updateStatus(true);
+            }
+        }
+    }
+
+    public void makeDead(){
+        for(int i = 0;i<rows;i++){
+            for (int j=0;j<cols;j++){
+                gameBoard[i][j].aliveStatus = false;
+                //gameBoard[i][j].updateStatus(false);
             }
         }
     }
@@ -95,7 +115,7 @@ public class Board {
   //  {
 //        return Board_ID();
     //}
-
+public int getCount(){return 5;}
     public void setBoard_ID(int board_ID)
     {
         Board_ID = board_ID;
