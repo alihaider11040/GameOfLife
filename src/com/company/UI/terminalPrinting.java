@@ -18,6 +18,11 @@ public terminalPrinting()
         return false;
     }
 
+    @Override
+    public void print(Board obj) {
+
+    }
+
     /*public void fillarr(int size , Board[][] arr)
     {
         for(int i =0;i<size;i++)
@@ -26,11 +31,11 @@ public terminalPrinting()
             {arr[i][j]= (i+j + 21)%2;}
         }
     }*/
- public void print(Board arr)
+ public void print(Board arr,int r, int c)
     {
-        for(int i =0;i<size;i++)
+        for(int i =0;i<r;i++)
         {
-            for(int j=0;j<size;j++)
+            for(int j=0;j<c;j++)
             {
                 if(arr.getGameBoard()[i][j].isAliveStatus()== true)
                 System.out.print(" "+ 0 + " ");
