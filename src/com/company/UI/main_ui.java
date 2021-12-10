@@ -310,7 +310,7 @@ public class main_ui extends Application {
             }
         });
     }
-
+/////////////////////////////
     public  void zoom_out_event(Button zoomOUT, Board obj, GridPane g1)
     {
         zoomOUT.setOnMouseClicked(new EventHandler<MouseEvent>()
