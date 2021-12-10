@@ -18,9 +18,9 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
 
                     write.write(Integer.toString(i));
@@ -59,7 +59,7 @@ public class Filing_DAL implements DB_interface
 
             while (reader.hasNextLine())
             {
-                object.getCell(object.rows = reader.nextInt(), object.cols = reader.nextInt());
+                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
                 if (reader.nextInt() == 1)
                 {
                     statuss = true;
@@ -90,9 +90,9 @@ public class Filing_DAL implements DB_interface
             Board obj = new Board();
             cell[][] board = obj.getGameBoard();
 
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
                         write1.write("-");
                 }
@@ -112,9 +112,9 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
                     if(board[i][j].isAliveStatus())
                     {
