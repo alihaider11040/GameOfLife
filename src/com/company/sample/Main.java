@@ -68,8 +68,10 @@ public class Main extends Application {
         Button bt5 = new Button(" Reset ");
         Button bt6 = new Button("View State");
         Button bt7 = new Button("  Load  ");
-        Button zoomIN = new Button("ZOOM +");
-        Button zoomOUT = new Button("ZOOM -");
+        Button bt8=new Button(" Speed + ");
+        Button bt9=new Button(" Speed - ");
+        Button zoomIN = new Button(" ZOOM + ");
+        Button zoomOUT = new Button(" ZOOM - ");
         bt1.setMinWidth(30);
         bt2.setMinWidth(30);
         bt3.setMinWidth(30);
@@ -77,6 +79,8 @@ public class Main extends Application {
         bt5.setMinWidth(30);
         bt6.setMinWidth(30);
         bt7.setMinWidth(50);
+        bt8.setMinWidth(30);
+        bt9.setMinWidth(30);
         zoomIN.setMinWidth(30);
         zoomOUT.setMinWidth(30);
 
@@ -89,6 +93,8 @@ public class Main extends Application {
         bt5.setId("reset");
         bt6.setId("view");
         bt7.setId("load");
+        bt8.setId("speed_up");
+        bt9.setId("speed_down");
         zoomIN.setId("zoomIN");
         zoomOUT.setId("zoomOUT");
 
@@ -115,11 +121,13 @@ public class Main extends Application {
         reset_event(bt5,obj);
         view_event(bt6,obj);
         load_event(bt7,obj);
+        speed_up_event(bt8,obj);
+        speed_down_event(bt9,obj);
         zoom_in_event(zoomIN,obj,g1);
         zoom_out_event(zoomOUT,obj,g1);
 
         ////////////  Button to grid b1 /////////////
-        add_control_on_b1_grid(b1,bt1,bt2,bt3,bt4,bt5,bt6,bt7,zoomIN,zoomOUT);
+        add_control_on_b1_grid(b1,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,zoomIN,zoomOUT);
 
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
@@ -131,6 +139,8 @@ public class Main extends Application {
         label.setAlignment(Pos.CENTER);
         label.setId("Lable");
         labelGrid.add(label, 1, 0, 11, 1);
+
+      //  Label count=new Label(obj.getco)
 
         finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
@@ -262,6 +272,26 @@ public class Main extends Application {
         });
     }
 
+    public void speed_up_event(Button bt8, Board obj)
+    {
+        bt8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("speed up");
+            }
+        });
+    }
+
+    public void speed_down_event(Button bt9, Board obj)
+    {
+        bt9.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("speed down");
+            }
+        });
+    }
+
     public void zoom_in_event(Button zoomIN, Board obj, GridPane g1)
     {
         zoomIN.setOnMouseClicked(new EventHandler<MouseEvent>()
@@ -299,18 +329,20 @@ public class Main extends Application {
 
     }
 
-    public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
+    public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button bt8, Button bt9 ,Button zoomIN,Button zoomOUT)
     {
         ////////////// Button addition ////////////////////
-        b1.add(bt1, 10, 1, 3, 5);
-        b1.add(bt2, 15, 1, 3, 5);
-        b1.add(bt3, 20, 1, 3, 5);
-        b1.add(bt4, 25, 1, 3, 5);
-        b1.add(bt5, 30, 1, 3, 5);
-        b1.add(bt6, 35, 1, 3, 5);
-        b1.add(bt7, 40, 1, 3, 5);
-        b1.add(zoomIN, 45, 1, 3, 5);
-        b1.add(zoomOUT, 50, 1, 3, 4);
+        b1.add(bt1, 5, 1, 3, 5);
+        b1.add(bt2, 10, 1, 3, 5);
+        b1.add(bt3, 15, 1, 3, 5);
+        b1.add(bt4, 20, 1, 3, 5);
+        b1.add(bt5, 25, 1, 3, 5);
+        b1.add(bt6, 30, 1, 3, 5);
+        b1.add(bt7, 35, 1, 3, 5);
+        b1.add(bt8, 40, 1, 3, 5);
+        b1.add(bt9, 45, 1, 3, 5);
+        b1.add(zoomIN, 50, 1, 3, 5);
+        b1.add(zoomOUT, 55, 1, 3, 4);
         b1.setHgap(8);
         b1.setVgap(3);
         b1.setId("Controls");
