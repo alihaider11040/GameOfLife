@@ -3,11 +3,10 @@ import com.company.Database.DB_DAL;
 import com.company.Filing.Filing_DAL;
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
-import java.io.FileWriter;
-import java.io.FileNotFoundException;
 public class Save {
     String filename;
 
@@ -166,8 +165,7 @@ public class Save {
        Filing_DAL obj1 = new Filing_DAL();
        obj1.Save_game_details(id,b1);
    }
-   public Board LoadStateFromFile(int id,int r,int c)
-   {
+   public Board LoadStateFromFile(int id,int r,int c) throws FileNotFoundException {
        Filing_DAL obj1 = new Filing_DAL();
        Board b1 = new Board(r,c);
        b1 = obj1.load_game_details(id,r,c);

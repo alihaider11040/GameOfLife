@@ -51,34 +51,9 @@ public class Filing_DAL implements DB_interface
     @Override
     public Board LoadGrid(int Grid_ID) throws SQLException
     {
-        Board object = new Board();
-        try
-        {
-            boolean statuss = false;
-            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
+        Board obj = new Board();
 
-            while (reader.hasNextLine())
-            {
-                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
-                if (reader.nextInt() == 1)
-                {
-                    statuss = true;
-                }
-                else
-                {
-                    statuss = false;
-                }
-                object.updateStatus(statuss);
-            }
-            reader.close();
-
-            return object;
-        } catch (FileNotFoundException e)
-        {
-            System.out.print("File not FOUND");
-            e.printStackTrace();
-        }
-        return object;
+        return obj;
     }
 
     @Override
@@ -110,6 +85,15 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
+            Scanner scanner = new Scanner(new File("numSave.txt"));
+            int x= scanner.nextInt();
+            x=x+1;
+            scanner.close();
+
+            Writer wr = new FileWriter("numSave.txt");
+            wr.write(x);
+            wr.close();
+
             FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.getTotalRows(); i++)
