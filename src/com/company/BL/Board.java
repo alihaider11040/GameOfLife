@@ -137,8 +137,58 @@ public int getCount(){return 5;}
             {
                 if(gameBoard[i][j].isAliveStatus()==true)
                 {
-                    System.out.println(1);
-                }else System.out.println(0);
+                    System.out.print(" "+1+" ");
+                }else System.out.print(" "+0+" ");
+            }
+            System.out.println();
+        }
+    }
+    public void PlayOn()
+    {
+        Board temp = new Board(rows,cols);
+        for(int i = 0;i<rows;i++)
+        {
+            for(int j =0;j<cols;j++)
+            {
+                temp.getGameBoard()[i][j]= this.getGameBoard()[i][j];
+            }
+        }
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+
+
+                int aliveNeighbourCount = 0;
+                for (int m = i - 1; m <= i + 1; m++) {
+                    for (int n = j - 1; n <= j + 1; n++) {
+                        if ((m >= 0 && m < this.getTotalRows()) && (n >= 0 && n < this.getTotalCols())) {
+                            if (temp.getGameBoard()[m][n].isAliveStatus() == true) {
+                                aliveNeighbourCount++;
+                            }
+                        }
+                    }
+
+                }
+                if (aliveNeighbourCount == 2 || aliveNeighbourCount == 3) {
+                    this.getGameBoard()[i][j].updateStatus(true);
+                } else {
+                    temp.getGameBoard()[i][j].updateStatus(true);
+                    int aliveNeigbourCount = 0;
+                    for (int m = i-1; m <= i+1; m++) {
+                        for (int n = j-1; n <=j+1; n++) {
+                            if ((m >= 0 && m < this.getTotalRows()) && (n >= 0 && n < this.getTotalCols()))
+                            {
+                                if (temp.getGameBoard()[m][n].isAliveStatus() == true)
+                                {
+                                    aliveNeighbourCount++;
+                                }
+                            }
+                        }
+                    }
+                    if (aliveNeigbourCount < 2 || aliveNeigbourCount > 3) {
+                        this.getGameBoard()[i][j].updateStatus(false);
+                    }
+
+                }
             }
         }
     }

@@ -232,7 +232,7 @@ public class Filing_DAL implements DB_interface
 
 
 
-        b1.printBoard();
+
         return b1;
     }
 }

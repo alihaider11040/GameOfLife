@@ -170,8 +170,12 @@ public class Save {
    {
        Filing_DAL obj1 = new Filing_DAL();
        Board b1 = new Board(r,c);
-       b1 = obj1.load_game_details(id,r,c);
-       b1.printBoard();
+       try {
+           b1 = obj1.load_game_details(id,r,c);
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
+
        return b1;
    }
 }

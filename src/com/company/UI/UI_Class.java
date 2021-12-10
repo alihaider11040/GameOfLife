@@ -1,4 +1,4 @@
-package com.company.UI;
+/*package com.company.UI;
 import com.company.BL.Board;
 import com.company.BL.factory;
 import javafx.application.Application;
@@ -273,3 +273,4 @@ import javafx.stage.Stage;
             b1.setId("Controls");
         }
 };
+*/

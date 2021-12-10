@@ -105,7 +105,11 @@ public class Main {
         Save s1 = new Save();
         b1.fillBoard();
         s1.SaveStateToFile(55,b1);
-        b1=s1.LoadStateFromFile(55,5,5);
         b1.printBoard();
+        b1=s1.LoadStateFromFile(55,5,5);
+        System.out.println();
+        b1.PlayOn();
+        b1.printBoard();
+
     }
 }
