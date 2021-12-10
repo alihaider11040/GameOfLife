@@ -10,76 +10,8 @@ import java.util.Scanner;
 
 public class Filing_DAL implements DB_interface
 {
-    @Override
-    public void SaveGrid(int Game_ID, Board obj)
-    {
-        System.out.println("1");
-        try
-        {
-            FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
-            cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.getTotalRows(); i++)
-            {
-                for (int j = 0; j < obj.getTotalCols(); j++)
-                {
 
-                    write.write(Integer.toString(i));
-                    write.write(" ");
-                    write.write(Integer.toString(j));
-                    write.write(" ");
-                    if(board[i][j].isAliveStatus())
-                    {
-                        write.write('1');
-                    }
-                    else if(!board[i][j].isAliveStatus())
-                    {
-                        write.write('0');
-                    }
-                    write.write("\n");
-                    // end line
-                }
 
-            }
-            write.close();
-        } catch (IOException e)
-        {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public Board LoadGrid(int Grid_ID) throws SQLException
-    {
-        Board object = new Board();
-        try
-        {
-            boolean statuss = false;
-            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
-
-            while (reader.hasNextLine())
-            {
-                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
-                if (reader.nextInt() == 1)
-                {
-                    statuss = true;
-                }
-                else
-                {
-                    statuss = false;
-                }
-                object.updateStatus(statuss);
-            }
-            reader.close();
-
-            return object;
-        } catch (FileNotFoundException e)
-        {
-            System.out.print("File not FOUND");
-            e.printStackTrace();
-        }
-        return object;
-    }
 
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException
