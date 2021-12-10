@@ -1,23 +1,47 @@
 //package com.company.sample;
 package com.company.sample;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import com.company.BL.Board;
+import com.company.UI.terminalPrinting;
+import java.util.Scanner;
+import java.lang.Thread;
+
 import com.company.BL.factory;
 import com.company.UI.Button_extended;
+import com.company.BL.Board;
+import com.company.Database.DB_DAL;
+import com.mysql.cj.x.protobuf.MysqlxCrud;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
+import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Slider;
+import javafx.scene.control.ScrollBar;
+import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontPosture;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.stage.Window;
+
+import javax.swing.*;
+import java.awt.*;
+import java.sql.SQLException;
 
 //import static jdk.vm.ci.sparc.SPARC.g1;
 
@@ -37,15 +61,25 @@ public class Main extends Application {
         Board obj=new Board();
         int row = 20;
         int col = 73;
-        Button bt1 = new Button("Start");
-        Button bt2 = new Button("Stop");
-        Button bt3 = new Button("Next");
-        Button bt4 = new Button("Save");
-        Button bt5 = new Button("Reset");
-        Button bt6 = new Button("View Save State");
-        Button bt7 = new Button("Load");
-        Button zoomIN = new Button("ZOOM-IN +");
-        Button zoomOUT = new Button("ZOOM-OUT -");
+        Button bt1 = new Button("  Start  ");
+        Button bt2 = new Button("  Stop  ");
+        Button bt3 = new Button("  Next  ");
+        Button bt4 = new Button(" Save ");
+        Button bt5 = new Button(" Reset ");
+        Button bt6 = new Button("View State");
+        Button bt7 = new Button("  Load  ");
+        Button zoomIN = new Button("ZOOM +");
+        Button zoomOUT = new Button("ZOOM -");
+        bt1.setMinWidth(30);
+        bt2.setMinWidth(30);
+        bt3.setMinWidth(30);
+        bt4.setMinWidth(30);
+        bt5.setMinWidth(30);
+        bt6.setMinWidth(30);
+        bt7.setMinWidth(50);
+        zoomIN.setMinWidth(30);
+        zoomOUT.setMinWidth(30);
+
 
         ///// set ID to control buttons///
         bt1.setId("start");
@@ -101,6 +135,8 @@ public class Main extends Application {
         finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
         finalGrid.add(b1, 0, 2);
+        finalGrid.setHgap(5);
+        finalGrid.setVgap(8);
         //finalGrid.setAlignment(Pos.CENTER);
         /////////////////////// Scene //////////////////////
         Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(),finalGrid.getMaxWidth(), Color.DARKGREY);
@@ -161,7 +197,6 @@ public class Main extends Application {
             @Override
             public void handle(ActionEvent actionEvent) {
 
-                obj.set_StateRun(true);
                 System.out.println("start");
             }
         });
@@ -172,7 +207,6 @@ public class Main extends Application {
         bt2.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                obj.set_StateRun(false);
                 System.out.println("stop");
             }
         });
@@ -203,7 +237,6 @@ public class Main extends Application {
         bt5.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent actionEvent) {
-                obj.fillBoard();
                 System.out.println("reset");
             }
         });
@@ -269,21 +302,21 @@ public class Main extends Application {
     public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
     {
         ////////////// Button addition ////////////////////
-        b1.add(bt1, 0, 0, 3, 1);
-        b1.add(bt2, 10, 0, 3, 1);
-        b1.add(bt3, 20, 0, 3, 1);
-        b1.add(bt4, 30, 0, 3, 1);
-        b1.add(bt5, 40, 0, 3, 1);
-        b1.add(bt6, 50, 0, 3, 1);
-        b1.add(bt7, 60, 0, 3, 1);
-        b1.add(zoomIN, 70, 0, 3, 1);
-        b1.add(zoomOUT, 80, 0, 3, 1);
-        b1.setHgap(10);
+        b1.add(bt1, 10, 1, 3, 5);
+        b1.add(bt2, 15, 1, 3, 5);
+        b1.add(bt3, 20, 1, 3, 5);
+        b1.add(bt4, 25, 1, 3, 5);
+        b1.add(bt5, 30, 1, 3, 5);
+        b1.add(bt6, 35, 1, 3, 5);
+        b1.add(bt7, 40, 1, 3, 5);
+        b1.add(zoomIN, 45, 1, 3, 5);
+        b1.add(zoomOUT, 50, 1, 3, 4);
+        b1.setHgap(8);
+        b1.setVgap(3);
         b1.setId("Controls");
     }
 }
-
-//////////////////////////
+///////////////////////////////////////////
 /*
 import com.company.BL.Board;
 import com.company.Database.DB_DAL;
