@@ -1,6 +1,10 @@
 //package com.company.sample;
 package com.company.sample;
-
+import java.lang.Object;
+import java.util.EventObject;
+import javafx.event.Event;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
 import com.company.BL.Board;
 import com.company.BL.factory;
 import com.company.UI.Button_extended;
@@ -115,6 +119,17 @@ public class Main extends Application {
 
     }
 
+    public  void drag_event(Button button, GridPane g1)
+    {
+        button.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent)
+            {
+                g1.setPadding(new Insets(mouseEvent.getSceneY(), 0, 0, mouseEvent.getSceneX()));
+            }
+        });
+    }
+
     ///////////////// Grid cell function //////////////
     public void GridCells(int row, int col, GridPane g1) {
 
@@ -137,12 +152,7 @@ public class Main extends Application {
                 });
 
                 //grid dragging
-                button.setOnMouseDragged(new EventHandler<MouseEvent>() {
-                    @Override
-                    public void handle(MouseEvent mouseEvent) {
-                        g1.setPadding(new Insets(mouseEvent.getSceneY(), 0, 0, mouseEvent.getSceneX()));
-                    }
-                });
+                drag_event(button, g1);
 
                 //button.setStyle("-fx-background-color: grey");
                 g1.add(button, j, i, 1, 1);
@@ -263,7 +273,6 @@ public class Main extends Application {
                 }
             }
         });
-
     }
 
     public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
