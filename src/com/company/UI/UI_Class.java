@@ -1,4 +1,4 @@
-package com.company.UI;
+/*package com.company.UI;
 import java.lang.Object;
 import java.util.EventObject;
 import javafx.event.Event;
@@ -41,6 +41,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+
     public class UI_Class extends Application {
 
 //    @Override
@@ -312,3 +313,5 @@ import java.sql.SQLException;
             b1.setId("Controls");
         }
 };
+
+ */
