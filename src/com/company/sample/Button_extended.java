@@ -5,10 +5,10 @@ import javafx.beans.property.SimpleObjectProperty;
 import javafx.scene.control.Button;
 import java.awt.*;
 import java.util.Collection;
-
 public class Button_extended extends Button {
     int row ;
     int col;
+
     public Button_extended(){
         super();
     }
