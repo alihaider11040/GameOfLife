@@ -1,6 +1,6 @@
 package com.company.UI;
 import com.company.BL.Board;
-import com.company.sample.Main;
+import com.company.UI.UI_Class;
 public class terminalPrinting {
 
 public terminalPrinting()
