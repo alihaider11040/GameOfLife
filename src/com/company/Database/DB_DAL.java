@@ -24,7 +24,7 @@ public class DB_DAL implements DB_interface
                 for (int j = 0; j < obj.getTotalCols(); j++)
                 {
                     //CALL SAVED_STATE_VALUES (1,30,30,15,15,1);
-                    boolean is_alive = obj.gameBoard[i][j].isAliveStatus();
+                    boolean is_alive = obj.getGameBoard()[i][j].isAliveStatus();
                     query = "call SAVED_STATE_VALUES(" + Game_ID + ","  + i + "," + j + "," + is_alive + ");";
                     one.executeQuery(query);
                 }
@@ -41,10 +41,11 @@ public class DB_DAL implements DB_interface
     {
 
         Board new_obj= load_game_details(Grid_ID);
-        Board obj= new Board(new_obj.rows, new_obj.cols);
-        obj.zoom=new_obj.zoom;
-        obj.speed=new_obj.speed;
-        obj.setBoard_ID(new_obj.Board_ID);
+        Board obj= new Board(new_obj.getTotalRows(), new_obj.getTotalCols());
+        obj.setZoom_1(new_obj.getZoom_1());
+        obj.setSpeed(new_obj.getSpeed());
+        obj.setBoard_ID(new_obj.getBoard_ID());
+        obj.setBoard_ID(new_obj.getBoard_ID());
         Connection con = DriverManager.getConnection(DB_url,USER_NAME,Pass);
         String load_query= "Select X_COOR, Y_COOR from SAVED_STATE WHERE Game_ID = ?" ;
         PreparedStatement preparedStatement = con.prepareStatement(load_query);
@@ -52,7 +53,7 @@ public class DB_DAL implements DB_interface
         ResultSet load_query_result = preparedStatement.executeQuery();
         while(load_query_result.next())
         {
-            obj.gameBoard[load_query_result.getInt("X_COOR")][load_query_result.getInt("Y_COOR")].updateStatus(true);
+            obj.getGameBoard()[load_query_result.getInt("X_COOR")][load_query_result.getInt("Y_COOR")].updateStatus(true);
         }
         return obj;
     }
@@ -73,7 +74,7 @@ public class DB_DAL implements DB_interface
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
             Statement one = connection.createStatement();
             String query = null;
-            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + Game_ID + "," + obj.getSpeed() + "," +obj.zoom + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
+            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + Game_ID + "," + obj.getSpeed() + "," +obj.getZoom_1() + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
             one.executeQuery(game_details_query);
             connection.close();
         }
@@ -102,5 +103,15 @@ public class DB_DAL implements DB_interface
         obj.setZoom(zoom);
         obj.setBoard_ID(G_ID);
         return obj;
+    }
+
+    @Override
+    public Board load_game_details(int Game_ID, int size) {
+        return null;
+    }
+
+    @Override
+    public Board load_game_details(int Game_ID, int r, int c) {
+        return null;
     }
 }

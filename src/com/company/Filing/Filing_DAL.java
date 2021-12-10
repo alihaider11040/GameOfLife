@@ -4,11 +4,7 @@ import  com.company.BL.Board;
 import com.company.BL.cell;
 
 
-import java.awt.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -22,9 +18,9 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
 
                     write.write(Integer.toString(i));
@@ -42,6 +38,7 @@ public class Filing_DAL implements DB_interface
                     write.write("\n");
                     // end line
                 }
+
             }
             write.close();
         } catch (IOException e)
@@ -62,7 +59,7 @@ public class Filing_DAL implements DB_interface
 
             while (reader.hasNextLine())
             {
-                object.getCell(object.rows = reader.nextInt(), object.cols = reader.nextInt());
+                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
                 if (reader.nextInt() == 1)
                 {
                     statuss = true;
@@ -93,9 +90,9 @@ public class Filing_DAL implements DB_interface
             Board obj = new Board();
             cell[][] board = obj.getGameBoard();
 
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
                         write1.write("-");
                 }
@@ -115,9 +112,9 @@ public class Filing_DAL implements DB_interface
         {
             FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.rows; i++)
+            for (int i = 0; i < obj.getTotalRows(); i++)
             {
-                for (int j = 0; j < obj.cols; j++)
+                for (int j = 0; j < obj.getTotalCols(); j++)
                 {
                     if(board[i][j].isAliveStatus())
                     {
@@ -139,45 +136,103 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
-    @Override
-    public Board load_game_details(int Game_ID)
-    {
-        System.out.println(1);
-        Board obj1 = new Board(5,5);
-        try
-        {
-            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + ".txt"));
-            boolean stat = false;
-            int val = 0;
 
-            while (reader1.hasNextLine())
-            {
-                for (int i = 0; i < obj1.getTotalRows(); i++)
-                {
-                    for (int j = 0; j < obj1.getTotalCols(); j++)
-                    {
-                        val = reader1.nextInt();
-                        if (val == 0)
-                        {
-                            stat = false;
+    @Override
+    public Board load_game_details(int Game_ID) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public Board load_game_details(int Game_ID, int size) {
+        return null;
+    }
+
+
+    @Override
+    public Board load_game_details(int Game_ID, int r, int c) throws FileNotFoundException {
+       // System.out.println(2);
+        Board b1 = new Board(r, c);
+        //int[][] dice = new int[r][c];
+        //File myObj = new File(Integer.toString(Game_ID)+".txt");
+        //Scanner myReader = null;
+        //try {
+          //  myReader = new Scanner(myObj);
+        //} catch (FileNotFoundException e) {
+          //  e.printStackTrace();
+        //}
+        //for (int i = 0; i < r; i++) {
+          //  for (int j = 0; j < c; j++) {
+            //    System.out.println(1);
+              //  dice[i][j] = myReader.nextInt();
+                //if (dice[i][j] == 0) {
+                  //  b1.getGameBoard()[i][j].updateStatus(false);
+                    //int aliveNeighbourCount = 0;
+                    //for(int m= i-1;m<=i+1;m++) {
+                      //  for (int n = j - 1; n <= j + 1; n++) {
+                        //    if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())) {
+                          //      if (b1.getGameBoard()[m][n].isAliveStatus() == true) {
+                            //        aliveNeighbourCount++;
+                              //  }
+                            //}
+                        //}
+
+                    //}
+                    //if(aliveNeighbourCount ==2 || aliveNeighbourCount == 3)
+                    //{
+                      //  b1.getGameBoard()[i][j].updateStatus(true);
+                    //}
+                    //}
+                   // else {
+                    //b1.getGameBoard()[i][j].updateStatus(true);
+                    //int aliveNeigbourCount = 0;
+                    //for (int m = -1; m < 2; m++) {
+                     //   for (int n = 0; n < 2; n++) {
+                       //     if (dice[i + m][j + n] == 1) {
+                         //       aliveNeigbourCount++;
+                           // }
+                        //}
+                   // }
+                    //if (aliveNeigbourCount < 2 || aliveNeigbourCount > 3) {
+                      //  b1.getGameBoard()[i][j].updateStatus(false);
+                   // }
+               // }
+                //myReader.close();
+        //    }
+       // }
+  // new implementation//
+
+        Scanner input = new Scanner(new File(Integer.toString(Game_ID)+".txt"));
+
+        while (input.hasNextInt()) {
+
+            // This should be here to get size of array before getting each array
+
+
+            for (int i = 0; i < r; i++) {
+                for (int j = 0; j < c; j++) {
+
+                    try{
+                        if( input.nextInt()==0){
+                         b1.getCell(i,j).setAliveStatus(false);
+                        }else{
+                            b1.getCell(i,j).setAliveStatus(true);
                         }
-                        else
-                        {
-                            stat = true;
-                        }
-                        obj1.updateStatus(stat);
+
+                    }
+                    catch (java.util.NoSuchElementException e) {
+                         e.printStackTrace();
                     }
                 }
             }
-            reader1.close();
 
-            return obj1;
-        } catch (FileNotFoundException e)
-        {
-            System.out.print("File not FOUND");
-            e.printStackTrace();
         }
-        System.out.println(1);
-        return obj1;
+
+
+
+
+
+
+        b1.printBoard();
+        return b1;
     }
 }
