@@ -4,11 +4,7 @@ import  com.company.BL.Board;
 import com.company.BL.cell;
 
 
-import java.awt.*;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.sql.SQLException;
 import java.util.Scanner;
 
@@ -42,6 +38,7 @@ public class Filing_DAL implements DB_interface
                     write.write("\n");
                     // end line
                 }
+
             }
             write.close();
         } catch (IOException e)
@@ -139,45 +136,71 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
+
     @Override
-    public Board load_game_details(int Game_ID)
-    {
-        System.out.println(1);
-        Board obj1 = new Board(5,5);
-        try
-        {
-            Scanner reader1 = new Scanner(new FileReader(Integer.toString(Game_ID) + ".txt"));
-            boolean stat = false;
-            int val = 0;
+    public Board load_game_details(int Game_ID) throws SQLException {
+        return null;
+    }
 
-            while (reader1.hasNextLine())
-            {
-                for (int i = 0; i < obj1.getTotalRows(); i++)
-                {
-                    for (int j = 0; j < obj1.getTotalCols(); j++)
-                    {
-                        val = reader1.nextInt();
-                        if (val == 0)
-                        {
-                            stat = false;
-                        }
-                        else
-                        {
-                            stat = true;
-                        }
-                        obj1.updateStatus(stat);
-                    }
-                }
-            }
-            reader1.close();
+    @Override
+    public Board load_game_details(int Game_ID, int size) {
+        return null;
+    }
 
-            return obj1;
-        } catch (FileNotFoundException e)
-        {
-            System.out.print("File not FOUND");
+
+    @Override
+    public Board load_game_details(int Game_ID, int r, int c) {
+        System.out.println(2);
+        Board b1 = new Board(r, c);
+        int[][] dice = new int[r][c];
+        File myObj = new File(Integer.toString(Game_ID)+".txt");
+        Scanner myReader = null;
+        try {
+            myReader = new Scanner(myObj);
+        } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        System.out.println(1);
-        return obj1;
+        for (int i = 0; i < r; i++) {
+            for (int j = 0; j < c; j++) {
+                System.out.println(1);
+                dice[i][j] = myReader.nextInt();
+                if (dice[i][j] == 0) {
+                    b1.getGameBoard()[i][j].updateStatus(false);
+                    int aliveNeighbourCount = 0;
+                    for(int m= i-1;m<=i+1;m++) {
+                        for (int n = j - 1; n <= j + 1; n++) {
+                            if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())) {
+                                if (b1.getGameBoard()[m][n].isAliveStatus() == true) {
+                                    aliveNeighbourCount++;
+                                }
+                            }
+                        }
+
+                    }
+                    if(aliveNeighbourCount ==2 || aliveNeighbourCount == 3)
+                    {
+                        b1.getGameBoard()[i][j].updateStatus(true);
+                    }
+                    }
+                    else {
+                    b1.getGameBoard()[i][j].updateStatus(true);
+                    int aliveNeigbourCount = 0;
+                    for (int m = -1; m < 2; m++) {
+                        for (int n = 0; n < 2; n++) {
+                            if (dice[i + m][j + n] == 1) {
+                                aliveNeigbourCount++;
+                            }
+                        }
+                    }
+                    if (aliveNeigbourCount < 2 || aliveNeigbourCount > 3) {
+                        b1.getGameBoard()[i][j].updateStatus(false);
+                    }
+                }
+                myReader.close();
+            }
+        }
+
+        b1.printBoard();
+        return b1;
     }
 }

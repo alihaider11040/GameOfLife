@@ -50,9 +50,9 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-               if((i+j+23)%2==0)
-               {gameBoard[i][j].updateStatus(false);}
-               else {gameBoard[i][j].updateStatus(false);}
+                if((i==2 || i==3) && (j ==2 || j==3|| j== 1))
+                {gameBoard[i][j].updateStatus(true);}
+                else {gameBoard[i][j].updateStatus(false);}
             }
         }
     }
