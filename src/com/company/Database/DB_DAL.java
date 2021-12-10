@@ -103,4 +103,14 @@ public class DB_DAL implements DB_interface
         obj.setBoard_ID(G_ID);
         return obj;
     }
+
+    @Override
+    public Board load_game_details(int Game_ID, int size) {
+        return null;
+    }
+
+    @Override
+    public Board load_game_details(int Game_ID, int r, int c) {
+        return null;
+    }
 }

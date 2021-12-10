@@ -4,14 +4,14 @@ public class Board {
     // here we will add cell class
 
     public boolean dataBase_Flag = true;
-    public int rows;
-    public int cols;
-    public cell[][] gameBoard;
-    public boolean stateRun;
-    public int speed;
-    public int zoom;
-    public int Board_ID;
-    public boolean alive;
+    private int rows;
+    private int cols;
+    private cell[][] gameBoard;
+    private boolean stateRun;
+    private int speed;
+    private int Board_ID;
+    private boolean alive;
+    private int zoom;
 
 
 
@@ -88,9 +88,9 @@ public class Board {
     {
         return speed;
     }
-    public int zoom()
+    public int zoom_1()
     {
-        return zoom;
+       return zoom;
     }
     public void setRows(int r)
     {
@@ -106,15 +106,13 @@ public class Board {
     }
     public void setZoom(int z)
     {
-        zoom=z;
+       zoom = z;
     }
 
-    //public int getBoard_ID(int i ,int j){
-        
-    //}
-  //  {
-//        return Board_ID();
-    //}
+    public int getBoard_ID(int i ,int j)
+    {
+        return Board_ID;
+    }
 public int getCount(){return 5;}
     public void setBoard_ID(int board_ID)
     {
