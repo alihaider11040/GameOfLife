@@ -51,7 +51,7 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-               if((i+j+23)%2==0)
+               if((i==2 || i==3) && (j ==2 || j==3))
                {gameBoard[i][j].updateStatus(false);}
                else {gameBoard[i][j].updateStatus(false);}
             }
