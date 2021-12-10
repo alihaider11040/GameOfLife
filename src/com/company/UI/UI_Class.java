@@ -1,31 +1,6 @@
 package com.company.UI;
-import java.lang.Object;
-import java.util.EventObject;
-import javafx.event.Event;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
-import com.company.BL.Board;
-import com.company.BL.factory;
-import com.company.UI.Button_extended;
-import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
-
-//import static jdk.vm.ci.sparc.SPARC.g1;
 
 import com.company.BL.Board;
-import com.company.BL.factory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -41,7 +16,10 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-    public class UI_Class implements Display_interface {
+
+//import static jdk.vm.ci.sparc.SPARC.g1;
+
+public class UI_Class implements Display_interface {
 
 //    @Override
 //    public void SaveGrid(Board obj) {
