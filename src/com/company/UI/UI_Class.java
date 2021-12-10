@@ -68,8 +68,8 @@ import java.sql.SQLException;
 //        return null;
 //    }
 
-        factory fact = new factory();
-        com.company.BL.Board gameBoard = fact.getBoard();
+        FactoryUI fact = new FactoryUI();
+      //  com.company.BL.Board gameBoard = fact.getBoard();
         //com.company.BL.Board gameBoard.fillBoard();
         int i = 0, j = 0;
         int zizo;
@@ -340,9 +340,11 @@ import java.sql.SQLException;
             b1.setId("Controls");
         }
 
-        @Override
-        public void SaveGrid(Board obj) {
 
+
+        @Override
+        public boolean SaveGrid(boolean saveClicked) {
+            return false;
         }
 
         @Override
@@ -364,13 +366,4 @@ import java.sql.SQLException;
 
         }
 
-        @Override
-        public void Save_game_details(int Game_ID, Board obj) {
-
-        }
-
-        @Override
-        public Board load_game_details(int Game_ID) throws SQLException {
-            return null;
-        }
     };
