@@ -1,12 +1,6 @@
 package com.company.UI;
-import java.lang.Object;
-import java.util.EventObject;
-import javafx.event.Event;
-import javafx.scene.input.InputEvent;
-import javafx.scene.input.MouseEvent;
 import com.company.BL.Board;
 import com.company.BL.factory;
-import com.company.UI.Button_extended;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -23,50 +17,12 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 //import static jdk.vm.ci.sparc.SPARC.g1;
+    public class UI_Class implements Display_interface {
+    {
 
-import com.company.BL.Board;
-import com.company.BL.factory;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-import javafx.geometry.Insets;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.stage.Stage;
+        UI_Class(){
 
-import java.sql.SQLException;
-    public class UI_Class extends Application {
-
-//    @Override
-//    public void SaveGrid(Board obj) {
-//
-//    }
-//
-//    @Override
-//    public Board LoadGrid(int Grid_ID) throws SQLException {
-//        return null;
-//    }
-//
-//    @Override
-//    public void delete_saved_state(int Grid_ID) throws SQLException {
-//
-//    }
-//
-//    @Override
-//    public void Save_game_details(int Game_ID, Board obj) {
-//
-//    }
-//
-//    @Override
-//    public Board load_game_details(int Game_ID) throws SQLException {
-//        return null;
-//    }
+        }
 
         factory fact = new factory();
         com.company.BL.Board gameBoard = fact.getBoard();
@@ -118,6 +74,11 @@ import java.sql.SQLException;
             finalGrid.getRowConstraints().addAll(labell, boardd, buttonss);
             g1.setId("grid");
             ///////////////////////// Event handler //////////////////
+            public void print(Board obj)
+            {
+                start_event(bt1,obj);
+
+            }
             start_event(bt1, obj);
             stop_event(bt2, obj);
             next_event(bt3, obj);

@@ -1,7 +1,10 @@
 package com.company.UI;
 import com.company.BL.Board;
 import com.company.UI.UI_Class;
-public class terminalPrinting {
+
+import java.sql.SQLException;
+
+public class terminalPrinting implements Display_interface {
 
 public terminalPrinting()
 {
@@ -9,15 +12,21 @@ public terminalPrinting()
 }
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-/*public void fillarr(int size , Board[][] arr)
-{
-    for(int i =0;i<size;i++)
-    {
-        for(int j=0;j<size;j++)
-        {arr[i][j]= (i+j + 21)%2;}
+
+    @Override
+    public boolean SaveGrid(boolean saveClicked) {
+        return false;
     }
-}*/
- public void printTerminal(int size,Board arr)
+
+    /*public void fillarr(int size , Board[][] arr)
+    {
+        for(int i =0;i<size;i++)
+        {
+            for(int j=0;j<size;j++)
+            {arr[i][j]= (i+j + 21)%2;}
+        }
+    }*/
+ public void print(Board arr)
     {
         for(int i =0;i<size;i++)
         {
@@ -29,6 +38,16 @@ public terminalPrinting()
             }
             System.out.println();
         }
+    }
+
+    @Override
+    public Board LoadGrid(int Grid_ID) throws SQLException {
+        return null;
+    }
+
+    @Override
+    public void delete_saved_state(int Grid_ID) throws SQLException {
+
     }
 }
 /*package com.company.sample;

@@ -9,7 +9,6 @@ public class Board {
     public cell[][] gameBoard;
     public boolean stateRun;
     public int speed;
-    public int zoom;
     public int Board_ID;
     public boolean alive;
 
@@ -88,10 +87,10 @@ public class Board {
     {
         return speed;
     }
-    public int zoom()
-    {
-        return zoom;
-    }
+    //public int zoom()
+    //{
+      //  return zoom;
+    //}
     public void setRows(int r)
     {
         rows=r;
@@ -104,10 +103,10 @@ public class Board {
     {
         speed=s;
     }
-    public void setZoom(int z)
-    {
-        zoom=z;
-    }
+  //  public void setZoom(int z)
+    //{
+      //  zoom=z;
+    //}
 
     //public int getBoard_ID(int i ,int j){
         
