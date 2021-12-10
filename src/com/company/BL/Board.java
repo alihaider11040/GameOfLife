@@ -11,6 +11,7 @@ public class Board {
     private int speed;
     private int Board_ID;
     private boolean alive;
+    private int zoom;
 
 
 
@@ -87,7 +88,7 @@ public class Board {
     {
         return speed;
     }
-    public int zoom()
+    public int zoom_1()
     {
        return zoom;
     }
@@ -105,7 +106,7 @@ public class Board {
     }
     public void setZoom(int z)
     {
-       zoom=z;
+       zoom = z;
     }
 
     public int getBoard_ID(int i ,int j)
@@ -139,5 +140,4 @@ public int getCount(){return 5;}
             }
         }
     }
-    public void
 }
