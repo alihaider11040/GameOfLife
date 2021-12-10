@@ -10,51 +10,8 @@ import java.util.Scanner;
 
 public class Filing_DAL implements DB_interface
 {
-    @Override
-    public void SaveGrid(int Game_ID, Board obj)
-    {
-        System.out.println("1");
-        try
-        {
-            FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
-            cell[][] board = obj.getGameBoard();
-            for (int i = 0; i < obj.getTotalRows(); i++)
-            {
-                for (int j = 0; j < obj.getTotalCols(); j++)
-                {
 
-                    write.write(Integer.toString(i));
-                    write.write(" ");
-                    write.write(Integer.toString(j));
-                    write.write(" ");
-                    if(board[i][j].isAliveStatus())
-                    {
-                        write.write('1');
-                    }
-                    else if(!board[i][j].isAliveStatus())
-                    {
-                        write.write('0');
-                    }
-                    write.write("\n");
-                    // end line
-                }
 
-            }
-            write.close();
-        } catch (IOException e)
-        {
-            System.out.println("An error occurred.");
-            e.printStackTrace();
-        }
-    }
-
-    @Override
-    public Board LoadGrid(int Grid_ID) throws SQLException
-    {
-        Board obj = new Board();
-
-        return obj;
-    }
 
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException
@@ -85,15 +42,6 @@ public class Filing_DAL implements DB_interface
     {
         try
         {
-            Scanner scanner = new Scanner(new File("numSave.txt"));
-            int x= scanner.nextInt();
-            x=x+1;
-            scanner.close();
-
-            Writer wr = new FileWriter("numSave.txt");
-            wr.write(x);
-            wr.close();
-
             FileWriter write1 = new FileWriter(Integer.toString(Game_ID) + ".txt");
             cell[][] board = obj.getGameBoard();
             for (int i = 0; i < obj.getTotalRows(); i++)

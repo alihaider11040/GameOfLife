@@ -51,7 +51,7 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-               if((i+j+23)%2==0)
+               if((i==2 || i==3) && (j ==2 || j==3))
                {gameBoard[i][j].updateStatus(false);}
                else {gameBoard[i][j].updateStatus(false);}
             }
@@ -92,11 +92,11 @@ public class Board {
     {
        zoom = z;
     }
-    public int getZoom_1()
-    {
-        return  zoom;
-    }
 
+    public int get_zoom()
+    {
+       return zoom;
+    }
     public void setRows(int r)
     {
         rows=r;
@@ -114,7 +114,7 @@ public class Board {
        zoom = z;
     }
 
-    public int getBoard_ID()
+    public int getBoard_ID(int i ,int j)
     {
         return Board_ID;
     }
