@@ -1,10 +1,7 @@
 package com.company.UI;
 import com.company.BL.Board;
-import com.company.UI.UI_Class;
-
-import java.sql.SQLException;
-
-public class terminalPrinting implements Display_interface {
+//import com.company.UI.UI_Class;
+public class terminalPrinting {
 
 public terminalPrinting()
 {
@@ -12,30 +9,19 @@ public terminalPrinting()
 }
     public static final String ANSI_RED = "\u001B[31m";
     public static final String ANSI_RESET = "\u001B[0m";
-
-    @Override
-    public boolean SaveGrid(boolean saveClicked) {
-        return false;
+/*public void fillarr(int size , Board[][] arr)
+{
+    for(int i =0;i<size;i++)
+    {
+        for(int j=0;j<size;j++)
+        {arr[i][j]= (i+j + 21)%2;}
     }
-
-    @Override
-    public void print(Board obj) {
-
-    }
-
-    /*public void fillarr(int size , Board[][] arr)
+}*/
+ public void printTerminal(int size,Board arr)
     {
         for(int i =0;i<size;i++)
         {
             for(int j=0;j<size;j++)
-            {arr[i][j]= (i+j + 21)%2;}
-        }
-    }*/
- public void print(Board arr,int r, int c)
-    {
-        for(int i =0;i<r;i++)
-        {
-            for(int j=0;j<c;j++)
             {
                 if(arr.getGameBoard()[i][j].isAliveStatus()== true)
                 System.out.print(" "+ 0 + " ");
@@ -43,16 +29,6 @@ public terminalPrinting()
             }
             System.out.println();
         }
-    }
-
-    @Override
-    public Board LoadGrid(int Grid_ID) throws SQLException {
-        return null;
-    }
-
-    @Override
-    public void delete_saved_state(int Grid_ID) throws SQLException {
-
     }
 }
 /*package com.company.sample;

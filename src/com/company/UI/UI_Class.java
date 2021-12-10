@@ -1,6 +1,31 @@
-package com.company.UI;
+/*package com.company.UI;
+import java.lang.Object;
+import java.util.EventObject;
+import javafx.event.Event;
+import javafx.scene.input.InputEvent;
+import javafx.scene.input.MouseEvent;
+import com.company.BL.Board;
+import com.company.BL.factory;
+import com.company.UI.Button_extended;
+import javafx.application.Application;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.RowConstraints;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.stage.Stage;
+
+//import static jdk.vm.ci.sparc.SPARC.g1;
 
 import com.company.BL.Board;
+import com.company.BL.factory;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Insets;
@@ -17,9 +42,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-//import static jdk.vm.ci.sparc.SPARC.g1;
-
-public class UI_Class implements Display_interface {
+    public class UI_Class extends Application {
 
 //    @Override
 //    public void SaveGrid(Board obj) {
@@ -46,40 +69,28 @@ public class UI_Class implements Display_interface {
 //        return null;
 //    }
 
-        FactoryUI fact = new FactoryUI();
-      //  com.company.BL.Board gameBoard = fact.getBoard();
+        factory fact = new factory();
+        com.company.BL.Board gameBoard = fact.getBoard();
         //com.company.BL.Board gameBoard.fillBoard();
         int i = 0, j = 0;
         int zizo;
         Stage window;
 
-        public void start(Stage stage, Board obj) throws Exception {
+        @Override
+        public void start(Stage stage) throws Exception {
             window = stage;
+            Board obj = new Board();
             int row = 20;
             int col = 73;
-
-            Button bt1 = new Button("  Start  ");
-            Button bt2 = new Button("  Stop  ");
-            Button bt3 = new Button("  Next  ");
-            Button bt4 = new Button(" Save ");
-            Button bt5 = new Button(" Reset ");
-            Button bt6 = new Button("View State");
-            Button bt7 = new Button("  Load  ");
-            Button bt8=new Button(" Speed + ");
-            Button bt9=new Button(" Speed - ");
-            Button zoomIN = new Button(" ZOOM + ");
-            Button zoomOUT = new Button(" ZOOM - ");
-            bt1.setMinWidth(30);
-            bt2.setMinWidth(30);
-            bt3.setMinWidth(30);
-            bt4.setMinWidth(30);
-            bt5.setMinWidth(30);
-            bt6.setMinWidth(30);
-            bt7.setMinWidth(50);
-            bt8.setMinWidth(30);
-            bt9.setMinWidth(30);
-            zoomIN.setMinWidth(30);
-            zoomOUT.setMinWidth(30);
+            Button bt1 = new Button("Start");
+            Button bt2 = new Button("Stop");
+            Button bt3 = new Button("Next");
+            Button bt4 = new Button("Save");
+            Button bt5 = new Button("Reset");
+            Button bt6 = new Button("View Save State");
+            Button bt7 = new Button("Load");
+            Button zoomIN = new Button("ZOOM-IN +");
+            Button zoomOUT = new Button("ZOOM-OUT -");
 
             ///// set ID to control buttons///
             bt1.setId("start");
@@ -108,7 +119,7 @@ public class UI_Class implements Display_interface {
             finalGrid.getRowConstraints().addAll(labell, boardd, buttonss);
             g1.setId("grid");
             ///////////////////////// Event handler //////////////////
-            start_event(bt1,obj);
+            start_event(bt1, obj);
             stop_event(bt2, obj);
             next_event(bt3, obj);
             save_event(bt4, obj);
@@ -122,7 +133,7 @@ public class UI_Class implements Display_interface {
             add_control_on_b1_grid(b1, bt1, bt2, bt3, bt4, bt5, bt6, bt7, zoomIN, zoomOUT);
 
             //////////////// Grid g1 add cells ////////////////
-            GridCells(row, col, g1,obj);
+            GridCells(row, col, g1);
             //////////////////// Final Grid /////////////////////////
             GridPane labelGrid = new GridPane();
             Label label = new Label("Game of Life");
@@ -135,13 +146,6 @@ public class UI_Class implements Display_interface {
             finalGrid.add(labelGrid, 0, 0);
             finalGrid.add(g1, 0, 1);
             finalGrid.add(b1, 0, 2);
-
-            ////////// display/////////
-
-
-
-
-
             //finalGrid.setAlignment(Pos.CENTER);
             /////////////////////// Scene //////////////////////
             Scene scene = new Scene(finalGrid, finalGrid.getMaxWidth(), finalGrid.getMaxWidth(), Color.DARKGREY);
@@ -166,31 +170,24 @@ public class UI_Class implements Display_interface {
         }
 
         ///////////////// Grid cell function //////////////
-        public void GridCells(int row, int col, GridPane g1, Board obj) {
+        public void GridCells(int row, int col, GridPane g1) {
 
             for (i = 0; i < row; i++) {
                 for (j = 0; j < col; j++) {
-
-                       Button_extended button = new Button_extended(i, j);
-                       ///////// set ID to Grid button/
-                       button.getStyleClass().add("empty_button");
-                    if( obj.getStatus(i,j)) {
-                        button.setStyle("-fx-background-color: grey");
-                    }
-                    else
-                    {
-                        button.setOnAction(new EventHandler<ActionEvent>() {
-                           @Override
-                           public void handle(ActionEvent actionEvent) {
-                               // button.setStyle("-fx-background-color: yellow");
-                               button.getStyleClass().add("selected_button");
-                               System.out.println(button.get_Row());
-                               // gameBoard.
-                               System.out.println(button.get_Col());
-                               // obj.updateStatus(true);
-                           }
-                       });
-                   }
+                    Button_extended button = new Button_extended(i, j);
+                    ///////// set ID to Grid button/
+                    button.getStyleClass().add("empty_button");
+                    button.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent actionEvent) {
+                            // button.setStyle("-fx-background-color: yellow");
+                            button.getStyleClass().add("selected_button");
+                            System.out.println(button.get_Row());
+                            // gameBoard.
+                            System.out.println(button.get_Col());
+                            // obj.updateStatus(true);
+                        }
+                    });
 
                     //grid dragging
                     drag_event(button, g1);
@@ -206,9 +203,7 @@ public class UI_Class implements Display_interface {
         }
 
         /////////////// Event functions /////////////////
-        public void start_event(Button bt1, Board obj)
-        {
-
+        public void start_event(Button bt1, Board obj) {
             bt1.setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent actionEvent) {
@@ -317,31 +312,6 @@ public class UI_Class implements Display_interface {
             b1.setHgap(10);
             b1.setId("Controls");
         }
+};
 
-
-
-        @Override
-        public boolean SaveGrid(boolean saveClicked) {
-            return false;
-        }
-
-        @Override
-        public void print(Board obj) throws Exception {
-
-
-            Stage stage = null;
-            start(stage, obj);
-
-        }
-
-        @Override
-        public Board LoadGrid(int Grid_ID) throws SQLException {
-            return null;
-        }
-
-        @Override
-        public void delete_saved_state(int Grid_ID) throws SQLException {
-
-        }
-
-    };
+ */
