@@ -16,5 +16,5 @@ public interface DB_interface
 
     Board load_game_details(int Game_ID, int size);
 
-    Board load_game_details(int Game_ID, int r, int c);
+    Board load_game_details(int Game_ID, int r, int c) throws FileNotFoundException;
 }

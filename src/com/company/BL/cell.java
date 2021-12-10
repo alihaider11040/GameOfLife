@@ -26,6 +26,7 @@ public class cell {
     {
         return colNum;
     }
+    public void setAliveStatus(boolean a){ aliveStatus=a;}
 
     public boolean isAliveStatus() {
         return aliveStatus;
