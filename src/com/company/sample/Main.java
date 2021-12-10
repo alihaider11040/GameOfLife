@@ -302,21 +302,20 @@ public class Main extends Application {
     public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button zoomIN,Button zoomOUT)
     {
         ////////////// Button addition ////////////////////
-        b1.add(bt1, 5, 1, 3, 5);
-        b1.add(bt2, 10, 1, 3, 5);
-        b1.add(bt3, 15, 1, 3, 5);
-        b1.add(bt4, 20, 1, 3, 5);
-        b1.add(bt5, 25, 1, 3, 5);
-        b1.add(bt6, 30, 1, 3, 5);
-        b1.add(bt7, 35, 1, 3, 5);
-        b1.add(zoomIN, 40, 1, 3, 5);
-        b1.add(zoomOUT, 45, 1, 3, 5);
+        b1.add(bt1, 10, 1, 3, 5);
+        b1.add(bt2, 15, 1, 3, 5);
+        b1.add(bt3, 20, 1, 3, 5);
+        b1.add(bt4, 25, 1, 3, 5);
+        b1.add(bt5, 30, 1, 3, 5);
+        b1.add(bt6, 35, 1, 3, 5);
+        b1.add(bt7, 40, 1, 3, 5);
+        b1.add(zoomIN, 45, 1, 3, 5);
+        b1.add(zoomOUT, 50, 1, 3, 4);
         b1.setHgap(8);
         b1.setVgap(3);
         b1.setId("Controls");
     }
 }
-
 //////////////////////////
 /*
 import com.company.BL.Board;
