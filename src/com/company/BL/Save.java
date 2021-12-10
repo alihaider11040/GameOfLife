@@ -96,6 +96,11 @@ public class Save {
             e.printStackTrace();
         }
     }*/
+    public void SaveGrid(int Game_ID,Board obj)
+    {
+        DB_DAL db_obj = new DB_DAL();
+//        db_obj.SaveGrid(Game_ID, obj);
+    }
 //    public void SaveGrid(int Game_ID,Board obj)
 //    {
 //        DB_DAL db_obj = new DB_DAL();
