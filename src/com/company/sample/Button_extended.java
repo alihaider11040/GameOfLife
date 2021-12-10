@@ -1,4 +1,4 @@
-package com.company.UI;
+package com.company.sample;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
