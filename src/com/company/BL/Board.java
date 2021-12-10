@@ -115,7 +115,7 @@ public class Board {
   //  {
 //        return Board_ID();
     //}
-
+public int getCount(){return 5;}
     public void setBoard_ID(int board_ID)
     {
         Board_ID = board_ID;
