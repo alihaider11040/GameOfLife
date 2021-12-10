@@ -3,15 +3,15 @@ package com.company.BL;
 public class Board {
     // here we will add cell class
 
-    public boolean dataBase_Flag = true;
-    private int rows;
-    private int cols;
-    private cell[][] gameBoard;
-    private boolean stateRun;
-    private int speed;
-    private int Board_ID;
-    private boolean alive;
-    private int zoom;
+     boolean dataBase_Flag = true;
+     int rows;
+     int cols;
+     cell[][] gameBoard;
+     boolean stateRun;
+     int speed;
+     int Board_ID;
+     boolean alive;
+     int zoom;
 
 
 
@@ -88,10 +88,15 @@ public class Board {
     {
         return speed;
     }
-    public int zoom_1()
+    public void setZoom_1(int z)
     {
-       return zoom;
+       zoom = z;
     }
+    public int getZoom_1()
+    {
+        return  zoom;
+    }
+
     public void setRows(int r)
     {
         rows=r;
@@ -109,11 +114,14 @@ public class Board {
        zoom = z;
     }
 
-    public int getBoard_ID(int i ,int j)
+    public int getBoard_ID()
     {
         return Board_ID;
     }
-public int getCount(){return 5;}
+    public int getCount()
+   {
+     return 5;
+   }
     public void setBoard_ID(int board_ID)
     {
         Board_ID = board_ID;
