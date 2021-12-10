@@ -47,7 +47,7 @@ import java.sql.SQLException;
 
 
 // main is child of application
-public class Main extends Application {
+public class main_IU extends Application {
     factory fact=new factory();
     com.company.BL.Board gameBoard=  fact.getBoard();
     //com.company.BL.Board gameBoard.fillBoard();
@@ -140,7 +140,7 @@ public class Main extends Application {
         label.setId("Lable");
         labelGrid.add(label, 1, 0, 11, 1);
 
-      //  Label count=new Label(obj.getco)
+        //  Label count=new Label(obj.getco)
 
         finalGrid.add(labelGrid,0,0);
         finalGrid.add(g1, 0, 1);
@@ -173,12 +173,12 @@ public class Main extends Application {
                 button.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent actionEvent) {
-                       // button.setStyle("-fx-background-color: yellow");
+                        // button.setStyle("-fx-background-color: yellow");
                         button.getStyleClass().add("selected_button");
                         System.out.println(button.get_Row());
-                       // gameBoard.
+                        // gameBoard.
                         System.out.println(button.get_Col());
-                       // obj.updateStatus(true);
+                        // obj.updateStatus(true);
                     }
                 });
 
@@ -372,49 +372,49 @@ public class Main {
 
 
 //public class Main {
-  //  public static void main(String args[])
+//  public static void main(String args[])
 //    {
-  //      terminalPrinting t1 = new terminalPrinting();
-  //      Board b1 = new Board(5,5);
-    //    b1.fillBoard();
- //       while(true) {
-   //         t1.printTerminal(5, b1);
-     //       int x;
-    //        int y = 2500;
-      //      System.out.println("Press 1 to save game");
-   //         System.out.println("Press 2 to load saved game");
-    //        System.out.println("press 3 to speed up game");
-    //        System.out.println("press 4 to slow down game");
-    //        System.out.println("press 5 to go next");
-    //        System.out.println("press 0 to end game");
-    //        Scanner s1 = new Scanner(System.in);
-    //        x = s1.nextInt();
-    //        if (x == 1) {
-    //            System.out.println("saving...");
-    //        } else if (x == 2) {
-    //            System.out.println("loading....");
+//      terminalPrinting t1 = new terminalPrinting();
+//      Board b1 = new Board(5,5);
+//    b1.fillBoard();
+//       while(true) {
+//         t1.printTerminal(5, b1);
+//       int x;
+//        int y = 2500;
+//      System.out.println("Press 1 to save game");
+//         System.out.println("Press 2 to load saved game");
+//        System.out.println("press 3 to speed up game");
+//        System.out.println("press 4 to slow down game");
+//        System.out.println("press 5 to go next");
+//        System.out.println("press 0 to end game");
+//        Scanner s1 = new Scanner(System.in);
+//        x = s1.nextInt();
+//        if (x == 1) {
+//            System.out.println("saving...");
+//        } else if (x == 2) {
+//            System.out.println("loading....");
 
 
-     //       } else if (x == 3) {
-      ///          System.out.println("speeding up");
-       //         if(y>=500)
-        //            y = y-500;
-       //     } else if (x == 4) {
-        //        System.out.println("slowing down");
-        //        if(y<=5000)
-        //            y=y+500;
-       //     } else if (x == 5) {
-       //         System.out.println("Next");
-      //      } else if (x == 0) {
-      //          System.out.println("Bye");
-       ///         System.exit(0);
-        //    }
+//       } else if (x == 3) {
+///          System.out.println("speeding up");
+//         if(y>=500)
+//            y = y-500;
+//     } else if (x == 4) {
+//        System.out.println("slowing down");
+//        if(y<=5000)
+//            y=y+500;
+//     } else if (x == 5) {
+//         System.out.println("Next");
+//      } else if (x == 0) {
+//          System.out.println("Bye");
+///         System.exit(0);
+//    }
 
-       //     try {
-       //         Thread.sleep(y);
-      //      } catch (InterruptedException e) {
-      //          e.printStackTrace();
-      //      }
-     //   }
-    //}
+//     try {
+//         Thread.sleep(y);
+//      } catch (InterruptedException e) {
+//          e.printStackTrace();
+//      }
+//   }
+//}
 //}

@@ -169,10 +169,9 @@
 
 
 
-.empty_button
+.unselected_button
 {
-   /* -fx-position-shape: x ;
-    -fx-background-color: black;*/
+    -fx-background-color: grey;
 }
 
 .selected_button
