@@ -114,6 +114,32 @@
     -fx-font-family: "OCR A Extended";
 }
 
+#speed_up
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+}
+
+#speed_down
+{
+    -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
+    -fx-background-color: linear-gradient(#7a5a99,#ed1838) ;
+
+    -fx-text-alignment: center;
+    -fx-text-fill: white;
+    -fx-font-weight:bold;
+    -fx-font-size: 15;
+    -fx-font-family: "OCR A Extended";
+}
+
+
+
 #zoomIN
 {
     -fx-background-color: linear-gradient(#5fc0d4,#ed1838) ;
@@ -143,10 +169,9 @@
 
 
 
-.empty_button
+.unselected_button
 {
-   /* -fx-position-shape: x ;
-    -fx-background-color: black;*/
+    -fx-background-color: grey;
 }
 
 .selected_button

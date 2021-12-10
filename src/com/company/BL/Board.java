@@ -4,14 +4,14 @@ public class Board {
     // here we will add cell class
 
     public boolean dataBase_Flag = true;
-    public int rows;
-    public int cols;
-    public cell[][] gameBoard;
-    public boolean stateRun;
-    public int speed;
-    public int zoom;
-    public int Board_ID;
-    public boolean alive;
+    private int rows;
+    private int cols;
+    private cell[][] gameBoard;
+    private boolean stateRun;
+    private int speed;
+    private int Board_ID;
+    private boolean alive;
+    private int zoom;
 
 
 
@@ -51,9 +51,9 @@ public class Board {
 
         for (int i = 0; i < rows; i++) {
             for (int j = 0; j < cols; j++) {
-                if((i==2 || i==3) && (j ==2 || j==3|| j== 1))
-                {gameBoard[i][j].updateStatus(true);}
-                else {gameBoard[i][j].updateStatus(false);}
+               if((i+j+23)%2==0)
+               {gameBoard[i][j].updateStatus(false);}
+               else {gameBoard[i][j].updateStatus(false);}
             }
         }
     }
@@ -88,10 +88,10 @@ public class Board {
     {
         return speed;
     }
-    //public int zoom()
-    //{
-      //  return zoom;
-    //}
+    public int zoom_1()
+    {
+       return zoom;
+    }
     public void setRows(int r)
     {
         rows=r;
@@ -106,15 +106,13 @@ public class Board {
     }
     public void setZoom(int z)
     {
-        zoom=z;
+       zoom = z;
     }
 
-    //public int getBoard_ID(int i ,int j){
-        
-    //}
-  //  {
-//        return Board_ID();
-    //}
+    public int getBoard_ID(int i ,int j)
+    {
+        return Board_ID;
+    }
 public int getCount(){return 5;}
     public void setBoard_ID(int board_ID)
     {
