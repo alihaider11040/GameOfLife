@@ -39,7 +39,7 @@ public class Main extends Application {
     public void StageShow() {
         Stage stage = new Stage();
         GridPane grid1 = new GridPane();
-        grid1.setStyle("-fx-background-color: lightsteelblue");
+        grid1.setStyle("-fx-background-color: steelblue");
 
         Scene scene1 = new Scene(grid1, Color.LIGHTSTEELBLUE);
         scene1.getStylesheets().add(String.valueOf(getClass().getResource("sample.css")));
@@ -50,26 +50,33 @@ public class Main extends Application {
         stage.getIcons().add(icon);
         stage.setTitle("GAME OF LIFE");
 
-        stage.setWidth(200);
+        stage.setWidth(300);
         stage.setHeight(200);
 
         ChoiceBox<String> dropdown = new ChoiceBox<>();
         dropdown.getItems().addAll("GUI", "CONSOLE");
         dropdown.setValue("GUI");
-        dropdown.setPadding(new Insets(10, 10, 10, 10));
+        dropdown.setStyle("-fx-background-color: linear-gradient(#7a5a99,#ed1838); -fx-font-family: 'OCR A Extended';-fx-font-size: 15");
+        dropdown.setPadding(new Insets(10, 5, 10, 10));
+
+
 
         ChoiceBox<String> dropdown1 = new ChoiceBox<>();
         dropdown1.getItems().addAll("FILING", "SQL");
         dropdown1.setValue("SQL");
+        dropdown1.setStyle("-fx-background-color: linear-gradient(#7a5a99,#ed1838); -fx-font-family: 'OCR A Extended';-fx-font-size: 15");
         dropdown1.setPadding(new Insets(10, 10, 10, 10));
 
         Button submit = new Button("SUBMIT");
+        submit.setStyle("-fx-background-color: linear-gradient(#7a5a99,#ed1838); -fx-font-family: 'OCR A Extended'");
         submit.setPadding(new Insets(15, 15, 15, 15));
 
         grid1.add(dropdown, 0, 0);
         grid1.add(dropdown1, 2, 0);
-        grid1.add(submit, 1, 0);
+        grid1.add(submit, 1, 1);
 
+        grid1.setHgap(10);
+        grid1.setVgap(10);
         submit.setOnAction(e -> {
             Choice1 = dropdown.getValue();
             Choice2 = dropdown.getValue();
@@ -92,15 +99,19 @@ public class Main extends Application {
         Board obj = new Board();
         int row = 20;
         int col = 73;
-        Button bt1 = new Button("Start");
-        Button bt2 = new Button("Stop");
-        Button bt3 = new Button("Next");
-        Button bt4 = new Button("Save");
-        Button bt5 = new Button("Reset");
-        Button bt6 = new Button("View Save State");
-        Button bt7 = new Button("Load");
-        Button zoomIN = new Button("ZOOM-IN +");
-        Button zoomOUT = new Button("ZOOM-OUT -");
+
+        Button bt1 = new Button("  Start  ");
+        Button bt2 = new Button("  Stop  ");
+        Button bt3 = new Button("  Next  ");
+        Button bt4 = new Button(" Save ");
+        Button bt5 = new Button(" Reset ");
+        Button bt6 = new Button("View State");
+        Button bt7 = new Button("  Load  ");
+        Button bt8=new Button(" Speed + ");
+        Button bt9=new Button(" Speed - ");
+        Button zoomIN = new Button(" ZOOM + ");
+        Button zoomOUT = new Button(" ZOOM - ");
+
 
         ///// set ID to control buttons///
         bt1.setId("start");
@@ -110,6 +121,8 @@ public class Main extends Application {
         bt5.setId("reset");
         bt6.setId("view");
         bt7.setId("load");
+        bt8.setId("speed_up");
+        bt9.setId("speed_down");
         zoomIN.setId("zoomIN");
         zoomOUT.setId("zoomOUT");
 
@@ -140,14 +153,13 @@ public class Main extends Application {
         zoom_out_event(zoomOUT, obj, g1);
 
         ////////////  Button to grid b1 /////////////
-        add_control_on_b1_grid(b1, bt1, bt2, bt3, bt4, bt5, bt6, bt7, zoomIN, zoomOUT);
-
+        add_control_on_b1_grid(b1,bt1,bt2,bt3,bt4,bt5,bt6,bt7,bt8,bt9,zoomIN,zoomOUT);
         //////////////// Grid g1 add cells ////////////////
         GridCells(row, col, g1);
         //////////////////// Final Grid /////////////////////////
         GridPane labelGrid = new GridPane();
         Label label = new Label("Game of Life");
-        label.setPadding(new Insets(5, 600, 10, 650));
+        label.setPadding(new Insets(5, 600, 10, 760));
         label.setFont(Font.font(20));
         label.setAlignment(Pos.CENTER);
         label.setId("Lable");
@@ -306,18 +318,43 @@ public class Main extends Application {
         });
     }
 
-    public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2, Button bt3, Button bt4, Button bt5, Button bt6, Button bt7, Button zoomIN, Button zoomOUT) {
+    public void speed_up_event(Button bt8)
+    {
+        bt8.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("speed up");
+            }
+        });
+    }
+
+    public void speed_down_event(Button bt9)
+    {
+        bt9.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                System.out.println("speed down");
+            }
+        });
+    }
+
+
+    public void add_control_on_b1_grid(GridPane b1, Button bt1, Button bt2,Button bt3,Button bt4,Button bt5,Button bt6,Button bt7, Button bt8, Button bt9 ,Button zoomIN,Button zoomOUT)
+    {
         ////////////// Button addition ////////////////////
-        b1.add(bt1, 0, 0, 3, 1);
-        b1.add(bt2, 10, 0, 3, 1);
-        b1.add(bt3, 20, 0, 3, 1);
-        b1.add(bt4, 30, 0, 3, 1);
-        b1.add(bt5, 40, 0, 3, 1);
-        b1.add(bt6, 50, 0, 3, 1);
-        b1.add(bt7, 60, 0, 3, 1);
-        b1.add(zoomIN, 70, 0, 3, 1);
-        b1.add(zoomOUT, 80, 0, 3, 1);
-        b1.setHgap(10);
+        b1.add(bt1, 5, 1, 3, 5);
+        b1.add(bt2, 10, 1, 3, 5);
+        b1.add(bt3, 15, 1, 3, 5);
+        b1.add(bt4, 20, 1, 3, 5);
+        b1.add(bt5, 25, 1, 3, 5);
+        b1.add(bt6, 30, 1, 3, 5);
+        b1.add(bt7, 35, 1, 3, 5);
+        b1.add(bt8, 40, 1, 3, 5);
+        b1.add(bt9, 45, 1, 3, 5);
+        b1.add(zoomIN, 50, 1, 3, 5);
+        b1.add(zoomOUT, 55, 1, 3, 4);
+        b1.setHgap(8);
+        b1.setVgap(3);
         b1.setId("Controls");
     }
 };
