@@ -52,32 +52,32 @@ public class Filing_DAL implements DB_interface
     public Board LoadGrid(int Grid_ID) throws SQLException
     {
         Board object = new Board();
-        try
-        {
-            boolean statuss = false;
-            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
-
-            while (reader.hasNextLine())
-            {
-                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
-                if (reader.nextInt() == 1)
-                {
-                    statuss = true;
-                }
-                else
-                {
-                    statuss = false;
-                }
-                object.updateStatus(statuss);
-            }
-            reader.close();
-
-            return object;
-        } catch (FileNotFoundException e)
-        {
-            System.out.print("File not FOUND");
-            e.printStackTrace();
-        }
+//        try
+//        {
+//            boolean statuss = false;
+//            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
+//
+//            while (reader.hasNextLine())
+//            {
+//                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
+//                if (reader.nextInt() == 1)
+//                {
+//                    statuss = true;
+//                }
+//                else
+//                {
+//                    statuss = false;
+//                }
+//                object.updateStatus(statuss);
+//            }
+//            reader.close();
+//
+//            return object;
+//        } catch (FileNotFoundException e)
+//        {
+//            System.out.print("File not FOUND");
+//            e.printStackTrace();
+//        }
         return object;
     }
 

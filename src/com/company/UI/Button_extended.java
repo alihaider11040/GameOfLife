@@ -1,4 +1,4 @@
-package com.company.UI;
+/*package com.company.UI;
 import javafx.beans.binding.Bindings;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
@@ -21,3 +21,4 @@ public class Button_extended extends Button {
     public  int get_Col(){return col;}
 
 }
+*/
