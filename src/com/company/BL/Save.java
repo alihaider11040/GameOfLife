@@ -51,7 +51,7 @@ public class Save {
 
     }
 
-    public void loadBoard(String filename, int size) {
+  /*  public void loadBoard(String filename, int size) {
         Board b1 = new Board(size, size);
         int[][] dice = new int[size][size];
         try {
@@ -96,7 +96,7 @@ public class Save {
             System.out.println("An error occurred.");
             e.printStackTrace();
         }
-    }
+    }*/
     public void SaveGrid(int Game_ID,Board obj)
     {
         DB_DAL db_obj = new DB_DAL();
@@ -170,7 +170,8 @@ public class Save {
    {
        Filing_DAL obj1 = new Filing_DAL();
        Board b1 = new Board(r,c);
-       b1 = obj1.load_game_details(id);
-        return b1;
+       b1 = obj1.load_game_details(id,r,c);
+       b1.printBoard();
+       return b1;
    }
 }
