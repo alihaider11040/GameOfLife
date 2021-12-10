@@ -23,8 +23,7 @@ import javafx.stage.Stage;
 
 // main is child of application
 public class main_ui extends Application {
-    FactoryUI fact=new FactoryUI();
-    UI_Class UI= (UI_Class) fact.getobject(true);
+
     // com.company.BL.Board gameBoard=  fact.getBoard();
     //com.company.BL.Board gameBoard.fillBoard();
     int i=0,j=0;

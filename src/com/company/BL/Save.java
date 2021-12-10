@@ -96,11 +96,11 @@ public class Save {
             e.printStackTrace();
         }
     }*/
-    public void SaveGrid(int Game_ID,Board obj)
-    {
-        DB_DAL db_obj = new DB_DAL();
-        db_obj.SaveGrid(Game_ID, obj);
-    }
+//    public void SaveGrid(int Game_ID,Board obj)
+//    {
+//        DB_DAL db_obj = new DB_DAL();
+//        db_obj.SaveGrid(Game_ID, obj);
+//    }
     public Board loadFromDb(int Grid_ID) throws SQLException
     {
         DB_DAL obj = new DB_DAL();
@@ -168,7 +168,11 @@ public class Save {
    public Board LoadStateFromFile(int id,int r,int c) throws FileNotFoundException {
        Filing_DAL obj1 = new Filing_DAL();
        Board b1 = new Board(r,c);
-       b1 = obj1.load_game_details(id,r,c);
+       try {
+           b1 = obj1.load_game_details(id,r,c);
+       } catch (FileNotFoundException e) {
+           e.printStackTrace();
+       }
        b1.printBoard();
        return b1;
    }

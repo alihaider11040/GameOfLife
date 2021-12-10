@@ -8,9 +8,7 @@ import java.io.FileNotFoundException;
 
 
 // main is child of application
- class Main_1{
 
-}
 
 //////////////////////////
 /*
