@@ -92,11 +92,11 @@ public class Board {
     {
        zoom = z;
     }
-    public int getZoom_1()
-    {
-        return  zoom;
-    }
 
+    public int get_zoom()
+    {
+       return zoom;
+    }
     public void setRows(int r)
     {
         rows=r;
@@ -114,7 +114,7 @@ public class Board {
        zoom = z;
     }
 
-    public int getBoard_ID()
+    public int getBoard_ID(int i ,int j)
     {
         return Board_ID;
     }
