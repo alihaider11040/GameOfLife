@@ -99,7 +99,8 @@ public class Filing_DAL implements DB_interface
                 // end line
             }
             write1.close();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -136,9 +137,9 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
-
     @Override
-    public Board load_game_details(int Game_ID) throws SQLException {
+    public Board load_game_details(int Game_ID) throws SQLException
+    {
         return null;
     }
 
@@ -155,9 +156,11 @@ public class Filing_DAL implements DB_interface
         //int[][] dice = new int[r][c];
         //File myObj = new File(Integer.toString(Game_ID)+".txt");
         //Scanner myReader = null;
-        //try {
+        //try
+        // {
           //  myReader = new Scanner(myObj);
-        //} catch (FileNotFoundException e) {
+        //} catch (FileNotFoundException e)
+        // {
           //  e.printStackTrace();
         //}
         //for (int i = 0; i < r; i++) {
@@ -169,13 +172,12 @@ public class Filing_DAL implements DB_interface
                     //int aliveNeighbourCount = 0;
                     //for(int m= i-1;m<=i+1;m++) {
                       //  for (int n = j - 1; n <= j + 1; n++) {
-                        //    if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())) {
-                          //      if (b1.getGameBoard()[m][n].isAliveStatus() == true) {
+                        //    if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())){
+                          //      if (b1.getGameBoard()[m][n].isAliveStatus() == true){
                             //        aliveNeighbourCount++;
-                              //  }
+                              //}
                             //}
                         //}
-
                     //}
                     //if(aliveNeighbourCount ==2 || aliveNeighbourCount == 3)
                     //{

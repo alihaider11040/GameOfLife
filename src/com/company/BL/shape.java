@@ -8,6 +8,10 @@ public class shape {
     int size;
     String name;
 
+    public shape(){
+
+
+    }
     public shape(int x,String n) {
         size = x;
         shape = new cell[size][size];
