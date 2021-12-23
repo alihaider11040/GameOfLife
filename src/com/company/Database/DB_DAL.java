@@ -29,8 +29,8 @@ public class DB_DAL implements DB_interface
             Connection connection = DriverManager.getConnection(DB_url,USER_NAME,Pass);
             Statement one = connection.createStatement();
             String query = null;
-            String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + Game_ID + "," + obj.getSpeed() + "," +obj.get_zoom() + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
-            one.executeQuery(game_details_query);
+           // String game_details_query = "call SAVE_INTO_GAME_DETAILS (" + Game_ID + "," + obj.getSpeed() + "," +obj.get_zoom() + "," + obj.getTotalRows() + " ," + obj.getTotalCols() + ");" ;
+         //   one.executeQuery(game_details_query);
             connection.close();
         }
          catch (SQLException e)

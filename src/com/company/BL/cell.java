@@ -42,6 +42,13 @@ public class cell {
         else
             System.out.println("cell at " + rowNum +" "+ colNum + " is dead");
     }
-
+    public int getRow()
+    {
+        return rowNum;
+    }
+    public int getCol()
+    {
+        return colNum;
+    }
 
 }

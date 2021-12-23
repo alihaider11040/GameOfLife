@@ -10,8 +10,76 @@ import java.util.Scanner;
 
 public class Filing_DAL implements DB_interface
 {
-
-
+//    @Override
+//    public void SaveGrid(int Game_ID, Board obj)
+//    {
+//        System.out.println("1");
+//        try
+//        {
+//            FileWriter write = new FileWriter(Integer.toString(Game_ID) + ".txt");
+//            cell[][] board = obj.getGameBoard();
+//            for (int i = 0; i < obj.getTotalRows(); i++)
+//            {
+//                for (int j = 0; j < obj.getTotalCols(); j++)
+//                {
+//
+//                    write.write(Integer.toString(i));
+//                    write.write(" ");
+//                    write.write(Integer.toString(j));
+//                    write.write(" ");
+//                    if(board[i][j].isAliveStatus())
+//                    {
+//                        write.write('1');
+//                    }
+//                    else if(!board[i][j].isAliveStatus())
+//                    {
+//                        write.write('0');
+//                    }
+//                    write.write("\n");
+//                    // end line
+//                }
+//
+//            }
+//            write.close();
+//        } catch (IOException e)
+//        {
+//            System.out.println("An error occurred.");
+//            e.printStackTrace();
+//        }
+//    }
+//
+//    @Override
+//    public Board LoadGrid(int Grid_ID) throws SQLException
+//    {
+//        Board object = new Board();
+////        try
+////        {
+////            boolean statuss = false;
+////            Scanner reader = new Scanner(new FileReader(Integer.toString(Grid_ID) + ".txt"));
+////
+////            while (reader.hasNextLine())
+////            {
+////                object.getCell((object.rows) = reader.nextInt(), object.cols = reader.nextInt());
+////                if (reader.nextInt() == 1)
+////                {
+////                    statuss = true;
+////                }
+////                else
+////                {
+////                    statuss = false;
+////                }
+////                object.updateStatus(statuss);
+////            }
+////            reader.close();
+////
+////            return object;
+////        } catch (FileNotFoundException e)
+////        {
+////            System.out.print("File not FOUND");
+////            e.printStackTrace();
+////        }
+//        return object;
+//    }
 
     @Override
     public void delete_saved_state(int Grid_ID) throws SQLException
@@ -31,7 +99,8 @@ public class Filing_DAL implements DB_interface
                 // end line
             }
             write1.close();
-        } catch (IOException e)
+        }
+        catch (IOException e)
         {
             System.out.println("An error occurred.");
             e.printStackTrace();
@@ -68,9 +137,9 @@ public class Filing_DAL implements DB_interface
             e.printStackTrace();
         }
     }
-
     @Override
-    public Board load_game_details(int Game_ID) throws SQLException {
+    public Board load_game_details(int Game_ID) throws SQLException
+    {
         return null;
     }
 
@@ -87,9 +156,11 @@ public class Filing_DAL implements DB_interface
         //int[][] dice = new int[r][c];
         //File myObj = new File(Integer.toString(Game_ID)+".txt");
         //Scanner myReader = null;
-        //try {
+        //try
+        // {
           //  myReader = new Scanner(myObj);
-        //} catch (FileNotFoundException e) {
+        //} catch (FileNotFoundException e)
+        // {
           //  e.printStackTrace();
         //}
         //for (int i = 0; i < r; i++) {
@@ -101,13 +172,12 @@ public class Filing_DAL implements DB_interface
                     //int aliveNeighbourCount = 0;
                     //for(int m= i-1;m<=i+1;m++) {
                       //  for (int n = j - 1; n <= j + 1; n++) {
-                        //    if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())) {
-                          //      if (b1.getGameBoard()[m][n].isAliveStatus() == true) {
+                        //    if ((m >= 0 && m < b1.getTotalRows()) && (n >= 0 && n < b1.getTotalCols())){
+                          //      if (b1.getGameBoard()[m][n].isAliveStatus() == true){
                             //        aliveNeighbourCount++;
-                              //  }
+                              //}
                             //}
                         //}
-
                     //}
                     //if(aliveNeighbourCount ==2 || aliveNeighbourCount == 3)
                     //{
@@ -164,7 +234,7 @@ public class Filing_DAL implements DB_interface
 
 
 
-        b1.printBoard();
+
         return b1;
     }
 }
