@@ -100,7 +100,7 @@ public class Save {
     public void SaveGrid(int Game_ID,Board obj)
     {
         DB_DAL db_obj = new DB_DAL();
-        db_obj.SaveGrid(Game_ID, obj);
+        //db_obj.SaveGrid(Game_ID, obj);
     }
     public Board loadFromDb(int Grid_ID) throws SQLException
     {

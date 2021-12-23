@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: C:\Users\shabd\IdeaProjects\GameOfLife\src\com\company\sampl
+ e\Main.java
+
